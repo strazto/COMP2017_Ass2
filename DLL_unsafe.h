@@ -66,22 +66,25 @@ struct double_linked_list
  */
 
 dll_t * dll_init();
+void dll_destroy(dll_t * list);
+node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void *val);
 
-node_t * dll_insert(node_t * prev, node_t * next);
+node_t * dll_insert_after(dll_t * list, node_t * prev, void * val);
 
+node_t * dll_insert_before(dll_t * list, node_t * next, void * val);
 /*
- * Returns -1 if some error occurred
+ * Returns NULL if some error occurred
  * adds a new node to end of list
  *
  */
 
-int enqueue(dll_t * list, void * value);
+node_t * enqueue(dll_t * list, void * value);
 
 /* 
  * Add new node to start of list
- * Return -1 if error
+ * Return NULL if error
  */
-int push(dll_t * list, void * value);
+node_t * push(dll_t * list, void * value);
 
 /* 
  * Returns the first object in the list, or null if it is empty
