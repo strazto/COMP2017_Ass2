@@ -1,0 +1,7 @@
+#ifndef PROCESSORS_H
+#define PROCESSORS_H
+#include <sched.h>
+
+int get_CPU_count();
+
+#endif
