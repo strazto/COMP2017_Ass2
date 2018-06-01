@@ -53,8 +53,8 @@ struct double_linked_list
  *
  * hasNext? hasPrev?
  *
- * is_head()?
- * is_tail()?
+ * is_head()? Nah
+ * is_tail()? Nah
  *
  * private insert(node_t * prev, node_t * next, void * val);
  * get_size;
@@ -69,4 +69,41 @@ dll_t * dll_init();
 
 node_t * dll_insert(node_t * prev, node_t * next);
 
+/*
+ * Returns -1 if some error occurred
+ * adds a new node to end of list
+ *
+ */
+
+int enqueue(dll_t * list, void * value);
+
+/* 
+ * Add new node to start of list
+ * Return -1 if error
+ */
+int push(dll_t * list, void * value);
+
+/* 
+ * Returns the first object in the list, or null if it is empty
+ */
+node_t * first(dll_t * list);
+
+/* 
+ * Returns last object in list, or null if empty
+ */
+node_t * last(dll_t * list);
+
+uint8_t has_next(dll_t * list, node_t * current);
+uint8_t has_prev(dll_t * list, node_t * current);
+
+/* 
+ * Remove a particular node from the list, and return its value
+ *
+ */
+void * remove(dll_t * list, node_t * to_rm);
+
+/* 
+ * Remove the node a 
+ */
+void * pop(dll_t * list);
 
