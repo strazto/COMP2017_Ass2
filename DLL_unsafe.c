@@ -82,3 +82,15 @@ node_t * last(dll_t * list)
 	if (out == list->head) return NULL;
 	return out; 
 }
+
+void * dll_remove(dll_t * list, node_t * to_rm)
+{
+	if (!list || !to_rm || to_rm == list->head || to_rm == list->tail) return (void*) -1;
+
+	to_rm->prev->next = to_rm->next;
+	to_rm->next->prev = to_rm->prev;
+	out = to_rm->val;
+	free(to_rm);
+	list->size--;
+	return out;
+}
