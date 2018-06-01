@@ -28,32 +28,57 @@ node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void* val)
 	new->val = val;
 	new->prev = prev;
 	new->next = next;
-	
+	prev->next = new;
+	next->prev = new;	
 	list->size++;
 
 	return new;
 }
 
-node_t * dll_insert_after(dll_t * list, node_t * prev, void * val)
+node_t * dll_insert_next(dll_t * list, node_t * prev, void * val)
 {
 	node_t * next = prev->next;
 	node_t * out  = dll_insert(list, prev, next, val);
 	return out;
 }
 
-node_t * dll_insert_before(dll_t * list, node_t * next, void * val)
+node_t * dll_insert_prev(dll_t * list, node_t * next, void * val)
 {
 	node_t * prev = next->prev;
 	node_t * out = dll_insert(list, prev, next, val);
 	return out;
 }
 
-in enqueue(dll_t * list, void * value)
+node_t * enqueue(dll_t * list, void * val)
 {
 	if (!list) return NULL;
-	
-	
+	node_t * out = dll_insert_next(list, list->tail, val);
+	return out;
 }
 
+node_t * push(dll_t * list, void * val)
+{
+	if (!list) return NULL;
+	node_t * out = dll_insert_prev(list, list->head, val);
+	return out;
+}
 
+node_t * first(dll_t * list)
+{
+	if (!list) return NULL;
+	node_t * head = list->head;
+	if (!head) return NULL;
+	node_t * out = head->prev;
+	if (out == list->tail) return NULL;
+	return out;
+}
 
+node_t * last(dll_t * list)
+{
+	if (!list) return NULL;
+	node_t * tail = list->tail;
+	if (!tail) return NULL;
+	node_t * out = tail->next;
+	if (out == list->head) return NULL;
+	return out; 
+}
