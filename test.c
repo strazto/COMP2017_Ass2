@@ -20,7 +20,7 @@ static ex_props_t * example_1_posts()
 	
 	ex_props_t * out = malloc(sizeof(ex_props_t));
 
-	
+	uint64_t max_children = 0;
 	size_t n_posts = 20;
 	uint64_t i = 0;
 	post* posts = calloc(n_posts, sizeof(post));
@@ -37,6 +37,7 @@ static ex_props_t * example_1_posts()
 		LOG_V("Setting id of:%lu to post idx: %ld", posts[i].pst_id, i);
 	}
 
+
 	//Do find reposts
 	ex = &(out->find_reposts);
 	ex->n_examples = 1;
@@ -48,31 +49,28 @@ static ex_props_t * example_1_posts()
 	ex->expected_outputs[0].elements = malloc(ex->expected_outputs[0].n_elements*sizeof(post*));
 	post ** res = (post**) ex->expected_outputs[0].elements;
 
-	p = &posts[2];
-	p->n_reposted = 5;
-	p->reposted_idxs = malloc(sizeof(size_t)*p->n_reposted);
-	p->reposted_idxs[0] = 4;
-	p->reposted_idxs[1] = 6;
-	p->reposted_idxs[2] = 7;
-	p->reposted_idxs[3] = 10;
-	p->reposted_idxs[4] = 11;	
-	p = &posts[7];
-	p->n_reposted = 3;
-	p->reposted_idxs = malloc(sizeof(size_t)*p->n_reposted);
-	p->reposted_idxs[0] = 15;
-	p->reposted_idxs[1] = 17;
-	p->reposted_idxs[2] = 13;
-	
-	res[0] = &posts[2];
-	res[1] = &posts[4];
-	res[2] = &posts[6];
-	res[3] = &posts[7];
-	res[4] = &posts[10];
-	res[5] = &posts[11];
+	i = 0;
 
-	res[6] = &posts[15];
-	res[7] = &posts[17];
-	res[8] = &posts[13];
+	p = &posts[2];
+	p->n_reposted = 0;
+	max_children = 5;
+	p->reposted_idxs = malloc(sizeof(size_t)*max_children);
+	
+	res[i++] = make_repost(posts, n_posts, p, 4, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 6, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 7, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 10, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 11, max_children);
+		
+	p = &posts[7];
+	max_children = 3;
+
+	p->reposted_idxs = malloc(sizeof(size_t)*max_children);
+
+	res[i++] = make_repost(posts, n_posts, p, 15, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 17, max_children);
+	res[i++] = make_repost(posts, n_posts, p, 13, max_children);
+
 
 	return out;
 }
