@@ -31,7 +31,7 @@ result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_help
 	//Base case
 	if (post_idx < 0) return NULL;
 	
-	
+	free(idx);
 	
 	helper->posts = posts;
 	helper->post_count = count;
@@ -62,6 +62,8 @@ result* find_bots(user* users, size_t user_count, post* posts, size_t post_count
 
 void engine_cleanup(query_helper* helpers) {
 	//Clean up your engine
+	free(helpers->threads);
+	free(helpers);
 }
 
 
