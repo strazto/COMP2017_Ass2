@@ -34,7 +34,7 @@ void* find_idx(void* bst_argsp)
 	else 						found = ((user*)(args->arr))[mid].user_id;
 	
 
-	LOG_V("Ln:%lu,\tLo: %lu,\tMid: %lu,\tHi: %lu,\tMid_val: %lu,\tWanted: %lu",__LINE__, lo, mid, hi, found, want);
+	LOG_V("Lo: %lu,\tMid: %lu,\tHi: %lu,\tMid_val: %lu,\tWanted: %lu",lo, mid, hi, found, want);
 	
 	
 	//Base, find id at mid	

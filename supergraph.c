@@ -26,7 +26,7 @@ result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_help
 	idx->id = post_id;
 	int64_t post_idx = (int64_t) find_idx((void*) idx);
 	
-	LOG_I("Ln: %lu,\t finished searching for post with id of %lu, found at index %li", __LINE__, idx->id, post_idx);
+	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
 	
 	//Base case
 	if (post_idx < 0) return NULL;
