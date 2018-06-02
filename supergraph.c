@@ -45,7 +45,7 @@ result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_help
 	LOG_I("Beginning recursive search for resposts, starting from %lu", post_idx);
 	//Now begin the recursion
 	find_all_reposts_r((void*) args);
-	return args->q_h->res;
+	return helper->res;
 }
 
 result* find_original(post* posts, size_t count, uint64_t post_id, query_helper* helper) {

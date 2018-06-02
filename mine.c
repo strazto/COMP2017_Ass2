@@ -84,7 +84,8 @@ void* find_all_reposts_r(void* argsp)
 	//END CRITICAL
 	//TODO: FIx segv here
 	//free(unthreaded_children);
-	//free(argsp);
+	LOG_D("Freeing arguments pointer for id: %lu", args->current_post->pst_id);
+	free(argsp);
 	return NULL;
 }
 

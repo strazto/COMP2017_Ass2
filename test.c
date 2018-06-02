@@ -5,13 +5,13 @@
 
 
 
-void main (void)
+int main (void)
 {
 	const struct CMUnitTest tests[]= 
 	{
 		cmocka_unit_test(ex1_test_find_all_reposts)
 	};
-	cmocka_run_group_tests(tests);
+	return cmocka_run_group_tests(tests, NULL, NULL);
 }
 
 
@@ -110,7 +110,7 @@ static void ex1_test_find_all_reposts(void** state)
 
 
 
-	//teardown_posts(posts);
+	teardown_posts(posts);
 }
 
 static void teardown_posts(post * posts, size_t size)
@@ -125,4 +125,12 @@ static void teardown_posts(post * posts, size_t size)
 			} 
 	}
 	free(posts);
+}
+
+static post * make_repost(post * posts, uint64_t total_posts, post * parent,  uint64_t child_idx, uint64_t max_children)
+{
+	if (!posts || !parent ||child_idx >= total_posts) return NULL;
+	if (parent->n_reposted >= max_children) return NULL;
+	parent->reposted_idxs[parent->n_reposted++] = child_idx;
+	return &posts[child_idx];
 }

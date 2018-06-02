@@ -34,5 +34,6 @@ struct example_properties
 	io_sample_t find_reposts;
 };
 
+static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
 
 #endif
