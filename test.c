@@ -7,11 +7,11 @@
 
 void main (void)
 {
-	const UnitTest tests []= 
+	const struct CMUnitTest tests[]= 
 	{
-		unit_test(ex1_test_find_all_reposts)
+		cmocka_unit_test(ex1_test_find_all_reposts)
 	};
-	run_tests(tests);
+	cmocka_run_group_tests(tests);
 }
 
 
