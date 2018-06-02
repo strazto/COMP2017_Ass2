@@ -2,6 +2,7 @@
 #define TEST_H
 #include "supergraph.h"
 #include "mine.h"
+#include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
 #include <cmocka.h>
@@ -15,6 +16,12 @@ static ex_props_t * example_1_posts();
 static void teardown_posts();
 static void ex1_test_find_all_reposts(void**state);
 
+struct input_output_examples 
+{
+	size_t n_examples;
+	int64_t * input_ids;
+	result * expected_outputs;
+};
 
 
 struct example_properties
@@ -27,11 +34,5 @@ struct example_properties
 	io_sample_t find_reposts;
 };
 
-struct input_output_examples 
-{
-	size_t n_examples;
-	int64_t * input_ids;
-	result * expected_outputs;
-};
 
 #endif

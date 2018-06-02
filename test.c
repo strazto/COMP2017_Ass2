@@ -7,7 +7,7 @@
 
 void main (void)
 {
-	const Unit_Tests[] tests = 
+	const UnitTest tests []= 
 	{
 		unit_test(ex1_test_find_all_reposts)
 	};
@@ -34,7 +34,7 @@ static ex_props_t * example_1_posts()
 	for (i = 0; i < n_posts; i++)
 	{
 		posts[i].pst_id = i;
-		LOG_V("Setting id of:%lu to post idx: %ld\n", posts[i].pst_id, i);
+		LOG_V("Setting id of:%lu to post idx: %ld", posts[i].pst_id, i);
 	}
 
 	//Do find reposts
@@ -98,17 +98,19 @@ static void ex1_test_find_all_reposts(void** state)
 		expected = &(ex->expected_outputs[i]);
 		actual = find_all_reposts(posts, n_posts, ex->input_ids[i], q_h);
 
-		assert_int_equals(expected->n_elements, actual->n_elements);
+		LOG_D("Starting Test %ld", i);
+
+		assert_int_equal(expected->n_elements, actual->n_elements);
 
 		for (int64_t j = 0; j < actual->n_elements; j++)
 		{
-			assert_in_set(actual->elements[j], expected->elements, expected->n_elements);
+			assert_in_set((uint64_t)actual->elements[j], (uint64_t*) expected->elements, expected->n_elements);
 		}
 	}
 
 
 
-	teardown_posts(posts);
+	//teardown_posts(posts);
 }
 
 static void teardown_posts(post * posts, size_t size)

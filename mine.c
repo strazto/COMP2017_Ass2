@@ -66,7 +66,7 @@ void* find_all_reposts_r(void* argsp)
 	args_t * args = (args_t*) argsp;
 	size_t i = 0;
 	//Track who you could and couldn't thread, so you can chase up who you missed
-	uint8_t * unthreaded_children = calloc(args->current_post->n_reposted, sizeof(uint8_t));
+	//uint8_t * unthreaded_children = calloc(args->current_post->n_reposted, sizeof(uint8_t));
 	post * child = NULL;
 	
 	//Try to open a new thread to recurse, for each child, but if it doesn't work, dont worry
@@ -82,8 +82,9 @@ void* find_all_reposts_r(void* argsp)
 	//Add self to results
 	args->q_h->res->elements[args->q_h->res->n_elements++] = (void*) args->current_post;
 	//END CRITICAL
-	free(unthreaded_children);
-	free(argsp);
+	//TODO: FIx segv here
+	//free(unthreaded_children);
+	//free(argsp);
 	return NULL;
 }
 
