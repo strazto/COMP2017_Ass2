@@ -22,9 +22,8 @@ static void ex1_test_find_all_reposts_3_NA(void** state);
 
 struct input_output_examples 
 {
-	size_t n_examples;
-	int64_t * input_ids;
-	result * expected_outputs;
+	int64_t input_val;
+	result  res;
 };
 
 
@@ -35,12 +34,13 @@ struct example_properties
 	user * users;
 	size_t n_users;
 
-	io_sample_t find_reposts;
+	size_t n_repost_examples;
+	io_sample_t * find_reposts;
 };
 
 static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
 
 static void teardown_example_properties(ex_props_t * ex);
 static void teardown_users(user * users, size_t n_users);
-static void teardown_sample(io_sample_t * sample);
+static void teardown_sample(io_sample_t * s, int64_t n_examples);
 #endif

@@ -8,7 +8,7 @@
 #define DEBUG
 #define VERBIOSITY (4)
 
-#define LOG_B(_format, ...)  fprintf(stderr, "File:%15s|Ln:%3d|Fn:%20s|MSG: " _format "\n", __FILE__, __LINE__,__func__, __VA_ARGS__)
+#define LOG_B(_format, ...)  fprintf(stderr, "File:%15s|Ln:%3d|Fn:%20s|" _format "\n", __FILE__, __LINE__,__func__, __VA_ARGS__)
 
 #define LOG_V(_format, ...)
 #define LOG_I(_format, ...)
@@ -18,26 +18,26 @@
 
 #ifdef DEBUG
 	#undef LOG_E
-	#define LOG_E(_format, ...) LOG_B(_format, __VA_ARGS__)
+	#define LOG_E(_format, ...) LOG_B("E|" _format, __VA_ARGS__)
 
 	#if VERBIOSITY > 0
 		#undef LOG_W
-		#define LOG_W(_format, ...) LOG_B(_format, __VA_ARGS__)
+		#define LOG_W(_format, ...) LOG_B("W|" _format, __VA_ARGS__)
 	#endif
 
 	#if VERBIOSITY > 1
 		#undef LOG_D
-		#define LOG_D(_format, ...) LOG_B(_format, __VA_ARGS__)
+		#define LOG_D(_format, ...) LOG_B("D|" _format, __VA_ARGS__)
 	#endif
 
 	#if VERBIOSITY > 2
 		#undef LOG_I
-		#define LOG_I(_format, ...) LOG_B(_format, __VA_ARGS__)
+		#define LOG_I(_format, ...) LOG_B("I|" _format, __VA_ARGS__)
 	#endif
 
 	#if VERBIOSITY > 3
 		#undef LOG_V
-		#define LOG_V(_format, ...) LOG_B(_format, __VA_ARGS__)
+		#define LOG_V(_format, ...) LOG_B("V|" _format, __VA_ARGS__)
 	#endif
 
 #endif
