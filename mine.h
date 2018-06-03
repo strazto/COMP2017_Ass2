@@ -3,14 +3,7 @@
 #include "supergraph.h"
 
 //TODO: Define operator keywords
-#define FIND_REPOSTS	(0)
-#define FIND_ORIG 		(1)
-#define SHORTEST_LINK	(2)
-#define SHORTEST_LINK2	(3)
-#define FIND_BOTS 		(4)
 
-#define POST_ARR 		(0)
-#define USER_ARR 		(1)
 //Recursive query operations
 //All should have void* f(void*) signatures
 
