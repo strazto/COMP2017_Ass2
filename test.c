@@ -1,4 +1,15 @@
-#include "test.h"
+#include "supergraph.h"
+#include <stdarg.h>
+#include <stddef.h>
+#include <setjmp.h>
+#include <cmocka.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include "log.h"
+
+
+
 /**
  * @author mstr3336, Matthew Strasiotto
  * Test suite for the comp2017 supergraph assignment.
@@ -7,7 +18,16 @@
  * Also don't submit this, since it wont compile on Ed
  * https://github.com/mstr3336/comp2017_supergraph2048_test.git
  */
+typedef struct example_properties ex_props_t;
+static struct example_properties
+{
+	post * posts;
+	size_t n_posts;
+	user * users;
+	size_t n_users;
 
+
+};
 
 //Static Member Functions
 static void post_query_test_helper(uint64_t id_input, result * expected, void ** state, result* (query)(post*, size_t, uint64_t, query_helper*));
