@@ -2,7 +2,7 @@
 
 //Static Member Functions
 //Find all reposts testing
-static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state);
+static void test_results_helper(uint64_t id_input, result * expected, void ** state);
 static void ex1_test_find_all_reposts_0_root(void** state);
 static void ex1_test_find_all_reposts_1_subtree(void** state);
 static void ex1_test_find_all_reposts_2_leaf(void** state);
@@ -88,7 +88,7 @@ static void ex1_test_find_all_reposts_0_root(void** state)
 	post * elems[9] = { &p[2], &p[4], &p[6], &p[7], &p[10], &p[11], &p[15], &p[17], &p[13] };
 	expected.elements = (void **) elems;
 
-	find_all_reposts_test_helper(id_in, &expected, state);
+	test_results_helper(id_in, &expected, state);
 }
 
 static void ex1_test_find_all_reposts_1_subtree(void** state)
@@ -102,7 +102,7 @@ static void ex1_test_find_all_reposts_1_subtree(void** state)
 	post * elems[4] = { &p[7], &p[15], &p[17], &p[13] };
 	expected.elements = (void **) elems;
 
-	find_all_reposts_test_helper(id_in, &expected, state);	
+	test_results_helper(id_in, &expected, state);	
 }
 
 
@@ -117,7 +117,7 @@ static void ex1_test_find_all_reposts_2_leaf(void** state)
 	post * elems[1] = {&p[1]};
 	expected.elements = (void **) elems;
 
-	find_all_reposts_test_helper(id_in, &expected, state);	
+	test_results_helper(id_in, &expected, state);	
 }
 
 static void ex1_test_find_all_reposts_3_not_exist(void** state)
@@ -131,10 +131,10 @@ static void ex1_test_find_all_reposts_3_not_exist(void** state)
 	post ** elems = NULL;
 	expected.elements = (void **) elems;
 
-	find_all_reposts_test_helper(id_in, &expected, state);	
+	test_results_helper(id_in, &expected, state);	
 }
 
-static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state)
+static void test_results_helper(uint64_t id_input, result * expected, void ** state)
 {
 	ex_props_t * props = *((ex_props_t**)state);
 	query_helper * q_h = engine_setup(8);
