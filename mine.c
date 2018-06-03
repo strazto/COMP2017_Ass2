@@ -2,6 +2,10 @@
 #include "supergraph.h"
 #include "log.h"
 
+/**
+ * Put any private functions here
+ * Such as: recursive implementations,
+ */
 
 /*
  * Find the location of an id from within an array

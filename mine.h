@@ -32,5 +32,8 @@ takes argument of args type
 void* find_all_reposts_r(void* argsp);
 
 
-void assign_to_helper();
+
+result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper);
+
+
 #endif
