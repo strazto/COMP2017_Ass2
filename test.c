@@ -1,4 +1,13 @@
 #include "test.h"
+/**
+ * @author mstr3336, Matthew Strasiotto
+ * Test suite for the comp2017 supergraph assignment.
+ * As the repository license should dictate, free for use by anyone, but don't be silly and 
+ * forget to credit if you submit this. 
+ * Also don't submit this, since it wont compile on Ed
+ * https://github.com/mstr3336/comp2017_supergraph2048_test.git
+ */
+
 
 //Static Member Functions
 static void post_query_test_helper(uint64_t id_input, result * expected, void ** state, result* (query)(post*, size_t, uint64_t, query_helper*));
