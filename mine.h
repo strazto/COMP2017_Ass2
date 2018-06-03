@@ -30,4 +30,7 @@ Find all the reposts of a particular post,
 takes argument of args type
 */
 void* find_all_reposts_r(void* argsp);
+
+
+void assign_to_helper();
 #endif
