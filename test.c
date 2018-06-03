@@ -2,8 +2,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//Static Member Functions
+static ex_props_t * example_1_posts();
+static void ex1_test_find_all_reposts(void**state);
+static void ex1_test_find_all_reposts_0(void** state);
+static void ex1_test_find_all_reposts_1_smaller(void** state);
+static void ex1_test_find_all_reposts_2_singular(void** state);
+static void ex1_test_find_all_reposts_3_NA(void** state);
 
-
+//Private helpers
+static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
+static void teardown_posts(post * posts, size_t n_posts);
+static void teardown_example_properties(ex_props_t * ex);
+static void teardown_users(user * users, size_t n_users);
+static void teardown_sample(io_sample_t * s, int64_t n_examples);
 
 int main (void)
 {
