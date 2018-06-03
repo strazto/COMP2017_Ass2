@@ -24,7 +24,7 @@ static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
  */
 static void* find_idx(void* bst_argsp);
 
-
+static void* find_original_worker(void * args);
 /////////////////////////////////////////////////////////////
 //				Static Members (Private)
 /////////////////////////////////////////////////////////////
@@ -35,8 +35,8 @@ static enum array_type
 	USER_ARR = 1
 };
 
-typedef struct binary_search_args bst_args_t;
-static struct binary_search_args
+typedef struct search_args search_args_t;
+static struct search_args
 {
 	size_t hi;
 	size_t lo;
@@ -53,7 +53,7 @@ static struct binary_search_args
  */
 void* find_idx(void* bst_argsp)
 {
-	bst_args_t* args = (bst_args_t*) bst_argsp;
+	search_args_t* args = (search_args_t*) bst_argsp;
 	uint64_t found = 0;
 	uint8_t arr_type = args->arr_type;
 	
@@ -104,7 +104,7 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 {
 	args_t * args;
 	//Find the original post
-	bst_args_t * idx = malloc(sizeof(bst_args_t)); 
+	search_args_t * idx = malloc(sizeof(search_args_t)); 
 	idx->arr = (void*) posts;
 	idx->lo = 0;
 	idx->hi = count - 1;
@@ -178,6 +178,10 @@ void* find_all_reposts_r(void* argsp)
 	return NULL;
 }
 
+result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper)
+{
+	return NULL;
+}
 
 /*
 Copy by value to a new heap alloced struct
@@ -190,4 +194,9 @@ args_t * heap_copy(args_t * from, user* new_user, post * new_post)
 	out->current_post = new_post;
 	out->current_user = new_user;
 	return out;
+}
+
+static void* find_original_worker(void * args)
+{
+
 }

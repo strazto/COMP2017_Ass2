@@ -65,13 +65,7 @@ struct post {
 
 
 
-struct args
-{
-	uint8_t q_type;
-	user * current_user;
-	post * current_post;
-	query_helper * q_h;
-};
+
 
 query_helper* engine_setup(size_t n_processors);
 

@@ -2,11 +2,13 @@
 #define CONSTS_H
 #include "supergraph.h"
 
-
-//Recursive query operations
-//All should have void* f(void*) signatures
-
-
+struct args
+{
+	uint8_t q_type;
+	user * current_user;
+	post * current_post;
+	query_helper * q_h;
+};
 
 
 result * find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper);

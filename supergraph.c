@@ -20,6 +20,7 @@ result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_help
 }
 
 result* find_original(post* posts, size_t count, uint64_t post_id, query_helper* helper) {
+	
 	return NULL;
 }
 
