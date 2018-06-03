@@ -2,10 +2,49 @@
 #include "supergraph.h"
 #include "log.h"
 
+/////////////////////////////////////////////////////////////
+//				Static Functions (Private)
+/////////////////////////////////////////////////////////////
+
 /**
- * Put any private functions here
- * Such as: recursive implementations,
+ * 
+ * @param
  */
+static void* find_all_reposts_r(void* argsp);
+
+/*
+Copy by value to a new heap alloced struct
+*/
+static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
+
+
+/**
+ * 
+ * @param
+ */
+static void* find_idx(void* bst_argsp);
+
+
+/////////////////////////////////////////////////////////////
+//				Static Members (Private)
+/////////////////////////////////////////////////////////////
+typedef enum array_type array_type_t;
+static enum array_type 
+{
+	POST_ARR = 0,
+	USER_ARR = 1
+};
+
+typedef struct binary_search_args bst_args_t;
+static struct binary_search_args
+{
+	size_t hi;
+	size_t lo;
+	void * arr;
+	uint64_t id;
+	array_type_t arr_type;
+};
+
 
 /*
  * Find the location of an id from within an array
@@ -60,6 +99,52 @@ void* find_idx(void* bst_argsp)
 	
 	return find_idx((void*) args);
 }
+
+result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper) 
+{
+	args_t * args;
+	//Find the original post
+	bst_args_t * idx = malloc(sizeof(bst_args_t)); 
+	idx->arr = (void*) posts;
+	idx->lo = 0;
+	idx->hi = count - 1;
+	idx->arr_type = POST_ARR;
+	idx->id = post_id;
+	int64_t post_idx = (int64_t) find_idx((void*) idx);
+	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
+	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
+	
+
+	free(idx);
+
+	
+	helper->posts = posts;
+	helper->post_count = count;
+	helper->res = malloc(sizeof(result));
+	helper->res->elements = calloc(count, sizeof(post*));
+	helper->res->n_elements = 0;
+	//Base case
+	if (post_idx < 0)
+	{
+		LOG_I("Nothing found, returning  %c", '!');
+		free(helper->res->elements);
+		helper->res->elements = NULL;
+		return helper->res;
+	}
+	
+	
+
+
+
+	args = malloc(sizeof(args_t));
+	args->q_h = helper;
+	args->current_post = &(args->q_h->posts[post_idx]);
+	LOG_I("Beginning recursive search for resposts, starting from %lu", post_idx);
+	//Now begin the recursion
+	find_all_reposts_r((void*) args);
+	return helper->res;
+}
+
 
 /*
 Find all the reposts of a particular post,

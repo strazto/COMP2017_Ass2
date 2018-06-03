@@ -12,7 +12,7 @@ typedef struct criteria criteria;
 typedef struct user user;
 typedef struct post post;
 typedef struct args args_t;
-typedef struct bst_args bst_args_t;
+
 
 /**
 Query helper should be shared across queries, so contains shared data that may be reassigned
@@ -63,14 +63,7 @@ struct post {
 	size_t n_reposted;
 };
 
-struct bst_args
-{
-	size_t hi;
-	size_t lo;
-	void * arr;
-	uint8_t arr_type;
-	uint64_t id;
-};
+
 
 struct args
 {

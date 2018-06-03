@@ -16,47 +16,7 @@ Find all reposts of a given post,
 */
 result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_helper* helper) 
 {
-	args_t * args;
-	//Find the original post
-	bst_args_t * idx = malloc(sizeof(bst_args_t)); 
-	idx->arr = (void*) posts;
-	idx->lo = 0;
-	idx->hi = count - 1;
-	idx->arr_type = POST_ARR;
-	idx->id = post_id;
-	int64_t post_idx = (int64_t) find_idx((void*) idx);
-	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
-	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
-	
-
-	free(idx);
-
-	
-	helper->posts = posts;
-	helper->post_count = count;
-	helper->res = malloc(sizeof(result));
-	helper->res->elements = calloc(count, sizeof(post*));
-	helper->res->n_elements = 0;
-	//Base case
-	if (post_idx < 0)
-	{
-		LOG_I("Nothing found, returning  %c", '!');
-		free(helper->res->elements);
-		helper->res->elements = NULL;
-		return helper->res;
-	}
-	
-	
-
-
-
-	args = malloc(sizeof(args_t));
-	args->q_h = helper;
-	args->current_post = &(args->q_h->posts[post_idx]);
-	LOG_I("Beginning recursive search for resposts, starting from %lu", post_idx);
-	//Now begin the recursion
-	find_all_reposts_r((void*) args);
-	return helper->res;
+	return(find_all_reposts_wrapper(posts, count, post_id, helper));
 }
 
 result* find_original(post* posts, size_t count, uint64_t post_id, query_helper* helper) {
