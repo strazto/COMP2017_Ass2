@@ -5,10 +5,12 @@
 #include <stdint.h>
 
 /**
- * @author mstr3336
+ * @author mstr3336 -  Matthew Strasiotto
+ * https://github.com/mstr3336/COMP2017_DLL_queue.git
  * Implementation of a doubly linked list not intended to be thread-safe
  * To be fixed
- *
+ * Licensed however the open license i set says. 
+ * Don't plagarise this because you're allowed to use it if you reference it
  */
 
 typedef struct node node_t;
