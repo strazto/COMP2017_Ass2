@@ -89,7 +89,7 @@ void * dll_remove(dll_t * list, node_t * to_rm)
 
 	to_rm->prev->next = to_rm->next;
 	to_rm->next->prev = to_rm->prev;
-	out = to_rm->val;
+	void * out = to_rm->val;
 	free(to_rm);
 	list->size--;
 	return out;
