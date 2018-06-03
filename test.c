@@ -1,6 +1,7 @@
 #include "test.h"
 
 //Static Member Functions
+static void post_query_test_helper(uint64_t id_input, result * expected, void ** state, result* (query)(post*, size_t, uint64_t, query_helper*));
 static void compare_results_test_helper(result * expected, result * actual);
 //Find all reposts testing
 static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state);
@@ -9,10 +10,13 @@ static void ex1_test_find_all_reposts_1_subtree(void** state);
 static void ex1_test_find_all_reposts_2_leaf(void** state);
 static void ex1_test_find_all_reposts_3_not_exist(void** state);
 //Find original testing
+static void find_orig_test_helper(uint64_t id_input, result * expected, void ** state);
 static void test_find_orig_1_for_orig(void** state);
 static void test_find_orig_2_for_child(void** state);
 static void test_find_orig_3_for_missing(void** state);
-static void test_find_orig_4_for_single(void** state);
+static void test_find_orig_4_for_grandchild(void** state);
+static void test_find_orig_5_for_single(void** state);
+
 //Private helpers
 static int example_1_posts(void ** state);
 static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
@@ -29,7 +33,16 @@ int main (void)
 		cmocka_unit_test(ex1_test_find_all_reposts_2_leaf),
 		cmocka_unit_test(ex1_test_find_all_reposts_3_not_exist)
 	};
+	const struct CMUnitTest find_original_tests[]=
+	{
+		cmocka_unit_test(test_find_orig_1_for_orig),
+		cmocka_unit_test(test_find_orig_2_for_child),
+		cmocka_unit_test(test_find_orig_3_for_missing),
+		cmocka_unit_test(test_find_orig_4_for_grandchild),
+		cmocka_unit_test(test_find_orig_5_for_single)
+	};
 	cmocka_run_group_tests_name("FIND_ALL_REPOSTS", find_reposts_tests, example_1_posts, teardown_example_properties);
+	cmocka_run_group_tests_name("FIND_ORIGINAL", find_original_tests, example_1_posts, teardown_example_properties);
 
 	return 0;
 }
@@ -138,25 +151,7 @@ static void ex1_test_find_all_reposts_3_not_exist(void** state)
 	find_all_reposts_test_helper(id_in, &expected, state);	
 }
 
-static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state)
-{
-	ex_props_t * props = *((ex_props_t**)state);
-	query_helper * q_h = engine_setup(8);
 
-	post * posts = props->posts;
-	size_t n_posts = props->n_posts;
-	result * actual = NULL;
-
-	LOG_D("Testing with %lu", id_input);
-	
-	actual = find_all_reposts(posts, n_posts, id_input, q_h);	
-	compare_results_test_helper(expected, actual);
-
-	//Teardown
-	free(actual->elements);
-	free(actual);
-	engine_cleanup(q_h);
-}
 
 static void compare_results_test_helper(result * expected, result * actual)
 {
@@ -167,6 +162,86 @@ static void compare_results_test_helper(result * expected, result * actual)
 	{
 		assert_in_set((uint64_t)actual->elements[j], (uint64_t*) expected->elements, expected->n_elements);
 	}
+}
+
+static void post_query_test_helper(uint64_t id_input, result * expected, void ** state, result* (query)(post*, size_t, uint64_t, query_helper*))
+{
+	ex_props_t * props = *((ex_props_t**)state);
+	query_helper * q_h = engine_setup(8);
+
+	post * posts = props->posts;
+	size_t n_posts = props->n_posts;
+	result * actual = NULL;
+
+	LOG_D("Testing with %lu", id_input);
+	
+	actual = query(posts, n_posts, id_input, q_h);	
+	compare_results_test_helper(expected, actual);
+
+	//Teardown
+	free(actual->elements);
+	free(actual);
+	engine_cleanup(q_h);
+}
+
+
+static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state)
+{
+	post_query_test_helper(id_input, expected, state, find_all_reposts);
+}
+
+static void find_orig_test_helper(uint64_t id_input, result * expected, void ** state)
+{
+	post_query_test_helper(id_input, expected, state, find_original);
+}
+
+static void test_find_orig_1_for_orig(void** state)
+{
+	ex_props_t * properties = *((ex_props_t**)state);
+	post * posts = properties->posts;
+	uint64_t id_in = 2;
+	post * elems[1] = {&posts[id_in]};
+	result expected = {.elements = (void**)elems, .n_elements = 1};
+	find_orig_test_helper(id_in, &expected, state);
+}
+
+static void test_find_orig_2_for_child(void** state)
+{
+	ex_props_t * properties = *((ex_props_t**)state);
+	post * posts = properties->posts;
+	uint64_t id_in = 4;
+	post * elems[1] = {&posts[2]};
+	result expected = {.elements = (void**)elems, .n_elements = 1};
+	find_orig_test_helper(id_in, &expected, state);	
+}
+
+static void test_find_orig_3_for_missing(void** state)
+{
+	ex_props_t * properties = *((ex_props_t**)state);
+	post * posts = properties->posts;
+	uint64_t id_in = (uint64_t) -100;
+	result expected = {.elements = NULL, .n_elements = 0};
+	find_orig_test_helper(id_in, &expected, state);		
+}
+
+static void test_find_orig_4_for_grandchild(void** state)
+{
+	ex_props_t * properties = *((ex_props_t**)state);
+	post * posts = properties->posts;
+	uint64_t id_in = 13;
+	post * elems[1] = {&posts[2]};
+	result expected = {.elements = (void**)elems, .n_elements = 1};
+	find_orig_test_helper(id_in, &expected, state);	
+}
+
+static void test_find_orig_5_for_single(void** state)
+{
+	ex_props_t * properties = *((ex_props_t**)state);
+	post * posts = properties->posts;
+	uint64_t id_in = 1;
+	post * elems[1] = {&posts[id_in]};
+	result expected = {.elements = (void**)elems, .n_elements = 1};
+	find_orig_test_helper(id_in, &expected, state);	
 }
 
 static void teardown_posts(post * posts, size_t size)
