@@ -8,7 +8,7 @@ static void ex1_test_find_all_reposts_1_subtree(void** state);
 static void ex1_test_find_all_reposts_2_leaf(void** state);
 static void ex1_test_find_all_reposts_3_not_exist(void** state);
 //Find original testing
-static void ex1_test_find_orig_on_original(void ** assumed_result);
+static void find_orig_test_helper(uint64_t id_input, result * expected, void ** state);
 //Private helpers
 static int example_1_posts(void ** state);
 static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
