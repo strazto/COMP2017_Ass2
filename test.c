@@ -1,14 +1,18 @@
 #include "test.h"
 
 //Static Member Functions
+static void compare_results_test_helper(result * expected, result * actual);
 //Find all reposts testing
-static void test_results_helper(uint64_t id_input, result * expected, void ** state);
+static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state);
 static void ex1_test_find_all_reposts_0_root(void** state);
 static void ex1_test_find_all_reposts_1_subtree(void** state);
 static void ex1_test_find_all_reposts_2_leaf(void** state);
 static void ex1_test_find_all_reposts_3_not_exist(void** state);
 //Find original testing
-static void find_orig_test_helper(uint64_t id_input, result * expected, void ** state);
+static void test_find_orig_1_for_orig(void** state);
+static void test_find_orig_2_for_child(void** state);
+static void test_find_orig_3_for_missing(void** state);
+static void test_find_orig_4_for_single(void** state);
 //Private helpers
 static int example_1_posts(void ** state);
 static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
@@ -88,7 +92,7 @@ static void ex1_test_find_all_reposts_0_root(void** state)
 	post * elems[9] = { &p[2], &p[4], &p[6], &p[7], &p[10], &p[11], &p[15], &p[17], &p[13] };
 	expected.elements = (void **) elems;
 
-	test_results_helper(id_in, &expected, state);
+	find_all_reposts_test_helper(id_in, &expected, state);
 }
 
 static void ex1_test_find_all_reposts_1_subtree(void** state)
@@ -102,7 +106,7 @@ static void ex1_test_find_all_reposts_1_subtree(void** state)
 	post * elems[4] = { &p[7], &p[15], &p[17], &p[13] };
 	expected.elements = (void **) elems;
 
-	test_results_helper(id_in, &expected, state);	
+	find_all_reposts_test_helper(id_in, &expected, state);	
 }
 
 
@@ -117,7 +121,7 @@ static void ex1_test_find_all_reposts_2_leaf(void** state)
 	post * elems[1] = {&p[1]};
 	expected.elements = (void **) elems;
 
-	test_results_helper(id_in, &expected, state);	
+	find_all_reposts_test_helper(id_in, &expected, state);	
 }
 
 static void ex1_test_find_all_reposts_3_not_exist(void** state)
@@ -131,10 +135,10 @@ static void ex1_test_find_all_reposts_3_not_exist(void** state)
 	post ** elems = NULL;
 	expected.elements = (void **) elems;
 
-	test_results_helper(id_in, &expected, state);	
+	find_all_reposts_test_helper(id_in, &expected, state);	
 }
 
-static void test_results_helper(uint64_t id_input, result * expected, void ** state)
+static void find_all_reposts_test_helper(uint64_t id_input, result * expected, void ** state)
 {
 	ex_props_t * props = *((ex_props_t**)state);
 	query_helper * q_h = engine_setup(8);
@@ -146,13 +150,7 @@ static void test_results_helper(uint64_t id_input, result * expected, void ** st
 	LOG_D("Testing with %lu", id_input);
 	
 	actual = find_all_reposts(posts, n_posts, id_input, q_h);	
-	LOG_D("Check expected element size: %lu vs actual %lu", expected->n_elements, actual->n_elements);
-	assert_int_equal(expected->n_elements, actual->n_elements);
-
-	for (int64_t j = 0; j < actual->n_elements; j++)
-	{
-		assert_in_set((uint64_t)actual->elements[j], (uint64_t*) expected->elements, expected->n_elements);
-	}
+	compare_results_test_helper(expected, actual);
 
 	//Teardown
 	free(actual->elements);
@@ -160,6 +158,16 @@ static void test_results_helper(uint64_t id_input, result * expected, void ** st
 	engine_cleanup(q_h);
 }
 
+static void compare_results_test_helper(result * expected, result * actual)
+{
+	LOG_D("Check expected element size: %lu vs actual %lu", expected->n_elements, actual->n_elements);
+	assert_int_equal(expected->n_elements, actual->n_elements);
+
+	for (int64_t j = 0; j < actual->n_elements; j++)
+	{
+		assert_in_set((uint64_t)actual->elements[j], (uint64_t*) expected->elements, expected->n_elements);
+	}
+}
 
 static void teardown_posts(post * posts, size_t size)
 {

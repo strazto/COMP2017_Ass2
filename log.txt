@@ -1,8 +1,8 @@
-==11504== Memcheck, a memory error detector
-==11504== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==11504== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==11504== Command: ./a.out
-==11504== 
+==11709== Memcheck, a memory error detector
+==11709== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==11709== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==11709== Command: ./a.out
+==11709== 
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
@@ -23,7 +23,7 @@ File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:16 to post i
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:17 to post idx: 17
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 File:         test.c|Ln: 53|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
-File:         test.c|Ln:146|Fn:find_all_reposts_test_helper|D|Testing with 2
+File:         test.c|Ln:146|Fn: test_results_helper|D|Testing with 2
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 9,	Hi: 19,	Mid_val: 9,	Wanted: 2
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 4,	Hi: 8,	Mid_val: 4,	Wanted: 2
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 1,	Hi: 3,	Mid_val: 1,	Wanted: 2
@@ -41,8 +41,8 @@ File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer 
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 10
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 11
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 2
-File:         test.c|Ln:149|Fn:find_all_reposts_test_helper|D|Check expected element size: 9 vs actual 9
-File:         test.c|Ln:146|Fn:find_all_reposts_test_helper|D|Testing with 7
+File:         test.c|Ln:149|Fn: test_results_helper|D|Check expected element size: 9 vs actual 9
+File:         test.c|Ln:146|Fn: test_results_helper|D|Testing with 7
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 9,	Hi: 19,	Mid_val: 9,	Wanted: 7
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 4,	Hi: 8,	Mid_val: 4,	Wanted: 7
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 5,	Mid: 6,	Hi: 8,	Mid_val: 6,	Wanted: 7
@@ -55,8 +55,8 @@ File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer 
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 17
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 13
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 7
-File:         test.c|Ln:149|Fn:find_all_reposts_test_helper|D|Check expected element size: 4 vs actual 4
-File:         test.c|Ln:146|Fn:find_all_reposts_test_helper|D|Testing with 1
+File:         test.c|Ln:149|Fn: test_results_helper|D|Check expected element size: 4 vs actual 4
+File:         test.c|Ln:146|Fn: test_results_helper|D|Testing with 1
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 9,	Hi: 19,	Mid_val: 9,	Wanted: 1
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 4,	Hi: 8,	Mid_val: 4,	Wanted: 1
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 1,	Hi: 3,	Mid_val: 1,	Wanted: 1
@@ -65,8 +65,8 @@ File:         mine.c|Ln:114|Fn:find_all_reposts_wrapper|D|Count var: 20, highest
 File:         mine.c|Ln:115|Fn:find_all_reposts_wrapper|I|Finished searching for post with id of 1, found at index 1
 File:         mine.c|Ln:142|Fn:find_all_reposts_wrapper|I|Beginning recursive search for resposts, starting from 1
 File:         mine.c|Ln:176|Fn:  find_all_reposts_r|D|Freeing arguments pointer for id: 1
-File:         test.c|Ln:149|Fn:find_all_reposts_test_helper|D|Check expected element size: 1 vs actual 1
-File:         test.c|Ln:146|Fn:find_all_reposts_test_helper|D|Testing with 18446744073709551516
+File:         test.c|Ln:149|Fn: test_results_helper|D|Check expected element size: 1 vs actual 1
+File:         test.c|Ln:146|Fn: test_results_helper|D|Testing with 18446744073709551516
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 0,	Mid: 9,	Hi: 19,	Mid_val: 9,	Wanted: 18446744073709551516
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 10,	Mid: 14,	Hi: 19,	Mid_val: 14,	Wanted: 18446744073709551516
 File:         mine.c|Ln: 80|Fn:            find_idx|V|Lo: 15,	Mid: 17,	Hi: 19,	Mid_val: 17,	Wanted: 18446744073709551516
@@ -76,15 +76,15 @@ File:         mine.c|Ln: 72|Fn:            find_idx|V|Didn't find 18446744073709
 File:         mine.c|Ln:114|Fn:find_all_reposts_wrapper|D|Count var: 20, highest searchable: 19
 File:         mine.c|Ln:115|Fn:find_all_reposts_wrapper|I|Finished searching for post with id of 18446744073709551516, found at index -1
 File:         mine.c|Ln:129|Fn:find_all_reposts_wrapper|I|Nothing found, returning  !
-File:         test.c|Ln:149|Fn:find_all_reposts_test_helper|D|Check expected element size: 0 vs actual 0
+File:         test.c|Ln:149|Fn: test_results_helper|D|Check expected element size: 0 vs actual 0
 File:         test.c|Ln:218|Fn:      teardown_users|E|Null pointer given !
 [  PASSED  ] 4 test(s).
-==11504== 
-==11504== HEAP SUMMARY:
-==11504==     in use at exit: 0 bytes in 0 blocks
-==11504==   total heap usage: 40 allocs, 40 frees, 5,568 bytes allocated
-==11504== 
-==11504== All heap blocks were freed -- no leaks are possible
-==11504== 
-==11504== For counts of detected and suppressed errors, rerun with: -v
-==11504== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==11709== 
+==11709== HEAP SUMMARY:
+==11709==     in use at exit: 0 bytes in 0 blocks
+==11709==   total heap usage: 40 allocs, 40 frees, 5,568 bytes allocated
+==11709== 
+==11709== All heap blocks were freed -- no leaks are possible
+==11709== 
+==11709== For counts of detected and suppressed errors, rerun with: -v
+==11709== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
