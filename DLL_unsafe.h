@@ -1,3 +1,5 @@
+#ifndef DLL_H
+#define DLL_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -110,3 +112,4 @@ void * dll_remove(dll_t * list, node_t * to_rm);
  */
 void * pop(dll_t * list);
 
+#endif
