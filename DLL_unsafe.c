@@ -1,5 +1,15 @@
 #include "DLL_unsafe.h"
 
+//Private memebers
+
+
+static node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void *val);
+
+static node_t * dll_insert_next(dll_t * list, node_t * prev, void * val);
+
+static node_t * dll_insert_prev(dll_t * list, node_t * next, void * val);
+
+
 dll_t * dll_init()
 {
 	dll_t * out = malloc(sizeof(dll_t));
@@ -20,7 +30,7 @@ void dll_destroy(dll_t * list)
 	free(list);
 }
 
-node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void* val)
+static node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void* val)
 {
 	if (!list || !prev || !next) return NULL;
 
@@ -35,14 +45,14 @@ node_t * dll_insert(dll_t * list, node_t * prev, node_t * next, void* val)
 	return new;
 }
 
-node_t * dll_insert_next(dll_t * list, node_t * prev, void * val)
+static node_t * dll_insert_next(dll_t * list, node_t * prev, void * val)
 {
 	node_t * next = prev->next;
 	node_t * out  = dll_insert(list, prev, next, val);
 	return out;
 }
 
-node_t * dll_insert_prev(dll_t * list, node_t * next, void * val)
+static node_t * dll_insert_prev(dll_t * list, node_t * next, void * val)
 {
 	node_t * prev = next->prev;
 	node_t * out = dll_insert(list, prev, next, val);
