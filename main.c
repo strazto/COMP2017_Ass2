@@ -1,6 +1,7 @@
 #include "DLL_unsafe.h"
 #include "thread_test.h"
 #include "log.h"
+#include <cmocka.h>
 
 void main(void)
 {
@@ -70,3 +71,5 @@ void main(void)
 		printf("Element: %li\n", (int64_t) current->val);		
 	}
 }
+
+
