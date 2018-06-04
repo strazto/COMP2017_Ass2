@@ -29,14 +29,14 @@ static void* find_original_worker(void * args);
 //				Static Members (Private)
 /////////////////////////////////////////////////////////////
 typedef enum array_type array_type_t;
-static enum array_type 
+enum array_type 
 {
 	POST_ARR = 0,
 	USER_ARR = 1
 };
 
 typedef struct search_args search_args_t;
-static struct search_args
+struct search_args
 {
 	size_t hi;
 	size_t lo;
@@ -196,7 +196,7 @@ args_t * heap_copy(args_t * from, user* new_user, post * new_post)
 	return out;
 }
 
-static void* find_original_worker(void * args)
+static void* find_original_worker(void * search_args)
 {
 
 }
