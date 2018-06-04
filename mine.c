@@ -2,6 +2,9 @@
 #include "supergraph.h"
 #include "log.h"
 
+
+typedef struct search_args search_args_t;
+typedef enum array_type array_type_t;
 /////////////////////////////////////////////////////////////
 //				Static Functions (Private)
 /////////////////////////////////////////////////////////////
@@ -17,33 +20,35 @@ Copy by value to a new heap alloced struct
 */
 static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
 
+static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type);
+
 
 /**
  * 
- * @param
+ * @param search_args: Pointer to search_args_t structure, wrapping index range parameter
  */
 static void* find_idx(void* search_args);
+/////////////////////////////////////////////////////////////
+//				Helper data classes
+/////////////////////////////////////////////////////////////
 
-static void* find_original_worker(void * args);
-/////////////////////////////////////////////////////////////
-//				Static Members (Private)
-/////////////////////////////////////////////////////////////
-typedef enum array_type array_type_t;
 enum array_type 
 {
 	POST_ARR = 0,
-	USER_ARR = 1
+	USER_ARR = 1,
+	INDX_ARR = 2
 };
 
-typedef struct search_args search_args_t;
+
 struct search_args
 {
 	size_t hi;
 	size_t lo;
 	void * arr;
 	uint64_t id;
-	array_type_t arr_type;
+	array_type_t arr_type;	
 };
+
 
 
 /*
@@ -73,9 +78,9 @@ void* find_idx(void* search_args)
 		return (void*) -1;
 	} 
 	
-	if (arr_type == POST_ARR)	found = ((post*)(args->arr))[mid].pst_id;
-	else 						found = ((user*)(args->arr))[mid].user_id;
-	
+	if 		(arr_type == POST_ARR)		found = ((post*)(args->arr))[mid].pst_id;
+	else if (arr_type == USER_ARR)		found = ((user*)(args->arr))[mid].user_id;
+	else if (arr_type == INDX_ARR)		found = ((uint64_t*)args->arr)[mid];
 
 	LOG_V("Lo: %lu,\tMid: %lu,\tHi: %lu,\tMid_val: %lu,\tWanted: %lu",lo, mid, hi, found, want);
 	
@@ -104,18 +109,14 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 {
 	args_t * args;
 	//Find the original post
-	search_args_t * idx = malloc(sizeof(search_args_t)); 
-	idx->arr = (void*) posts;
-	idx->lo = 0;
-	idx->hi = count - 1;
-	idx->arr_type = POST_ARR;
-	idx->id = post_id;
+	search_args_t * idx = init_search(0, count - 1, post_id, (void*)posts, POST_ARR); 
+	
+
 	int64_t post_idx = (int64_t) find_idx((void*) idx);
 	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
 	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
-	
-
 	free(idx);
+	
 
 	
 	helper->posts = posts;
@@ -132,9 +133,6 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 		return helper->res;
 	}
 	
-	
-
-
 
 	args = malloc(sizeof(args_t));
 	args->q_h = helper;
@@ -171,19 +169,49 @@ void* find_all_reposts_r(void* argsp)
 	//Add self to results
 	args->q_h->res->elements[args->q_h->res->n_elements++] = (void*) args->current_post;
 	//END CRITICAL
-	//TODO: FIx segv here
 	//free(unthreaded_children);
 	LOG_D("Freeing arguments pointer for id: %lu", args->current_post->pst_id);
 	free(argsp);
 	return NULL;
 }
 
-result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper)
+result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* q_h)
 {
-	
+	post * backwards = NULL;
+	post * current_post = NULL;
+	uint64_t i = 0;
+	uint64_t j = 0;
+	search_args_t * index_search = init_search(0, count - 1, post_id, (void*)posts, POST_ARR);
+	uint64_t post_idx = (int64_t) find_idx((void*) index_search);
+	free(index_search);
 
+	q_h->res = calloc(1,sizeof(query_helper));
+	if ((int64_t) post_idx == -1) return q_h->res;
 
-	return NULL;
+	backwards = malloc(count*sizeof(post));
+
+	q_h->res->elements = malloc(sizeof(void**));
+	q_h->res->n_elements = 1;
+	for (i = 0; i < count; i++)
+	{
+		for (j = 0; j < posts[i].n_reposted; j++)
+		{
+			backwards[posts[i].reposted_idxs[j]].reposted_idxs = (uint64_t*) i;
+			backwards[posts[i].reposted_idxs[j]].n_reposted = 1;
+		}
+	}
+
+	current_post = &backwards[post_idx];
+
+	while (current_post->n_reposted)
+	{
+		post_idx = (uint64_t) current_post->reposted_idxs;
+		current_post = &backwards[post_idx];
+	}
+	free(backwards);
+	q_h->res->elements[0] = (void*) &posts[post_idx];
+
+	return q_h->res;
 }
 
 /*
@@ -199,7 +227,14 @@ args_t * heap_copy(args_t * from, user* new_user, post * new_post)
 	return out;
 }
 
-static void* find_original_worker(void * search_args)
-{
 
+static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type)
+{
+	search_args_t * out = malloc(sizeof(search_args_t));
+	out->hi = hi;
+	out->lo = lo;
+	out->arr = arr;
+	out->id = want;
+	out->arr_type = arr_type;
+	return out;
 }

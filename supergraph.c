@@ -21,7 +21,7 @@ result* find_all_reposts(post* posts, size_t count, uint64_t post_id, query_help
 
 result* find_original(post* posts, size_t count, uint64_t post_id, query_helper* helper) {
 	
-	return NULL;
+	return find_original_wrapper(posts, count, post_id, helper);
 }
 
 result* shortest_user_link(user* users, size_t count, uint64_t userA, uint64_t userB, query_helper* helper) {

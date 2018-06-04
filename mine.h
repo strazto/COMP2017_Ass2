@@ -23,7 +23,7 @@ result * find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, q
  * @param query_helper: The query helper object
  * @return Result, with pointer to original element, and size 1, or null elements and size 0 if id not found.
  */
-result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper);
+result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* q_h);
 
 
 #endif
