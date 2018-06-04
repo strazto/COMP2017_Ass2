@@ -67,11 +67,12 @@ static int example_1_posts(void ** state)
 	uint64_t i = 0;
 	post* posts = calloc(n_posts, sizeof(post));
 	post* p = NULL;
-	
+	user * u = NULL;
 	out->posts = posts;
 	out->n_posts = n_posts;
-	out->users = NULL;
 	out->n_users = 0;
+	out->users = NULL;
+
 
 	for (i = 0; i < n_posts; i++)
 	{
@@ -98,6 +99,33 @@ static int example_1_posts(void ** state)
 	make_repost(posts, n_posts, p, 15, max_children);
 	make_repost(posts, n_posts, p, 17, max_children);
 	make_repost(posts, n_posts, p, 13, max_children);
+
+	//TO BE IMPLEMENTED: Shortest path tests
+
+	// out->n_users = 10;
+	// out->users = calloc(out->n_users,sizeof(user));
+	
+	// u = &out->users[0];
+	// u->n_following = 0;
+	// u->n_followers = 3;
+	// u->follower_idxs = {2, 3, 9};
+	
+	// u = &out->users[2];
+	// u->n_following = 1;
+	// u->n_followers = 1;
+	// u->following_idxs = {0};
+	// u->follower_idxs= {4};
+
+	// u = &out->users[3];
+	// u->n_followers = 1;
+	// u->n_following = 1;
+	// u->follower_idxs = {9};
+	
+	// u = &out->users[9];
+	// u->n_following = 2;
+	// u->n_followers = 0;
+	// u->following_ixs = {0, 3};
+	// out->users[4].following_idxs = {2};
 
 	*state = (void*) out;
 	return 0;

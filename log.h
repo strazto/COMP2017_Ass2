@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define DEBUG
+//#define DEBUG
 #define VERBIOSITY (4)
 
 #define LOG_B(_format, ...)  fprintf(stderr, "File:%15s|Ln:%3d|Fn:%20s|" _format "\n", __FILE__, __LINE__,__func__, __VA_ARGS__)
