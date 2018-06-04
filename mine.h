@@ -25,5 +25,5 @@ result * find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, q
  */
 result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* q_h);
 
-
+result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, uint64_t userB, query_helper* helper);
 #endif

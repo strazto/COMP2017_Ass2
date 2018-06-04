@@ -152,16 +152,12 @@ void* find_all_reposts_r(void* argsp)
 {
 	args_t * args = (args_t*) argsp;
 	size_t i = 0;
-	//Track who you could and couldn't thread, so you can chase up who you missed
-	//uint8_t * unthreaded_children = calloc(args->current_post->n_reposted, sizeof(uint8_t));
+	
 	post * child = NULL;
 	
 	//Try to open a new thread to recurse, for each child, but if it doesn't work, dont worry
 	for (i = 0; i < args->current_post->n_reposted ; i++)
 	{
-		//TODO: Make this work right
-		//trysem to allocate a thread, maybe
-		//For now, just recurse
 		child = &args->q_h->posts[args->current_post->reposted_idxs[i]];
 		find_all_reposts_r(heap_copy(args, NULL, child));
 	}
@@ -188,7 +184,7 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 	q_h->res = calloc(1,sizeof(query_helper));
 	if ((int64_t) post_idx == -1) return q_h->res;
 
-	backwards = malloc(count*sizeof(post));
+	backwards = calloc(count,sizeof(post));
 
 	q_h->res->elements = malloc(sizeof(void**));
 	q_h->res->n_elements = 1;
@@ -238,3 +234,5 @@ static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void
 	out->arr_type = arr_type;
 	return out;
 }
+
+
