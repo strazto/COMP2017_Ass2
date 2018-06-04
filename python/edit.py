@@ -21,6 +21,6 @@ for c in range(len(df.columns)):
 for r in df.index:
     tk.Label(root, text=str(df.index[r])).grid(row=r+1,column=0)  
     for c in range(len(df.columns)):
-        iv = IntVar(value=df.iloc[r,c])
+        iv = tk.IntVar(value=df.iloc[r,c])
         tk.Checkbutton(root, borderwidth=1, var=iv, command=partial(toggle_df,df,r,c)).grid(row=r + 1,column=c + 1)
 root.mainloop(  )
