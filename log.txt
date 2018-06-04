@@ -1,0 +1,528 @@
+==5642== Memcheck, a memory error detector
+==5642== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5642== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==5642== Command: ./a.out
+==5642== 
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 0
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 1
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 2
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 3
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+==5642== Thread 2:
+==5642== Invalid read of size 8
+==5642==    at 0x109199: remove_number (thread_test.c:22)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd88 is 8 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x1091A5: remove_number (thread_test.c:23)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd90 is 16 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x109066: dll_remove (DLL_unsafe.c:100)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd80 is 0 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x10906D: dll_remove (DLL_unsafe.c:100)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd88 is 8 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x109079: dll_remove (DLL_unsafe.c:101)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd88 is 8 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x109081: dll_remove (DLL_unsafe.c:101)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd80 is 0 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid read of size 8
+==5642==    at 0x10908B: dll_remove (DLL_unsafe.c:102)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd90 is 16 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+==5642== Invalid free() / delete / delete[] / realloc()
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Address 0x543bd80 is 0 bytes inside a block of size 24 free'd
+==5642==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x10909E: dll_remove (DLL_unsafe.c:103)
+==5642==    by 0x1091C1: remove_number (thread_test.c:26)
+==5642==    by 0x4E437FB: start_thread (pthread_create.c:465)
+==5642==    by 0x516FB5E: clone (clone.S:95)
+==5642==  Block was alloc'd at
+==5642==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==5642==    by 0x108E14: dll_insert (DLL_unsafe.c:37)
+==5642==    by 0x108EE5: dll_insert_prev (DLL_unsafe.c:58)
+==5642==    by 0x108F6A: push (DLL_unsafe.c:72)
+==5642==    by 0x108AA8: main (main.c:30)
+==5642== 
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 7
+T:109299456|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:117692160|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 4
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:100906752|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:126084864|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 5
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:134477568|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:142870272|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 6
+T:67360576|File:         main.c|Ln: 54|Fn:                main|I|Initializing thread 7
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 0, n removed 10
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 1, n removed 3
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 2, n removed 7
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 3, n removed 0
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 4, n removed 0
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 5, n removed 0
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:151262976|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 9
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 6
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 3
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 0
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 1
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 2
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 4
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 5
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 8
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 10
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 11
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 13
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 14
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 16
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 17
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 19
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 20
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 22
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 23
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 25
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 26
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 28
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 29
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 31
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 32
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 34
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 35
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 37
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 38
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 40
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 41
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 43
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 44
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 46
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 47
+T:159655680|File:  thread_test.c|Ln: 20|Fn:       remove_number|D|Traversing list, current val is 49
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 6, n removed 0
+T:67360576|File:         main.c|Ln: 61|Fn:                main|V|Thread 7, n removed 0
+==5642== 
+==5642== HEAP SUMMARY:
+==5642==     in use at exit: 1,120 bytes in 45 blocks
+==5642==   total heap usage: 73 allocs, 29 frees, 4,776 bytes allocated
+==5642== 
+==5642== LEAK SUMMARY:
+==5642==    definitely lost: 88 bytes in 2 blocks
+==5642==    indirectly lost: 1,032 bytes in 43 blocks
+==5642==      possibly lost: 0 bytes in 0 blocks
+==5642==    still reachable: 0 bytes in 0 blocks
+==5642==         suppressed: 0 bytes in 0 blocks
+==5642== Rerun with --leak-check=full to see details of leaked memory
+==5642== 
+==5642== For counts of detected and suppressed errors, rerun with: -v
+==5642== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 0 from 0)
