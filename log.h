@@ -1,6 +1,10 @@
 #ifndef LOG_H
 #define LOG_H
 
+/**
+ * @auther Matthew Strasiotto mstr3336
+ */
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdint.h>
