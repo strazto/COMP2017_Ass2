@@ -22,7 +22,7 @@ static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
  * 
  * @param
  */
-static void* find_idx(void* bst_argsp);
+static void* find_idx(void* search_args);
 
 static void* find_original_worker(void * args);
 /////////////////////////////////////////////////////////////
@@ -48,12 +48,12 @@ struct search_args
 
 /*
  * Find the location of an id from within an array
- * :: void* bst_argsp :: 
+ * :: void* search_args :: 
  * Returns id
  */
-void* find_idx(void* bst_argsp)
+void* find_idx(void* search_args)
 {
-	search_args_t* args = (search_args_t*) bst_argsp;
+	search_args_t* args = (search_args_t*) search_args;
 	uint64_t found = 0;
 	uint8_t arr_type = args->arr_type;
 	
@@ -180,6 +180,9 @@ void* find_all_reposts_r(void* argsp)
 
 result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper)
 {
+	
+
+
 	return NULL;
 }
 
