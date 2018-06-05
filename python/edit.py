@@ -48,5 +48,10 @@ disp_bool_df(user_posts_view, matrices['USER_POSTS'], no_diag=0)
 
 root.mainloop(  )
 
+test_folder = "./TEST_OUT"
+IO.write_matrices(matrices, test_folder)
 
-IO.write_matrices(matrices, "./TEST_OUT")
+m2 = IO.read_matrices(test_folder)
+
+for k in m2:
+	print(m2[k])
