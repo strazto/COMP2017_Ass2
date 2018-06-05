@@ -1,0 +1,75 @@
+In file included from test.h:11:0,
+                 from parse_csv.h:4,
+                 from parse_csv.c:1:
+parse_csv.c: In function ‘buffer_in_file’:
+log.h:22:46: warning: format ‘%li’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^
+log.h:22:46: note: in definition of macro ‘LOG_B’
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+parse_csv.c:18:2: note: in expansion of macro ‘LOG_I’
+  LOG_I("File size: %lu", file_size);
+  ^~~~~
+log.h:22:51: note: format string is defined here
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                                 ~~^
+                                                 %i
+log.h:22:46: warning: format ‘%lu’ expects argument of type ‘long unsigned int’, but argument 7 has type ‘size_t * {aka long unsigned int *}’ [-Wformat=]
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^
+log.h:22:46: note: in definition of macro ‘LOG_B’
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+parse_csv.c:18:2: note: in expansion of macro ‘LOG_I’
+  LOG_I("File size: %lu", file_size);
+  ^~~~~
+parse_csv.c:18:22: note: format string is defined here
+  LOG_I("File size: %lu", file_size);
+                    ~~^
+                    %ln
+In file included from test.h:11:0,
+                 from parse_csv.h:4,
+                 from parse_csv.c:1:
+log.h:22:46: warning: format ‘%li’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^
+log.h:22:46: note: in definition of macro ‘LOG_B’
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+parse_csv.c:27:2: note: in expansion of macro ‘LOG_I’
+  LOG_I("Number of bytes read: %lu", n_read);
+  ^~~~~
+log.h:22:51: note: format string is defined here
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                                 ~~^
+                                                 %i
+In file included from test.h:11:0,
+                 from parse_csv.h:4,
+                 from test_parse.c:1:
+test_parse.c: In function ‘main’:
+log.h:22:46: warning: format ‘%li’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^
+log.h:22:46: note: in definition of macro ‘LOG_B’
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_parse.c:11:2: note: in expansion of macro ‘LOG_I’
+  LOG_I("Buffered in header of size %lu", file_size);
+  ^~~~~
+log.h:22:51: note: format string is defined here
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                                 ~~^
+                                                 %i
+In file included from test.h:11:0,
+                 from parse_csv.h:4,
+                 from test_parse.c:1:
+test_parse.c:15:84: error: request for member ‘props’ in something not a structure or union
+  LOG_I("In initialized header info, discerned %lu users, %lu posts", props->n_users. props->n_posts);
+                                                                                    ^
+log.h:22:134: note: in definition of macro ‘LOG_B’
+ #define LOG_B(_format, ...)  fprintf(stderr, "T:%li|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+                                                                                                                                      ^~~~~~~~~~~
+test_parse.c:15:2: note: in expansion of macro ‘LOG_I’
+  LOG_I("In initialized header info, discerned %lu users, %lu posts", props->n_users. props->n_posts);
+  ^~~~~

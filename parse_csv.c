@@ -1,22 +1,28 @@
 #include "parse_csv.h"
 
-typedef struct csv_parser csv_parse_t;
+
 
 
 
 char * buffer_in_file(char * file_path, size_t * file_size)
 {
-	(void) n_chars_path;
 	char * out = NULL;
 	size_t n_read = 0;	
 
+	LOG_I("Buffering in file: %s", file_path);
+
 	//Find the size of the header
-	FILE * f = fopen(header_path, "rb");
-	fseek(fp, 0L, SEEK_END);
-	*file_size = ftell(fp);
+	FILE * f = fopen(file_path, "rb");
+	if (!f)
+	{
+		LOG_E("Error opening %s, terminating.", file_path);
+		return NULL;
+	}
+	fseek(f, 0, SEEK_END);
+	*file_size = ftell(f);
 	rewind(f);
 
-	LOG_I("File size: %lu", header_size);
+	LOG_I("File size: %lu", *file_size);
 	
 	out = malloc(*file_size);
 
@@ -32,55 +38,65 @@ char * buffer_in_file(char * file_path, size_t * file_size)
 }
 
 
-ex_props_t * init_from_header(void * header_buff, size_t header_size)
+csv_env_t * init_from_header(void * header_buff, size_t header_size)
 {
-	csv_env_t env = 
-	{
-		.properties = calloc(1,sizeof(ex_props_t)),
-		.n_cols = 3,
-		.current_col = 0,
-		.current_row = 0,
-		.first_user_col_idx = -1,
-		.is_header = 1
-	}
-	csv_parse_t * csv;
-	csv_init(csv, CSV_APPEND_NULL);
-	env.csv = csv;
-
-	csv_parse(csv, header_buff, header_size, read_any, next_row, &env);
-	csv_fini(csv, read_any, next_row, &env)
-	
-	return NULL
+	csv_env_t * env = init_env(malloc(sizeof(ex_props_t)), 3, HEAD_TABLE, NULL);
+	csv_parse(env->csv, header_buff, header_size, read_any, next_row, env);
+	csv_fini(env->csv, read_any, next_row, env);
+	return env;
 }
 
-field_cb_f read_any(void * data, size_t n_chars, void * csvenv)
+void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t type)
+{
+	env->type = type;
+	csv_parse(env->csv, fbuff, n_bytes, read_any, next_row, env);
+	csv_fini(env->csv, read_any, next_row, env);
+}
+
+csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser)
+{
+	csv_env_t * out = calloc(1, sizeof(csv_env_t));
+	out->properties = props;
+	out->n_cols = n_cols;
+	out->first_user_col_idx = -1;
+	out->type = type;
+	
+	if (!parser)
+	{
+		parser = malloc(sizeof(csv_parse_t));
+		csv_init(parser, CSV_APPEND_NULL);
+	} 
+	out->csv = parser;
+	return out;
+}
+
+void read_any(void * data, size_t n_chars, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
 	field_cb_f cb = field_wrapper;
 	if (env->current_row == 0) 	cb = col_read_wrapper;
-
 	cb(data, n_chars, csvenv);
-					
+	env->current_col++;			
 }
 
-field_cb_f col_read_wrapper(void * data, size_t n_chars, void *csvenv)
+void col_read_wrapper(void * data, size_t n_chars, void *csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
 
 	field_cb_f cb = normal_col;
 	
-	if (env->is_header) cb = header_col;
+	if (env->type == HEAD_TABLE) cb = header_col;
 	cb(data, n_chars, csvenv);
 }
 
-field_cb_f header_col(void * data, size_t n_chars, void * csvenv)
+void header_col(void * data, size_t n_chars, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
-			if (!strncmp(data, N_POST_COL, 	n_chars)) env->n_pos_col_idx	= env->current_col;
+			if (!strncmp(data, N_POST_COL, 	n_chars)) env->n_post_col_idx	= env->current_col;
 	else 	if (!strncmp(data, N_USER_COL, 	n_chars)) env->n_user_col_idx	= env->current_col;
 }
 
-field_cb_f normal_col(void * data, size_t n_chars, void * csvenv)
+void normal_col(void * data, size_t n_chars, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t*) csvenv;
 
@@ -94,19 +110,17 @@ field_cb_f normal_col(void * data, size_t n_chars, void * csvenv)
 	}
 }
 
-field_cb_f field_wrapper(void * data, size_t n_chars, void *csvenv)
+void field_wrapper(void * data, size_t n_chars, void *csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
-
-
 	field_cb_f cb = normal_field;
-	if (env->is_header) cb = header_field;
+	if (env->type == HEAD_TABLE) cb = header_field;
 
 	cb(data, n_chars, csvenv);
 }
 
 
-row_cb_f next_row(int char, void * csvenv)
+void next_row(int charcode, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
 	env->current_col=0;
@@ -128,6 +142,60 @@ void header_field(void * data, size_t n_chars, void *csvenv)
 		sscanf(data, "%lu", &env->properties->n_posts);
 		env->properties->posts = calloc(env->properties->n_posts, sizeof(post));
 	}
-		
-	
+}
+
+
+void normal_field(void * data, size_t n_chars, void *csvenv)
+{
+	csv_env_t * env = (csv_env_t *) csvenv;
+	ex_props_t * p = env->properties;
+
+	uint64_t i = env->current_row - 1;
+
+	uint64_t temp;
+	sscanf(data, "%lu", &temp);
+	if (env->current_col == env->sum_col_idx)
+	{
+		 switch (env->type)
+		 {
+		 	case POST_POST:
+		 		p->posts[i].n_reposted = temp;
+		 		p->posts[i].reposted_idxs = malloc(sizeof(uint64_t)*temp);
+		 	break;
+		 	case USER_USER:
+		 		p->users[i].n_following = temp;
+		 		p->users[i].following_idxs = malloc(sizeof(uint64_t)*temp);
+		 	break;
+		 	case USER_POST:
+		 		p->users[i].n_posts = temp;
+		 		p->users[i].post_idxs = malloc(sizeof(int64_t)*temp);
+		 	break;
+		 	default:
+		 	break;
+		 }
+	}
+	else if (env->current_col == env->id_col_idx)
+	{
+		switch (env->type)
+		{
+			case POST_POST:
+				p->posts[i].pst_id = temp;
+				break;
+			case USER_USER:
+				p->users[i].user_id = temp;
+				break;
+			default:
+			break;
+		}
+	}
+	else if (env->current_col != 0)
+	{
+		switch (env->type)
+		{
+			case POST_POST:
+				//TODO: Me
+				break;
+
+		}
+	}
 }
