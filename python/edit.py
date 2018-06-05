@@ -49,3 +49,4 @@ disp_bool_df(user_posts_view, matrices['USER_POSTS'], no_diag=0)
 root.mainloop(  )
 
 
+IO.write_matrices(matrices, "./TEST_OUT")
