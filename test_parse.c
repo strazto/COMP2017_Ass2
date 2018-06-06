@@ -1,50 +1,14 @@
 #include "parse_csv.h"
-
-#define HEAD_PATH  "/HEADER.csv" 
-#define PP_PATH   "/POSTS.csv" 
-#define UU_PATH   "/USERS.csv"
-#define UP_PATH   "/USER_POSTS.csv"
-
+#include "properties.h"
 
 void main(void)
 {
-	size_t file_size = 0;
-	char * fbuff = buffer_in_file(HEAD_PATH, &file_size);
-	LOG_I("Buffered in " HEAD_PATH " of size %lu", file_size);
+	char path[] = "generator/TEST_OUT";	
 
-	csv_env_t * env = init_from_header(fbuff, file_size);
-	ex_props_t * props = env->properties;
+	ex_props_t * props = read_example(path);
 
-	LOG_I("In initialized header info, discerned %lu users, %lu posts", props->n_users, props->n_posts);
+	print_post_info(props->posts, props->n_posts);
+	print_user_info(props->users, props->n_users);
 
-	free(fbuff);
-	fbuff = NULL;
-
-	fbuff = buffer_in_file(PP_PATH, &file_size);
-	LOG_I("Buffered in " PP_PATH "  of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, POST_POST);
-
-	free(fbuff);
-	fbuff = NULL;
-
-	fbuff = buffer_in_file(UU_PATH, &file_size);
-	LOG_I("Buffered in " UU_PATH " of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, USER_USER);
-
-
-
-	free(fbuff);
-	fbuff = NULL;
-
-	fbuff = buffer_in_file(UP_PATH, &file_size);
-	LOG_I("Buffered in " UP_PATH " of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, USER_POST);
-
-	free(fbuff);
-	fbuff = NULL;
-
-	print_post_info(env->properties->posts, env->properties->n_posts);
-	print_user_info(env->properties->users, env->properties->n_users);
-
-
+	teardown_example_properties( (void**) &props);
 }

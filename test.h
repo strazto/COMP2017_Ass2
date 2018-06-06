@@ -9,18 +9,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "log.h"
-
-typedef struct example_properties ex_props_t;
-
-struct example_properties
-{
-	post * posts;
-	size_t n_posts;
-	user * users;
-	size_t n_users;
-
-
-};
-
+#include "properties.h"
 
 #endif

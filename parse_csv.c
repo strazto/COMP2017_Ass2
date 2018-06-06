@@ -42,7 +42,7 @@ csv_env_t * init_from_header(void * header_buff, size_t header_size)
 {
 	uint64_t i = 0;
 
-	csv_env_t * env = init_env(malloc(sizeof(ex_props_t)), 3, HEAD_TABLE, NULL);
+	csv_env_t * env = init_env(malloc(sizeof(ex_props_t)), HEAD_TABLE, NULL);
 	csv_parse(env->csv, header_buff, header_size, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
 
@@ -72,24 +72,18 @@ void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t typ
 
 	csv_parse(env->csv, fbuff, n_bytes, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
-
+	csv_free(env->csv);
 	if (type == USER_USER)
 	{
 		process_followers(env->properties->users, env->follower_queues, env->properties->n_users);
-		for (int i = 0; i < env->properties->n_users ; i++)
-		{
-			dll_destroy(env->follower_queues[i]);
-		}
-		free(env->follower_queues);
 	}
 
 }
 
-csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser)
+csv_env_t * init_env(ex_props_t * props, table_type_t type, csv_parse_t * parser)
 {
 	csv_env_t * out = calloc(1, sizeof(csv_env_t));
 	out->properties = props;
-	out->n_cols = n_cols;
 	out->first_user_col_idx = -1;
 	out->type = type;
 	
@@ -179,11 +173,14 @@ void header_field(void * data, size_t n_chars, void *csvenv)
 	{
 		 sscanf(data, "%lu", &env->properties->n_users);
 		 env->properties->users = calloc(env->properties->n_users, sizeof(user));
+		 LOG_D("Allocating users arr length %lu @ %p", env->properties->n_users,env->properties->users);
 	}
 	if (env->current_col == env->n_post_col_idx) 
 	{
 		sscanf(data, "%lu", &env->properties->n_posts);
 		env->properties->posts = calloc(env->properties->n_posts, sizeof(post));
+		LOG_D("Allocating post arr length %lu @ %p", env->properties->n_posts,env->properties->posts);;
+
 	}
 }
 
@@ -363,10 +360,10 @@ void process_followers(user* users, dll_t ** qs, uint64_t count)
 
 ex_props_t * read_example(char * example_dir)
 {
-	const char header_path[] 	= "/HEADER.csv";
-	const char pp_path[] 		= "/POSTS.csv";
-	const char uu_path[] 		= "/USERS.csv";
-	const char up_path[] 		= "/USER_POSTS.csv";
+	char header_path[] 	= "/HEADER.csv";
+	char pp_path[] 		= "/POSTS.csv";
+	char uu_path[] 		= "/USERS.csv";
+	char up_path[] 		= "/USER_POSTS.csv";
 	
 	char * data_names[] = 
 	{
@@ -378,9 +375,9 @@ ex_props_t * read_example(char * example_dir)
 	{
 		POST_POST,
 		USER_USER,
-		USER_POSTS
+		USER_POST
 	};
-
+	ex_props_t * out = NULL;
 	const uint8_t n_data_names = 3;
 	const uint8_t max_name_len = 15;
 	const uint8_t max_path_len = 255;
@@ -417,8 +414,25 @@ ex_props_t * read_example(char * example_dir)
 		free(fbuff);
 		fbuff = NULL;
 	}
-	
-	print_post_info(env->properties->posts, env->properties->n_posts);
-	print_user_info(env->properties->users, env->properties->n_users);
+	out = env->properties;
+	free(path);
+	destroy_environment(env);
+	return out;
+}
 
+
+void destroy_environment(csv_env_t * env)
+{
+	csv_free(env->csv);
+	free(env->csv);
+	free(env->uu_tracker);
+	free(env->pp_tracker);
+	free(env->up_tracker);
+	for (int i = 0; i < env->properties->n_users ; i++)
+	{
+		dll_destroy(env->follower_queues[i]);
+	}
+	free(env->follower_queues);
+
+	free(env);
 }

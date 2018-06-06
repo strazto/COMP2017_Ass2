@@ -42,8 +42,8 @@ struct csv_environment
 	uint64_t * uu_tracker;
 
 	int64_t first_user_col_idx;	
-	uint64_t * cols;
-	uint64_t n_cols;
+	//uint64_t * cols;
+	//uint64_t n_cols;
 
 	int64_t n_user_col_idx;
 	int64_t n_post_col_idx;
@@ -78,7 +78,7 @@ void data_field(uint64_t val, csv_env_t * env);
 
 void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t type);
 
-csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser);
+csv_env_t * init_env(ex_props_t * props, table_type_t type, csv_parse_t * parser);
 
 void print_post_info(post* posts, uint64_t count);
 void print_user_info(user* users, uint64_t count);
@@ -86,6 +86,8 @@ void print_user_info(user* users, uint64_t count);
 void process_followers(user* users, dll_t ** qs, uint64_t count);
 
 ex_props_t * read_example(char * example_dir);
+
+void destroy_environment(csv_env_t * env);
 #endif
 
 
