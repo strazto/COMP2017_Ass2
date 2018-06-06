@@ -61,18 +61,9 @@ char * buffer_in_file(char * file_path, size_t * file_size);
 
 csv_env_t * init_from_header(void * header_buff, size_t header_size);
 
-void ret_field(void* out, size_t bytes, void* csvenv);
-
-void ret_field(void* out, size_t bytes, void* csvenv);
-
-//void read_column_names(void* fbuff, size_t fsize, csv_env_t * env, field_cb_f callback_fn);
-
-void read_any(void * data, size_t n_chars, void * csvenv);
-
-//void header_col(void * data, size_t n_chars, void * csvenv);
-//void normal_col(void * data, size_t n_chars, void * csvenv);
 void   next_row(int charcode, void * csvenv);
 
+void read_any(void * data, size_t n_chars, void * csvenv);
 void meta_row(void * data, size_t n_chars, void *csvenv);
 void field_wrapper(void * data, size_t n_chars, void *csvenv);
 void header_field(void * data, size_t n_chars, void *csvenv);
@@ -86,6 +77,6 @@ void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t typ
 
 csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser);
 
-
-
+void print_post_info(post* posts, uint64_t count);
+void print_user_info(user* users, uint64_t count);
 #endif

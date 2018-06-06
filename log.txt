@@ -1,30 +1,465 @@
-==10106== Memcheck, a memory error detector
-==10106== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==10106== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==10106== Command: ./csv.out
-==10106== 
+==11730== Memcheck, a memory error detector
+==11730== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==11730== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==11730== Command: ./csv.out
+==11730== 
 T:0|File:    parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: python/TEST_OUT/HEADER.csv
 T:0|File:    parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 25
 T:0|File:    parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 25
-T:0|File:   test_parse.c|Ln: 11|Fn:                main|I|Buffered in header of size 25
-T:0|File:   test_parse.c|Ln: 16|Fn:                main|I|In initialized header info, discerned 12 users, 10 posts
-==10106== 
-==10106== HEAP SUMMARY:
-==10106==     in use at exit: 1,376 bytes in 6 blocks
-==10106==   total heap usage: 9 allocs, 3 frees, 6,049 bytes allocated
-==10106== 
-==10106== 1,376 (128 direct, 1,248 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 6
-==10106==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==10106==    by 0x108F23: init_env (parse_csv.c:58)
-==10106==    by 0x108E2F: init_from_header (parse_csv.c:43)
-==10106==    by 0x1095E3: main (test_parse.c:13)
-==10106== 
-==10106== LEAK SUMMARY:
-==10106==    definitely lost: 128 bytes in 1 blocks
-==10106==    indirectly lost: 1,248 bytes in 5 blocks
-==10106==      possibly lost: 0 bytes in 0 blocks
-==10106==    still reachable: 0 bytes in 0 blocks
-==10106==         suppressed: 0 bytes in 0 blocks
-==10106== 
-==10106== For counts of detected and suppressed errors, rerun with: -v
-==10106== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+T:0|File:   test_parse.c|Ln: 14|Fn:                main|I|Buffered in python/TEST_OUT/HEADER.csv of size 25
+T:0|File:   test_parse.c|Ln: 19|Fn:                main|I|In initialized header info, discerned 12 users, 10 posts
+T:0|File:    parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: python/TEST_OUT/POSTS.csv
+T:0|File:    parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 529
+T:0|File:    parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 529
+T:0|File:   test_parse.c|Ln: 25|Fn:                main|I|Buffered in python/TEST_OUT/POSTS.csv  of size 529
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[1] = 5
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][4] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][5] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][6] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][7] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][8] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[2] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[6] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][9] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][9] = 0
+T:0|File:    parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: python/TEST_OUT/USERS.csv
+T:0|File:    parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 733
+T:0|File:    parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 733
+T:0|File:   test_parse.c|Ln: 32|Fn:                main|I|Buffered in python/TEST_OUT/USERS.csv of size 733
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[1] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[2] = 5
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][5] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][6] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][7] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][8] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][9] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[6] = 1
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][9] = 1
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[10] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][11] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[11] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[11] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][11] = 0
+T:0|File:    parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: python/TEST_OUT/USER_POSTS.csv
+T:0|File:    parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 579
+T:0|File:    parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 579
+T:0|File:   test_parse.c|Ln: 39|Fn:                main|I|Buffered in python/TEST_OUT/USER_POSTS.csv of size 579
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [0][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[1] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [1][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[2] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [2][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [3][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][0] = 1
+T:0|File:    parse_csv.c|Ln:254|Fn:          data_field|E|Trying to assign too many posts to user 4!
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [4][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][0] = 1
+T:0|File:    parse_csv.c|Ln:254|Fn:          data_field|E|Trying to assign too many posts to user 5!
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [5][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[6] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][2] = 1
+T:0|File:    parse_csv.c|Ln:254|Fn:          data_field|E|Trying to assign too many posts to user 6!
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [6][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [7][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[8] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [8][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[9] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [9][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[10] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[10] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [10][8] = 0
+T:0|File:    parse_csv.c|Ln:182|Fn:           sum_field|I|SUM_FIELD[11] = 0
+T:0|File:    parse_csv.c|Ln:208|Fn:            id_field|I|ID_FIELD[11] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][0] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][1] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][2] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][3] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][4] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][5] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][6] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][7] = 0
+T:0|File:    parse_csv.c|Ln:231|Fn:          data_field|V|	DATA_FIELD [11][8] = 0
+==11730== 
+==11730== HEAP SUMMARY:
+==11730==     in use at exit: 1,744 bytes in 12 blocks
+==11730==   total heap usage: 25 allocs, 13 frees, 26,298 bytes allocated
+==11730== 
+==11730== 1,744 (136 direct, 1,608 indirect) bytes in 1 blocks are definitely lost in loss record 11 of 11
+==11730==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==11730==    by 0x10903A: init_env (parse_csv.c:66)
+==11730==    by 0x108EBF: init_from_header (parse_csv.c:43)
+==11730==    by 0x109E2D: main (test_parse.c:16)
+==11730== 
+==11730== LEAK SUMMARY:
+==11730==    definitely lost: 136 bytes in 1 blocks
+==11730==    indirectly lost: 1,608 bytes in 11 blocks
+==11730==      possibly lost: 0 bytes in 0 blocks
+==11730==    still reachable: 0 bytes in 0 blocks
+==11730==         suppressed: 0 bytes in 0 blocks
+==11730== 
+==11730== For counts of detected and suppressed errors, rerun with: -v
+==11730== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

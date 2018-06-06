@@ -54,6 +54,9 @@ csv_env_t * init_from_header(void * header_buff, size_t header_size)
 void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t type)
 {
 	env->type = type;
+	env->current_row = 0;
+	env->current_col = 0;
+
 	csv_parse(env->csv, fbuff, n_bytes, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
 }
@@ -78,6 +81,7 @@ csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv
 void read_any(void * data, size_t n_chars, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
+//	LOG_V("Parsing R:%lu|C:%lu|D:%s", env->current_row, env->current_col, (char*) data);
 	field_cb_f cb = field_wrapper;
 	if (env->current_row == 0) 	cb = meta_row;
 	if (env->current_col++ != 0) cb(data, n_chars, csvenv);
@@ -115,7 +119,6 @@ void field_wrapper(void * data, size_t n_chars, void *csvenv)
 		break;
 		default:
 		cb = normal_field;
-		return;
 		break;
 	}
 
@@ -155,8 +158,7 @@ void normal_field(void * data, size_t n_chars, void *csvenv)
 	uint64_t temp;
 	sscanf(data, "%lu", &temp);
 
-	LOG_V("Reading field at R: %lu, C: %lu, read val: %lu", env->current_row, env->current_col, temp);
-
+	//LOG_V("@R:%lu|C:%lu|VAL:%lu", env->current_row, env->current_col, temp);
 	if (env->current_col == env->sum_col_idx)
 	{
 		sum_field(temp, env);
@@ -175,7 +177,9 @@ void normal_field(void * data, size_t n_chars, void *csvenv)
 
 void sum_field(uint64_t val, csv_env_t * env)
 {
+	 ex_props_t * p = env->properties;
 	 uint64_t i = env->current_row - 1;
+	 LOG_I("SUM_FIELD[%lu] = %lu", i, val);
 	 uint64_t * arr = NULL;
 	 if (val) arr = malloc(sizeof(uint64_t)*val);
 	 switch (env->type)
@@ -199,7 +203,9 @@ void sum_field(uint64_t val, csv_env_t * env)
 
 void id_field(uint64_t val, csv_env_t * env)
 {
+	ex_props_t * p = env->properties;
 	uint64_t i = env->current_row - 1;
+	LOG_I("ID_FIELD[%lu] = %lu", i, val);
 	switch (env->type)
 	{
 		case POST_POST:
@@ -215,12 +221,14 @@ void id_field(uint64_t val, csv_env_t * env)
 
 void data_field(uint64_t val, csv_env_t * env)
 {
+	ex_props_t * p = env->properties;
 	uint64_t i = env->current_row - 1;
 	if (env->first_user_col_idx < 0)
 	{
 		LOG_E("NO USER IDX TRACKER ASSIGNED, cant assign elem %lu", i);
 	}
 	uint64_t data_idx = env->current_col - env->first_user_col_idx;
+	LOG_V("\tDATA_FIELD [%lu][%lu] = %lu", i, data_idx, val);
 	if (val == 0) return;
 	switch (env->type)
 	{
@@ -249,4 +257,43 @@ void data_field(uint64_t val, csv_env_t * env)
 			p->users[i].post_idxs[env->up_tracker[i]++] = data_idx;
 			break;
 	}	
+}
+
+
+void print_post_info(post* posts, uint64_t count)
+{
+	uint64_t i = 0;
+	uint64_t j = 0;
+	for (i = 0; i < count; i++)
+	{
+		printf("p[%lu].id = %lu", i, posts[i].pst_id);
+		printf("\tn_reposts: %lu|", posts[i].n_reposted);
+		for (j = 0; j < posts[i].n_reposted; j++) printf("%lu|", posts[i].reposted_idxs[j]);
+		printf("\n");
+	}
+}
+
+
+void print_user_info(user* users, uint64_t count)
+{
+	uint64_t i = 0;
+	uint64_t j = 0;
+	for (i = 0; i < count; i++)
+	{
+		printf("u[%lu].id = %lu", i, users[i].user_id);
+		printf("\tn_following: %lu", users[i].n_following);
+		if (users[i].n_following) 
+		{
+			printf("\n\t");
+			for (j = 0; j < users[i].n_following; j++) printf("%lu|", users[i].following_idxs[j]);
+		}
+		printf("\n");
+		printf("n_followers: %lu", users[i].n_followers);
+		if (users[i].n_followers) 
+		{
+			printf("\n\t");
+			for (j = 0; j < users[i].n_followers; j++) printf("%lu|", users[i].follower_idxs[j]);
+		}
+		printf("\n");
+	}
 }
