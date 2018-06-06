@@ -43,6 +43,11 @@ csv_env_t * init_from_header(void * header_buff, size_t header_size)
 	csv_env_t * env = init_env(malloc(sizeof(ex_props_t)), 3, HEAD_TABLE, NULL);
 	csv_parse(env->csv, header_buff, header_size, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
+
+	env->pp_tracker = calloc(env->properties->n_posts, sizeof(uint64_t));
+	env->up_tracker = calloc(env->properties->n_users, sizeof(uint64_t));
+	env->uu_tracker = calloc(env->properties->n_users, sizeof(uint64_t));
+
 	return env;
 }
 
@@ -74,39 +79,26 @@ void read_any(void * data, size_t n_chars, void * csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
 	field_cb_f cb = field_wrapper;
-	if (env->current_row == 0) 	cb = col_read_wrapper;
-	cb(data, n_chars, csvenv);
-	env->current_col++;			
+	if (env->current_row == 0) 	cb = meta_row;
+	if (env->current_col++ != 0) cb(data, n_chars, csvenv);
 }
 
-void col_read_wrapper(void * data, size_t n_chars, void *csvenv)
+
+void meta_row(void * data, size_t n_chars, void *csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
-
-	field_cb_f cb = normal_col;
 	
-	if (env->type == HEAD_TABLE) cb = header_col;
-	cb(data, n_chars, csvenv);
-}
-
-void header_col(void * data, size_t n_chars, void * csvenv)
-{
-	csv_env_t * env = (csv_env_t *) csvenv;
-			if (!strncmp(data, N_POST_COL, 	n_chars)) env->n_post_col_idx	= env->current_col;
-	else 	if (!strncmp(data, N_USER_COL, 	n_chars)) env->n_user_col_idx	= env->current_col;
-}
-
-void normal_col(void * data, size_t n_chars, void * csvenv)
-{
-	csv_env_t * env = (csv_env_t*) csvenv;
-
-			if (!strncmp(data, SUM_COL,		n_chars)) env->sum_col_idx		= env->current_col;
-	else	if (!strncmp(data, ID_COL,		n_chars)) env->id_col_idx		= env->current_col;
-	else 
+	switch (env->type)
 	{
-		if (env->first_user_col_idx < 0) env->first_user_col_idx = env->current_col;
-
-		sscanf(data,"%lu", &env->cols[env->current_col - env->first_user_col_idx]);
+		case HEAD_TABLE:
+			if 		(!strncmp(data, N_POST_COL, n_chars)) env->n_post_col_idx	= env->current_col;
+			else if (!strncmp(data, N_USER_COL, n_chars)) env->n_user_col_idx	= env->current_col;
+		break;
+		default:
+			if 		(!strncmp(data, SUM_COL,	n_chars)) env->sum_col_idx		= env->current_col;
+			else if (!strncmp(data, ID_COL,		n_chars)) env->id_col_idx		= env->current_col;
+			else if (env->first_user_col_idx < 0) 		  env->first_user_col_idx = env->current_col;	
+		break;
 	}
 }
 
@@ -115,6 +107,17 @@ void field_wrapper(void * data, size_t n_chars, void *csvenv)
 	csv_env_t * env = (csv_env_t *) csvenv;
 	field_cb_f cb = normal_field;
 	if (env->type == HEAD_TABLE) cb = header_field;
+
+	switch (env->type)
+	{
+		case HEAD_TABLE:
+		cb = header_field;
+		break;
+		default:
+		cb = normal_field;
+		return;
+		break;
+	}
 
 	cb(data, n_chars, csvenv);
 }
@@ -149,53 +152,101 @@ void normal_field(void * data, size_t n_chars, void *csvenv)
 {
 	csv_env_t * env = (csv_env_t *) csvenv;
 	ex_props_t * p = env->properties;
-
-	uint64_t i = env->current_row - 1;
-
 	uint64_t temp;
 	sscanf(data, "%lu", &temp);
+
+	LOG_V("Reading field at R: %lu, C: %lu, read val: %lu", env->current_row, env->current_col, temp);
+
 	if (env->current_col == env->sum_col_idx)
 	{
-		 switch (env->type)
-		 {
-		 	case POST_POST:
-		 		p->posts[i].n_reposted = temp;
-		 		p->posts[i].reposted_idxs = malloc(sizeof(uint64_t)*temp);
-		 	break;
-		 	case USER_USER:
-		 		p->users[i].n_following = temp;
-		 		p->users[i].following_idxs = malloc(sizeof(uint64_t)*temp);
-		 	break;
-		 	case USER_POST:
-		 		p->users[i].n_posts = temp;
-		 		p->users[i].post_idxs = malloc(sizeof(int64_t)*temp);
-		 	break;
-		 	default:
-		 	break;
-		 }
+		sum_field(temp, env);
+		return;
 	}
-	else if (env->current_col == env->id_col_idx)
+	if (env->current_col == env->id_col_idx)
 	{
-		switch (env->type)
-		{
-			case POST_POST:
-				p->posts[i].pst_id = temp;
-				break;
-			case USER_USER:
-				p->users[i].user_id = temp;
-				break;
-			default:
-			break;
-		}
+		id_field(temp, env);
+		return;	
 	}
-	else if (env->current_col != 0)
-	{
-		switch (env->type)
-		{
-			case POST_POST:
-				//TODO: Me
-				break;
+	
+	data_field(temp, env);
+	
+}
 
-		}
+
+void sum_field(uint64_t val, csv_env_t * env)
+{
+	 uint64_t i = env->current_row - 1;
+	 uint64_t * arr = NULL;
+	 if (val) arr = malloc(sizeof(uint64_t)*val);
+	 switch (env->type)
+	 {
+	 	case POST_POST:
+	 		p->posts[i].n_reposted = val;
+	 		p->posts[i].reposted_idxs = arr;
+	 	break;
+	 	case USER_USER:
+	 		p->users[i].n_following = val;
+	 		p->users[i].following_idxs = arr;
+	 	break;
+	 	case USER_POST:
+	 		p->users[i].n_posts = val;
+	 		p->users[i].post_idxs = arr;
+	 	break;
+	 	default:
+	 	break;
+	 }	
+}
+
+void id_field(uint64_t val, csv_env_t * env)
+{
+	uint64_t i = env->current_row - 1;
+	switch (env->type)
+	{
+		case POST_POST:
+			p->posts[i].pst_id = val;
+			break;
+		case USER_USER:
+			p->users[i].user_id = val;
+			break;
+		default:
+		break;
+	}	
+}
+
+void data_field(uint64_t val, csv_env_t * env)
+{
+	uint64_t i = env->current_row - 1;
+	if (env->first_user_col_idx < 0)
+	{
+		LOG_E("NO USER IDX TRACKER ASSIGNED, cant assign elem %lu", i);
 	}
+	uint64_t data_idx = env->current_col - env->first_user_col_idx;
+	if (val == 0) return;
+	switch (env->type)
+	{
+		case POST_POST:
+			if (env->pp_tracker[i] >= p->posts[i].n_reposted)
+			{
+				LOG_E("Trying to assign too many children to post idx %lu", i);
+				return;
+			}
+			p->posts[i].reposted_idxs[env->pp_tracker[i]++] = data_idx;				
+			break;
+		case USER_USER:
+			if (env->uu_tracker[i] >= p->users[i].n_following)
+			{
+				LOG_E("Trying to make user %lu follow too many!", i);
+				return;
+			}
+			p->users[i].following_idxs[env->uu_tracker[i]++] = data_idx;
+			break;
+		case USER_POST:
+			if (env->up_tracker[i] >= p->users[i].n_posts)
+			{
+				LOG_E("Trying to assign too many posts to user %lu!", i);
+				return;				
+			}
+			p->users[i].post_idxs[env->up_tracker[i]++] = data_idx;
+			break;
+	}	
 }

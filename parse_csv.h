@@ -35,8 +35,10 @@ struct csv_environment
 	table_type_t type;
 
 	ex_props_t * properties;
-	uint64_t * index;
-	uint64_t index_len;
+
+	uint64_t * pp_tracker;
+	uint64_t * up_tracker;
+	uint64_t * uu_tracker;
 
 	int64_t first_user_col_idx;	
 	uint64_t * cols;
@@ -67,17 +69,23 @@ void ret_field(void* out, size_t bytes, void* csvenv);
 
 void read_any(void * data, size_t n_chars, void * csvenv);
 
-void header_col(void * data, size_t n_chars, void * csvenv);
-void normal_col(void * data, size_t n_chars, void * csvenv);
+//void header_col(void * data, size_t n_chars, void * csvenv);
+//void normal_col(void * data, size_t n_chars, void * csvenv);
 void   next_row(int charcode, void * csvenv);
 
-void col_read_wrapper(void * data, size_t n_chars, void *csvenv);
+void meta_row(void * data, size_t n_chars, void *csvenv);
 void field_wrapper(void * data, size_t n_chars, void *csvenv);
 void header_field(void * data, size_t n_chars, void *csvenv);
 void normal_field(void * data, size_t n_chars, void *csvenv);
 
+void sum_field(uint64_t val, csv_env_t * env);
+void id_field(uint64_t val, csv_env_t * env);
+void data_field(uint64_t val, csv_env_t * env);
+
 void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t type);
 
 csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser);
+
+
 
 #endif
