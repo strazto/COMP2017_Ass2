@@ -367,6 +367,21 @@ ex_props_t * read_example(char * example_dir)
 	const char pp_path[] 		= "/POSTS.csv";
 	const char uu_path[] 		= "/USERS.csv";
 	const char up_path[] 		= "/USER_POSTS.csv";
+	
+	char * data_names[] = 
+	{
+		pp_path,
+		uu_path,
+		up_path
+	};
+	table_type_t tab_seq[] =
+	{
+		POST_POST,
+		USER_USER,
+		USER_POSTS
+	};
+
+	const uint8_t n_data_names = 3;
 	const uint8_t max_name_len = 15;
 	const uint8_t max_path_len = 255;
 	size_t path_len = strnlen(example_dir, max_path_len);
@@ -392,29 +407,17 @@ ex_props_t * read_example(char * example_dir)
 	free(fbuff);
 	fbuff = NULL;
 
-	fbuff = buffer_in_file(PP_PATH, &file_size);
-	LOG_I("Buffered in " PP_PATH "  of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, POST_POST);
-
-	free(fbuff);
-	fbuff = NULL;
-
-	fbuff = buffer_in_file(UU_PATH, &file_size);
-	LOG_I("Buffered in " UU_PATH " of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, USER_USER);
-
-
-
-	free(fbuff);
-	fbuff = NULL;
-
-	fbuff = buffer_in_file(UP_PATH, &file_size);
-	LOG_I("Buffered in " UP_PATH " of size %lu", file_size);
-	read_matrix(fbuff, file_size, env, USER_POST);
-
-	free(fbuff);
-	fbuff = NULL;
-
+	for (uint8_t i = 0; i < n_data_names; i++)
+	{
+		//Get the path
+		strncpy(&path[path_len], data_names[i], max_name_len);
+		fbuff = buffer_in_file(path, &file_size);
+		LOG_I("Buffered in %s of size %lu",path ,file_size);
+		read_matrix(fbuff, file_size, env, tab_seq[i]);
+		free(fbuff);
+		fbuff = NULL;
+	}
+	
 	print_post_info(env->properties->posts, env->properties->n_posts);
 	print_user_info(env->properties->users, env->properties->n_users);
 
