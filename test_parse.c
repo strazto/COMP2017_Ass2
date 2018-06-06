@@ -1,10 +1,9 @@
 #include "parse_csv.h"
 
-#define DIR "python/TEST_OUT"
-#define HEAD_PATH DIR "/HEADER.csv" 
-#define PP_PATH  DIR "/POSTS.csv" 
-#define UU_PATH  DIR "/USERS.csv"
-#define UP_PATH  DIR "/USER_POSTS.csv"
+#define HEAD_PATH  "/HEADER.csv" 
+#define PP_PATH   "/POSTS.csv" 
+#define UU_PATH   "/USERS.csv"
+#define UP_PATH   "/USER_POSTS.csv"
 
 
 void main(void)
@@ -32,6 +31,8 @@ void main(void)
 	LOG_I("Buffered in " UU_PATH " of size %lu", file_size);
 	read_matrix(fbuff, file_size, env, USER_USER);
 
+
+
 	free(fbuff);
 	fbuff = NULL;
 
@@ -44,4 +45,6 @@ void main(void)
 
 	print_post_info(env->properties->posts, env->properties->n_posts);
 	print_user_info(env->properties->users, env->properties->n_users);
+
+
 }

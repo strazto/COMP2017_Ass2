@@ -40,6 +40,8 @@ char * buffer_in_file(char * file_path, size_t * file_size)
 
 csv_env_t * init_from_header(void * header_buff, size_t header_size)
 {
+	uint64_t i = 0;
+
 	csv_env_t * env = init_env(malloc(sizeof(ex_props_t)), 3, HEAD_TABLE, NULL);
 	csv_parse(env->csv, header_buff, header_size, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
@@ -47,6 +49,14 @@ csv_env_t * init_from_header(void * header_buff, size_t header_size)
 	env->pp_tracker = calloc(env->properties->n_posts, sizeof(uint64_t));
 	env->up_tracker = calloc(env->properties->n_users, sizeof(uint64_t));
 	env->uu_tracker = calloc(env->properties->n_users, sizeof(uint64_t));
+
+
+	env->follower_queues = calloc(env->properties->n_users, sizeof(dll_t*));
+	for (i = 0; i < env->properties->n_users; i++)
+	{
+		env->follower_queues[i] = dll_init();
+		LOG_D("Initializing DLL for user: %lu @%p", i, env->follower_queues[i]);
+	}
 
 	return env;
 }
@@ -56,9 +66,23 @@ void read_matrix(void * fbuff, size_t n_bytes, csv_env_t * env, table_type_t typ
 	env->type = type;
 	env->current_row = 0;
 	env->current_col = 0;
+	env->first_user_col_idx = - 1;
+	env->sum_col_idx = - 1;
+	env->id_col_idx = - 1;
 
 	csv_parse(env->csv, fbuff, n_bytes, read_any, next_row, env);
 	csv_fini(env->csv, read_any, next_row, env);
+
+	if (type == USER_USER)
+	{
+		process_followers(env->properties->users, env->follower_queues, env->properties->n_users);
+		for (int i = 0; i < env->properties->n_users ; i++)
+		{
+			dll_destroy(env->follower_queues[i]);
+		}
+		free(env->follower_queues);
+	}
+
 }
 
 csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv_parse_t * parser)
@@ -84,7 +108,8 @@ void read_any(void * data, size_t n_chars, void * csvenv)
 //	LOG_V("Parsing R:%lu|C:%lu|D:%s", env->current_row, env->current_col, (char*) data);
 	field_cb_f cb = field_wrapper;
 	if (env->current_row == 0) 	cb = meta_row;
-	if (env->current_col++ != 0) cb(data, n_chars, csvenv);
+	if (env->current_col != 0) cb(data, n_chars, csvenv);
+	env->current_col++;
 }
 
 
@@ -99,9 +124,21 @@ void meta_row(void * data, size_t n_chars, void *csvenv)
 			else if (!strncmp(data, N_USER_COL, n_chars)) env->n_user_col_idx	= env->current_col;
 		break;
 		default:
-			if 		(!strncmp(data, SUM_COL,	n_chars)) env->sum_col_idx		= env->current_col;
-			else if (!strncmp(data, ID_COL,		n_chars)) env->id_col_idx		= env->current_col;
-			else if (env->first_user_col_idx < 0) 		  env->first_user_col_idx = env->current_col;	
+			if 		(!strncmp(data, SUM_COL,	n_chars))
+			{
+				LOG_D("Found SUM column: %lu", env->current_col);
+				env->sum_col_idx = env->current_col;	
+			} 
+			else if (!strncmp(data, ID_COL,		n_chars))
+			{
+				LOG_D("Found ID column: %lu", env->current_col);
+				env->id_col_idx = env->current_col;
+			} 
+			else if (env->first_user_col_idx < 0)
+			{
+				LOG_D("Assigning data begin col: %lu", env->current_col);
+				env->first_user_col_idx = env->current_col;
+			} 	
 		break;
 	}
 }
@@ -228,8 +265,12 @@ void data_field(uint64_t val, csv_env_t * env)
 		LOG_E("NO USER IDX TRACKER ASSIGNED, cant assign elem %lu", i);
 	}
 	uint64_t data_idx = env->current_col - env->first_user_col_idx;
+	if (val == 0)
+	{
+		LOG_V("\t0 @ [%lu][%lu]", i, data_idx);
+		return;	
+	}
 	LOG_V("\tDATA_FIELD [%lu][%lu] = %lu", i, data_idx, val);
-	if (val == 0) return;
 	switch (env->type)
 	{
 		case POST_POST:
@@ -247,6 +288,7 @@ void data_field(uint64_t val, csv_env_t * env)
 				return;
 			}
 			p->users[i].following_idxs[env->uu_tracker[i]++] = data_idx;
+			enqueue(env->follower_queues[data_idx], (void*) i);
 			break;
 		case USER_POST:
 			if (env->up_tracker[i] >= p->users[i].n_posts)
@@ -296,4 +338,84 @@ void print_user_info(user* users, uint64_t count)
 		}
 		printf("\n");
 	}
+}
+
+void process_followers(user* users, dll_t ** qs, uint64_t count)
+{
+	uint64_t i = 0;
+	uint64_t j = 0;
+	for (i = 0; i < count; i++)
+	{
+		LOG_I("Processing u[%lu]", i);
+		
+		users[i].n_followers = qs[i]->size;
+		LOG_I("Queue Size: %lu", users[i].n_followers);
+		if (users[i].n_followers) users[i].follower_idxs = malloc(users[i].n_followers*sizeof(uint64_t));
+		for  (j = 0; qs[i]->size > 0 && j < users[i].n_followers; j++)
+		{
+			users[i].follower_idxs[j] = (uint64_t) pop(qs[i]);
+			LOG_I("u[%lu].followers[%lu] = %lu", i, j, users[i].follower_idxs[j]);
+		} 	
+	}
+}
+
+
+
+ex_props_t * read_example(char * example_dir)
+{
+	const char header_path[] 	= "/HEADER.csv";
+	const char pp_path[] 		= "/POSTS.csv";
+	const char uu_path[] 		= "/USERS.csv";
+	const char up_path[] 		= "/USER_POSTS.csv";
+	const uint8_t max_name_len = 15;
+	const uint8_t max_path_len = 255;
+	size_t path_len = strnlen(example_dir, max_path_len);
+	if (path_len == max_path_len) LOG_W("Path len for path: %s is maximum, may be truncated!", example_dir);
+
+	char * path = calloc(path_len + max_name_len + 1, 1);
+	char * fbuff;
+	size_t file_size;
+	memcpy(path, example_dir, path_len);
+
+	//Get the header path
+	strncpy(&path[path_len], header_path, max_name_len);
+
+
+	fbuff = buffer_in_file(path, &file_size);
+	LOG_I("Buffered in %s of size %lu",path ,file_size);
+
+	csv_env_t * env = init_from_header(fbuff, file_size);
+	ex_props_t * props = env->properties;
+
+	LOG_I("In initialized header info, discerned %lu users, %lu posts", props->n_users, props->n_posts);
+
+	free(fbuff);
+	fbuff = NULL;
+
+	fbuff = buffer_in_file(PP_PATH, &file_size);
+	LOG_I("Buffered in " PP_PATH "  of size %lu", file_size);
+	read_matrix(fbuff, file_size, env, POST_POST);
+
+	free(fbuff);
+	fbuff = NULL;
+
+	fbuff = buffer_in_file(UU_PATH, &file_size);
+	LOG_I("Buffered in " UU_PATH " of size %lu", file_size);
+	read_matrix(fbuff, file_size, env, USER_USER);
+
+
+
+	free(fbuff);
+	fbuff = NULL;
+
+	fbuff = buffer_in_file(UP_PATH, &file_size);
+	LOG_I("Buffered in " UP_PATH " of size %lu", file_size);
+	read_matrix(fbuff, file_size, env, USER_POST);
+
+	free(fbuff);
+	fbuff = NULL;
+
+	print_post_info(env->properties->posts, env->properties->n_posts);
+	print_user_info(env->properties->users, env->properties->n_users);
+
 }

@@ -3,6 +3,7 @@
 #include "supergraph.h"
 #include "test.h"
 #include "log.h"
+#include "DLL.h"
 #include <csv.h>
 #include <string.h>
 
@@ -55,6 +56,8 @@ struct csv_environment
 
 	uint64_t current_col;
 	uint64_t current_row;
+
+	dll_t ** follower_queues;
 };
 
 char * buffer_in_file(char * file_path, size_t * file_size);
@@ -79,4 +82,11 @@ csv_env_t * init_env(ex_props_t * props, uint64_t n_cols, table_type_t type, csv
 
 void print_post_info(post* posts, uint64_t count);
 void print_user_info(user* users, uint64_t count);
+
+void process_followers(user* users, dll_t ** qs, uint64_t count);
+
+ex_props_t * read_example(char * example_dir);
 #endif
+
+
+	

@@ -37,10 +37,12 @@ def generate_matrices(n_posts, n_users):
 	return out
 
 def write_matrices(matrices, dest_folder):
-
+	no_meta = pd.DataFrame()
 	for k,frame in matrices.items():
-		if all(meta in frame.columns for meta in meta_cols):
-			frame[sum_col] = frame.drop(columns=meta_cols).sum(axis=1)
+		for meta in set(meta_cols).intersection(set(frame.columns)):
+			no_meta = frame.drop(columns=meta)
+			
+		frame[sum_col] = no_meta.sum(axis=1)
 		pathlib.Path(dest_folder).mkdir(parents=True,exist_ok=True)
 		frame.to_csv(dest_folder + '/' + k + '.csv')
 

@@ -20,16 +20,21 @@ n_followers: 0
 u[4].id = 0	n_following: 0
 n_followers: 0
 u[5].id = 0	n_following: 0
-n_followers: 0
+n_followers: 1
+	2|
 u[6].id = 0	n_following: 1
 	9|
-n_followers: 0
+n_followers: 1
+	2|
 u[7].id = 0	n_following: 0
-n_followers: 0
+n_followers: 1
+	2|
 u[8].id = 0	n_following: 0
-n_followers: 0
+n_followers: 1
+	2|
 u[9].id = 0	n_following: 0
-n_followers: 0
+n_followers: 2
+	2|6|
 u[10].id = 0	n_following: 0
 n_followers: 0
 u[11].id = 0	n_following: 0
