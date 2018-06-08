@@ -100,7 +100,8 @@ void* find_idx(void* search_args)
 		}
 	}
 	
-	if (*args->done_flag) LOG_D("Found at %lu!", i);
+	if 	(*args->done_flag) LOG_D("Found at %lu!", i);
+	else LOG_D("Not found!");
 	return args->result;
 }
 
