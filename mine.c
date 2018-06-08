@@ -46,7 +46,10 @@ struct search_args
 	size_t lo;
 	void * arr;
 	uint64_t id;
-	array_type_t arr_type;	
+	array_type_t arr_type;
+
+	uint8_t * done_flag;
+	uint64_t * result;	
 };
 
 
