@@ -39,7 +39,11 @@ enum array_type
 	INDX_ARR = 2
 };
 
-
+/**
+ * An argument for passing to thread workers that allows parallel partiioning for
+ * thread searching
+ * Note: There's no need to synchronise done_flag!
+ */
 struct search_args
 {
 	size_t hi;
@@ -62,60 +66,55 @@ struct search_args
 void* find_idx(void* search_args)
 {
 	search_args_t* args = (search_args_t*) search_args;
-	uint64_t found = 0;
-	uint8_t arr_type = args->arr_type;
-	
-	// Given the array is monotonically increasing, can do binary search tree
-	// CRITICAL
-	uint64_t want	= args->id;
-	size_t hi 		= args->hi;
-	size_t lo 		= args->lo;
-	
-	size_t mid		= lo + ((hi - lo)/2);
-	
-	//Depending on the array type, find the corresponding entry/id
-	//Base, hi==lo
-	if (lo > hi)
-	{
-		LOG_V("Didn't find %lu in array!", want);
-		return (void*) -1;
-	} 
-	
-	if 		(arr_type == POST_ARR)		found = ((post*)(args->arr))[mid].pst_id;
-	else if (arr_type == USER_ARR)		found = ((user*)(args->arr))[mid].user_id;
-	else if (arr_type == INDX_ARR)		found = ((uint64_t*)args->arr)[mid];
+	size_t i = 0;
 
-	LOG_V("Lo: %lu,\tMid: %lu,\tHi: %lu,\tMid_val: %lu,\tWanted: %lu",lo, mid, hi, found, want);
+	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args-hi);
 	
-	
-	//Base, find id at mid	
-	if (want == found)
+	for (i = lo; i < hi && !args->done_flag; i++)
 	{
-		LOG_I("Found at index: %li!", mid);
-		return (void*) mid;
-	} 
+		switch (args->arr_type)
+		{
+			case POST_ARR:
+				if (((post*)args->arr)[i].pst_id == args->id)
+				{
+					*args->result = i;
+					(*args->done_flag)++;
+					return;
+				}
+			break;
+			case USER_ARR:
+				if (((user*)args->arr)[i].user_id == args->id)
+				{
+					*args->result = i;
+					(*args->done_flag)++;
+
+				}
+			break;
+			case INDX_ARR:
+				if (((int64_t*)args->arr)[i] == args->id)
+				{
+					*args->result = i;
+					(*args->done_flag)++
+				}
+			break;
+		}
+	}
 	
-	
-	//Recursive case, search higher if you're too low, or low if too high
-	if (want > found)	lo = mid + 1;
-	else 				hi = mid - 1;
-	
-	//CRITICAL
-	args->hi = hi;
-	args->lo = lo;
-	//END CRITICAL
-	
-	return find_idx((void*) args);
+	if (*args->done_flag) LOG_D("Found at %lu!", i);
+	return args->result;
 }
 
 result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper) 
 {
 	args_t * args;
+	uint8_t * done_flag;
+	uint8_t * index_res;
 	//Find the original post
-	search_args_t * idx = init_search(0, count - 1, post_id, (void*)posts, POST_ARR); 
-	
+	search_args_t * idx = init_search(0, count, post_id, (void*)posts, POST_ARR); 
+	idx->result = malloc(sizeof(int64_t));
+	idx->done_flag = (malloc(sizeof(uint8_t)));	
 
-	int64_t post_idx = (int64_t) find_idx((void*) idx);
+	int64_t post_idx = *(uint64_t) find_idx((void*) idx);
 	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
 	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
 	free(idx);
@@ -180,7 +179,7 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 	post * current_post = NULL;
 	uint64_t i = 0;
 	uint64_t j = 0;
-	search_args_t * index_search = init_search(0, count - 1, post_id, (void*)posts, POST_ARR);
+	search_args_t * index_search = init_search(0, count, post_id, (void*)posts, POST_ARR);
 	uint64_t post_idx = (int64_t) find_idx((void*) index_search);
 	free(index_search);
 
