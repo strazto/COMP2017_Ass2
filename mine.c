@@ -202,7 +202,17 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 
 	return out;
 }
+result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, uint64_t userB, query_helper* helper)
+{
+	uint64_t want = malloc(sizeof(uint64_t)*2);
+	want[0] = userA;
+	want[1] = userB;
+	wargs = init_work_args(users, 0, count, want, 2);
 
+	result * out = calloc(1,sizeof(result));
+	wargs->result = out;
+	
+}
 
 static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t * want, uint64_t n_want)
 {
@@ -229,7 +239,7 @@ static void destroy_work_args(work_args_t * args)
 	if (args->parents)	free(args->parents);
 	if (args->bfs_flags)	free(args->bfs_flags);
 	if (args->want)			free(args->want);
-	
+
 	free(args);
 }
 
