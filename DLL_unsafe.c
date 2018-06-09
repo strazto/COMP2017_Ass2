@@ -9,6 +9,27 @@ static node_t * dll_insert_next(dll_t * list, node_t * prev, void * val);
 
 static node_t * dll_insert_prev(dll_t * list, node_t * next, void * val);
 
+/* 
+ * Returns the first object in the list, or null if it is empty
+ */
+static node_t * first(dll_t * list);
+
+/* 
+ * Returns last object in list, or null if empty
+ */
+static node_t * last(dll_t * list);
+
+
+/* 
+ * Remove a particular node from the list, and return its value
+ *
+ */
+void * dll_remove(dll_t * list, node_t * to_rm);
+
+//TODO: Implement these
+//static uint8_t has_next(dll_t * list, node_t * current);
+//static uint8_t has_prev(dll_t * list, node_t * current);
+
 
 dll_t * dll_init()
 {
@@ -67,28 +88,28 @@ static node_t * dll_insert_prev(dll_t * list, node_t * next, void * val)
 	return out;
 }
 
-node_t * enqueue(dll_t * list, void * val)
+int dll_enqueue(dll_t * list, void * val)
 {
-	if (!list) return NULL;
+	if (!list) return 1;
 	node_t * out = dll_insert_next(list, list->tail, val);
-	return out;
+	return 0;
 }
 
-node_t * push(dll_t * list, void * val)
+int dll_push(dll_t * list, void * val)
 {
-	if (!list) return NULL;
+	if (!list) return 1;
 	node_t * out = dll_insert_prev(list, list->head, val);
-	return out;
+	return 0;
 }
 
-void * pop(dll_t * list)
+void * dll_pop(dll_t * list)
 {	
 	node_t * to_pop = first(list);
 	if (!to_pop) return NULL;
 	return dll_remove(list, to_pop);
 }
 
-node_t * first(dll_t * list)
+static node_t * first(dll_t * list)
 {
 	if (!list) return NULL;
 	node_t * head = list->head;
@@ -98,7 +119,7 @@ node_t * first(dll_t * list)
 	return out;
 }
 
-node_t * last(dll_t * list)
+static node_t * last(dll_t * list)
 {
 	if (!list) return NULL;
 	node_t * tail = list->tail;
@@ -108,7 +129,7 @@ node_t * last(dll_t * list)
 	return out; 
 }
 
-void * dll_remove(dll_t * list, node_t * to_rm)
+static void * dll_remove(dll_t * list, node_t * to_rm)
 {
 	if (!list || !to_rm || to_rm == list->head || to_rm == list->tail) return (void*) -1;
 
