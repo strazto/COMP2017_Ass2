@@ -33,7 +33,7 @@ static node_t * last(dll_t * list);
  * Remove a particular node from the list, and return its value
  *
  */
-void * dll_remove(dll_t * list, node_t * to_rm);
+static void * dll_remove(dll_t * list, node_t * to_rm);
 
 //TODO: Implement these
 //static uint8_t has_next(dll_t * list, node_t * current);
