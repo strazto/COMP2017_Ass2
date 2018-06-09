@@ -100,14 +100,14 @@ static node_t * dll_insert_prev(dll_t * list, node_t * next, void * val)
 int dll_enqueue(dll_t * list, void * val)
 {
 	if (!list) return 1;
-	node_t * out = dll_insert_next(list, list->tail, val);
+	dll_insert_next(list, list->tail, val);
 	return 0;
 }
 
 int dll_push(dll_t * list, void * val)
 {
 	if (!list) return 1;
-	node_t * out = dll_insert_prev(list, list->head, val);
+	dll_insert_prev(list, list->head, val);
 	return 0;
 }
 

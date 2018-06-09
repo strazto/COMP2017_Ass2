@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define DEBUG
+//#define DEBUG
 #define VERBIOSITY (4)
 
 #define THREAD_ID (0)
