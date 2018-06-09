@@ -1,8 +1,8 @@
-==6146== Memcheck, a memory error detector
-==6146== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==6146== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==6146== Command: ./a.out
-==6146== 
+==6931== Memcheck, a memory error detector
+==6931== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6931== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==6931== Command: ./a.out
+==6931== 
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
@@ -24,22 +24,42 @@ T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:188|Fn:          post_check|D|Found the desired id (2) @ 2
-T:0|File:         mine.c|Ln: 86|Fn:     work_on_segment|D|Work is done, @ 2
-T:0|File:         mine.c|Ln:146|Fn:find_all_reposts_wrapper|D|Found 9 reposts!
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (2) at idx 2
+T:0|File:         mine.c|Ln:108|Fn:     work_on_segment|D|Work is done, @ 2
+T:0|File:         mine.c|Ln:144|Fn:find_all_reposts_wrapper|D|Discerned index: 2
+T:0|File:         mine.c|Ln:289|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 2 being added, with 5 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 4 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 6 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 10 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 11 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
+T:0|File:         mine.c|Ln:309|Fn:            BFS_work|D|Found 9 reposts!
 T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 9 vs actual 9
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 7
-T:0|File:         mine.c|Ln:188|Fn:          post_check|D|Found the desired id (7) @ 7
-T:0|File:         mine.c|Ln: 86|Fn:     work_on_segment|D|Work is done, @ 7
-T:0|File:         mine.c|Ln:146|Fn:find_all_reposts_wrapper|D|Found 4 reposts!
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (7) at idx 7
+T:0|File:         mine.c|Ln:108|Fn:     work_on_segment|D|Work is done, @ 7
+T:0|File:         mine.c|Ln:144|Fn:find_all_reposts_wrapper|D|Discerned index: 7
+T:0|File:         mine.c|Ln:289|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
+T:0|File:         mine.c|Ln:309|Fn:            BFS_work|D|Found 4 reposts!
 T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 4 vs actual 4
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:188|Fn:          post_check|D|Found the desired id (1) @ 1
-T:0|File:         mine.c|Ln: 86|Fn:     work_on_segment|D|Work is done, @ 1
-T:0|File:         mine.c|Ln:146|Fn:find_all_reposts_wrapper|D|Found 1 reposts!
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (1) at idx 1
+T:0|File:         mine.c|Ln:108|Fn:     work_on_segment|D|Work is done, @ 1
+T:0|File:         mine.c|Ln:144|Fn:find_all_reposts_wrapper|D|Discerned index: 1
+T:0|File:         mine.c|Ln:289|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:329|Fn: find_reposts_worker|V|Post 1 being added, with 0 children
+T:0|File:         mine.c|Ln:309|Fn:            BFS_work|D|Found 1 reposts!
 T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-T:0|File:         mine.c|Ln:117|Fn:find_all_reposts_wrapper|D|Never found original, cleaning up and LEAVING !
+T:0|File:         mine.c|Ln:139|Fn:find_all_reposts_wrapper|D|Never found original, cleaning up and LEAVING !
 T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
 T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
 [  PASSED  ] 4 test(s).
@@ -64,92 +84,34 @@ T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 2
-==6146== Invalid read of size 8
-==6146==    at 0x1098A5: compare_results_test_helper (test.c:193)
-==6146==    by 0x109A37: post_query_test_helper (test.c:214)
-==6146==    by 0x109AC2: find_orig_test_helper (test.c:230)
-==6146==    by 0x109B3B: test_find_orig_1_for_orig (test.c:240)
-==6146==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6146==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6146==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6146==    by 0x109335: main (test.c:52)
-==6146==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==6146== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (2) at idx 2
+T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 4
-==6146== Invalid read of size 8
-==6146==    at 0x1098A5: compare_results_test_helper (test.c:193)
-==6146==    by 0x109A37: post_query_test_helper (test.c:214)
-==6146==    by 0x109AC2: find_orig_test_helper (test.c:230)
-==6146==    by 0x109BBE: test_find_orig_2_for_child (test.c:250)
-==6146==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6146==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6146==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6146==    by 0x109335: main (test.c:52)
-==6146==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==6146== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (4) at idx 4
+T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-==6146== Invalid read of size 8
-==6146==    at 0x1098A5: compare_results_test_helper (test.c:193)
-==6146==    by 0x109A37: post_query_test_helper (test.c:214)
-==6146==    by 0x109AC2: find_orig_test_helper (test.c:230)
-==6146==    by 0x109C35: test_find_orig_3_for_missing (test.c:259)
-==6146==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6146==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6146==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6146==    by 0x109335: main (test.c:52)
-==6146==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==6146== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln:186|Fn:find_original_wrapper|D|Didn't find id 18446744073709551516 anywhere! :(
+T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 13
-==6146== Invalid read of size 8
-==6146==    at 0x1098A5: compare_results_test_helper (test.c:193)
-==6146==    by 0x109A37: post_query_test_helper (test.c:214)
-==6146==    by 0x109AC2: find_orig_test_helper (test.c:230)
-==6146==    by 0x109CB8: test_find_orig_4_for_grandchild (test.c:269)
-==6146==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6146==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6146==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6146==    by 0x109335: main (test.c:52)
-==6146==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==6146== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (13) at idx 13
+T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 1
-==6146== Invalid read of size 8
-==6146==    at 0x1098A5: compare_results_test_helper (test.c:193)
-==6146==    by 0x109A37: post_query_test_helper (test.c:214)
-==6146==    by 0x109AC2: find_orig_test_helper (test.c:230)
-==6146==    by 0x109D45: test_find_orig_5_for_single (test.c:279)
-==6146==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6146==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6146==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6146==    by 0x109335: main (test.c:52)
-==6146==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==6146== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln:268|Fn:           post_comp|D|Found the desired ID (1) at idx 1
+T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
-[  PASSED  ] 0 test(s).
-[  FAILED  ] 5 test(s), listed below:
-[  FAILED  ] test_find_orig_1_for_orig
-[  FAILED  ] test_find_orig_2_for_child
-[  FAILED  ] test_find_orig_3_for_missing
-[  FAILED  ] test_find_orig_4_for_grandchild
-[  FAILED  ] test_find_orig_5_for_single
-
- 5 FAILED TEST(S)
-==6146== 
-==6146== HEAP SUMMARY:
-==6146==     in use at exit: 40 bytes in 5 blocks
-==6146==   total heap usage: 90 allocs, 85 frees, 4,795 bytes allocated
-==6146== 
-==6146== LEAK SUMMARY:
-==6146==    definitely lost: 40 bytes in 5 blocks
-==6146==    indirectly lost: 0 bytes in 0 blocks
-==6146==      possibly lost: 0 bytes in 0 blocks
-==6146==    still reachable: 0 bytes in 0 blocks
-==6146==         suppressed: 0 bytes in 0 blocks
-==6146== Rerun with --leak-check=full to see details of leaked memory
-==6146== 
-==6146== For counts of detected and suppressed errors, rerun with: -v
-==6146== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+[  PASSED  ] 5 test(s).
+==6931== 
+==6931== HEAP SUMMARY:
+==6931==     in use at exit: 72 bytes in 9 blocks
+==6931==   total heap usage: 154 allocs, 145 frees, 7,038 bytes allocated
+==6931== 
+==6931== LEAK SUMMARY:
+==6931==    definitely lost: 72 bytes in 9 blocks
+==6931==    indirectly lost: 0 bytes in 0 blocks
+==6931==      possibly lost: 0 bytes in 0 blocks
+==6931==    still reachable: 0 bytes in 0 blocks
+==6931==         suppressed: 0 bytes in 0 blocks
+==6931== Rerun with --leak-check=full to see details of leaked memory
+==6931== 
+==6931== For counts of detected and suppressed errors, rerun with: -v
+==6931== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
