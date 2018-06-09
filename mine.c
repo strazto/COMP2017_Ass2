@@ -114,7 +114,6 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 {
 	//FInd the thing, and enqueue its babies
 	//Could try selectively recursing to some depth
-	uint64_t * idx_result = NULL;
 	work_args_t * wargs = NULL;
 	result * out = calloc(1,sizeof(result));
 	
@@ -229,6 +228,8 @@ static void destroy_work_args(work_args_t * args)
 	if (args->out_buff)		dll_destroy(args->out_buff);
 	if (args->parents)	free(args->parents);
 	if (args->bfs_flags)	free(args->bfs_flags);
+	if (args->want)			free(args->want);
+	
 	free(args);
 }
 
@@ -252,7 +253,7 @@ static void* id_check(void* worker_args)
 static uint8_t user_comp(void* arr, uint64_t want, uint64_t idx)
 {
 	user * users = (user *) arr;
-	if (users[idx].user_id == want);
+	if (users[idx].user_id == want)
 	{
 		LOG_D("Found the desired ID (%lu) at idx %lu", want, idx);
 		return 1;
@@ -312,6 +313,7 @@ static void * BFS_work(void* worker_args)
 		args->result->elements[i] = dll_pop(out_buff);
 	}
 	free(first_idx);
+	return (args->result);
 }
 
 
@@ -344,6 +346,7 @@ static void * find_original_worker(void* worker_args)
 		args->parents[self->reposted_idxs[i]] = args->idx;
 		args->bfs_flags[self->reposted_idxs[i]] = 1;
 	}
+	return NULL;
 }
 
 static void * done_if_found_one(void* wargs)
@@ -351,6 +354,8 @@ static void * done_if_found_one(void* wargs)
 	work_args_t * args = (work_args_t *) wargs;
 
 	if (args->found_flags[0]) args->done_flag[0]++;
+
+	return NULL;
 }
 
 
