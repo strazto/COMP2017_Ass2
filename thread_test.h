@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "DLL_unsafe.h"
+#include <unistd.h>
+
 
 typedef struct int64_dll_args int64_dll_args_t;
 
