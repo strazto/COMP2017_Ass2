@@ -1,4 +1,4 @@
-#include "DLL_unsafe.h"
+#include "DLL.h"
 
 /**
  * @author mstr3336 -  Matthew Strasiotto
@@ -34,6 +34,14 @@ dll_t * dll_init()
 
 void dll_destroy(dll_t * list)
 {
+	//Free all elements
+	node_t * current = NULL;
+	node_t * prev = current;
+	for (current = first(list) ; current && current != list->tail; current = prev)
+	{
+		prev = current->prev;
+		free(current);
+	}
 	free(list->head);
 	free(list->tail);
 	free(list);
@@ -80,6 +88,13 @@ node_t * push(dll_t * list, void * val)
 	if (!list) return NULL;
 	node_t * out = dll_insert_prev(list, list->head, val);
 	return out;
+}
+
+void * pop(dll_t * list)
+{	
+	node_t * to_pop = first(list);
+	if (!to_pop) return NULL;
+	return dll_remove(list, to_pop);
 }
 
 node_t * first(dll_t * list)
