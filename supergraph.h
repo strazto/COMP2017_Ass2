@@ -16,36 +16,30 @@ typedef struct args args_t;
 /**
 Query helper should be shared across queries, so contains shared data that may be reassigned
 */
-struct query_helper {
+struct query_helper 
+{
 	size_t n_threads;
-	pthread_t * threads;
-	
-	//TODO: Add some sort of thread stack that refers to the next available thread
-	
-	post* posts;
-	size_t post_count;
-	user* users;
-	size_t user_count;
-	criteria* crit;
-	result * res;
 };
 
 
 
 
 
-struct result {
+struct result 
+{
 	void** elements;
 	size_t n_elements;
 };
 
-struct criteria {
+struct criteria 
+{
 	float oc_threshold;
 	float acc_rep_threshold;
 	float bot_net_threshold;
 };
 
-struct user {
+struct user 
+{
 	uint64_t user_id;
 	size_t* follower_idxs;
 	size_t n_followers;
@@ -55,7 +49,8 @@ struct user {
 	size_t n_posts;
 };
 
-struct post {
+struct post 
+{
 	uint64_t pst_id;
 	uint64_t timestamp;
 	size_t* reposted_idxs;
@@ -78,8 +73,5 @@ result* find_bots(user* users, size_t user_count, post* posts, size_t post_count
 
 void engine_cleanup(query_helper* helpers);
 
-/*
-Worker function, for running 
-*/
-void* queries(void * args);
+
 #endif
