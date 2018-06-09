@@ -68,7 +68,7 @@ void* find_idx(void* search_args)
 	search_args_t* args = (search_args_t*) search_args;
 	size_t i = 0;
 
-	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args-hi);
+	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args->hi);
 	
 	for (i = lo; i < hi && !args->done_flag; i++)
 	{
