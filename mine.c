@@ -2,6 +2,16 @@
 
 typedef struct search_args search_args_t;
 typedef enum array_type array_type_t;
+
+/**
+ * param:: void * array
+ * 		:: uint64_t index to look at
+ * 		:: uint64_t desired id
+ * 		:: uint8_t * done flag
+ * 		:: uint64_t * 
+ * 
+ */
+typedef void * (*worker_f)(void*);
 /////////////////////////////////////////////////////////////
 //				Static Functions (Private)
 /////////////////////////////////////////////////////////////
@@ -49,7 +59,8 @@ struct search_args
 	uint64_t id;
 	array_type_t arr_type;
 	uint8_t * done_flag;
-	uint64_t * result;	
+	uint64_t * result;
+	worker_f work;	
 };
 
 
@@ -66,7 +77,7 @@ void* find_idx(void* search_args)
 
 	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args->hi);
 	
-	for (i = args->lo; i < args->hi && !args->done_flag; i++)
+	for (i = args->lo; i < args->hi && !(*args->done_flag); i++)
 	{
 		switch (args->arr_type)
 		{
@@ -171,7 +182,10 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 	post * current_post = NULL;
 	uint64_t i = 0;
 	uint64_t j = 0;
-	search_args_t * index_search = init_search(0, count, post_id, (void*)posts, POST_ARR);
+	uint8_t * done_flag = calloc(1, sizeof(uint8_t));
+	uint64_t * idx_res = calloc(1, sizeof(uint64_t));
+
+	search_args_t * index_search = init_search(0, count, post_id, (void*)posts, POST_ARR, idx_res, done_flag);
 	uint64_t post_idx = (int64_t) find_idx((void*) index_search);
 	free(index_search);
 
