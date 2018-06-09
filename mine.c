@@ -94,14 +94,20 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 {
 	//FInd the thing, and enqueue its babies
 	//Could try selectively recursing to some depth
+	uint64_t i = 0;
+	post * current = NULL;
+	uint64_t * idx_result = NULL;
+	uint8_t * done_flag = NULL;
+	work_args_t * wargs = NULL;
+	dll_t * q = NULL;
+	result * out = NULL;
 	
-	//For now, 
-	result * out = calloc(sizeof(result));
-	
+
+	out = calloc(sizeof(result));
 	//Find the index
-	uint64_t * idx_result = malloc(sizeof(uint64_t))
-	uint8_t *done_flag = calloc(sizeof(uint8_t));	
-	work_args_t * wargs = init_work_args((void*)posts, 0, count, post_id, idx_result, done_flag);
+	idx_result = malloc(sizeof(uint64_t))
+	done_flag = calloc(sizeof(uint8_t));	
+	wargs = init_work_args((void*)posts, 0, count, post_id, idx_result, done_flag);
 	//The current work is to check for an index!
 	wargs->work = post_check;
 	
@@ -117,8 +123,12 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 		wargs = NULL;
 		return out;
 	}
-	//Queue its children
 	
+	current = posts[*idx_result];
+	q = dll_init();
+	
+	//Queue its children
+
 	//Pop its children
 	
 	//
