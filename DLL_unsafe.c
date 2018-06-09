@@ -107,7 +107,7 @@ int dll_enqueue(dll_t * list, void * val)
 int dll_push(dll_t * list, void * val)
 {
 	if (!list) return 1;
-	node_t * out = dll_insert_prev(list, list->head, val);
+	dll_insert_prev(list, list->head, val);
 	return 0;
 }
 
