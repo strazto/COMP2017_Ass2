@@ -19,7 +19,7 @@
 #define THREAD_ID  (pthread_self())
 #endif
 
-#define LOG_B(_format, ...)  fprintf(stderr, "T:%i|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
+#define LOG_B(_format, ...)  fprintf(stderr, "T:%lu|File:%15s|Ln:%3d|Fn:%20s|" _format "\n", THREAD_ID, __FILE__, __LINE__,__func__, __VA_ARGS__)
 
 #define LOG_V(_format, ...)
 #define LOG_I(_format, ...)
