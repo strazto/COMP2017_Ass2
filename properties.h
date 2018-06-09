@@ -1,7 +1,7 @@
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
-#include "../supergraph.h"
+#include "supergraph.h"
 
 typedef struct example_properties ex_props_t;
 

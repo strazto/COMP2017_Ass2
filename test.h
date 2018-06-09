@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "../supergraph.h"
-#include "../log.h"
+#include "supergraph.h"
+#include "log.h"
 #include "properties.h"
 
 #endif
