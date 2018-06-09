@@ -1,7 +1,7 @@
 #ifndef CONSTS_H
 #define CONSTS_H
-#include "supergraph.h"
-
+#include "../supergraph.h"
+#include "../log.h"
 struct args
 {
 	uint8_t q_type;

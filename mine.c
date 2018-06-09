@@ -1,7 +1,4 @@
 #include "mine.h"
-#include "supergraph.h"
-#include "log.h"
-
 
 typedef struct search_args search_args_t;
 typedef enum array_type array_type_t;
@@ -20,7 +17,7 @@ Copy by value to a new heap alloced struct
 */
 static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
 
-static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type);
+static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag);
 
 
 /**
@@ -51,7 +48,6 @@ struct search_args
 	void * arr;
 	uint64_t id;
 	array_type_t arr_type;
-
 	uint8_t * done_flag;
 	uint64_t * result;	
 };
@@ -70,7 +66,7 @@ void* find_idx(void* search_args)
 
 	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args->hi);
 	
-	for (i = lo; i < hi && !args->done_flag; i++)
+	for (i = args->lo; i < args->hi && !args->done_flag; i++)
 	{
 		switch (args->arr_type)
 		{
@@ -79,7 +75,6 @@ void* find_idx(void* search_args)
 				{
 					*args->result = i;
 					(*args->done_flag)++;
-					return;
 				}
 			break;
 			case USER_ARR:
@@ -87,41 +82,37 @@ void* find_idx(void* search_args)
 				{
 					*args->result = i;
 					(*args->done_flag)++;
-
 				}
 			break;
 			case INDX_ARR:
 				if (((int64_t*)args->arr)[i] == args->id)
 				{
 					*args->result = i;
-					(*args->done_flag)++
+					(*args->done_flag)++;
 				}
 			break;
 		}
 	}
 	
 	if 	(*args->done_flag) LOG_D("Found at %lu!", i);
-	else LOG_D("Not found!");
+	else LOG_D("Not found%c", '!');
 	return args->result;
 }
 
 result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper) 
 {
 	args_t * args;
-	uint8_t * done_flag;
-	uint8_t * index_res;
+	uint8_t * done_flag = calloc(1,sizeof(uint8_t));
+	uint64_t * index_res = calloc(1,sizeof(int64_t));
 	//Find the original post
-	search_args_t * idx = init_search(0, count, post_id, (void*)posts, POST_ARR); 
-	idx->result = malloc(sizeof(int64_t));
-	idx->done_flag = (malloc(sizeof(uint8_t)));	
+	search_args_t * idx = init_search(0, count, post_id, (void*)posts, POST_ARR, index_res, done_flag); 
 
-	int64_t post_idx = *(uint64_t) find_idx((void*) idx);
+	int64_t post_idx = *(uint64_t*) find_idx((void*) idx);
 	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
 	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
 	free(idx);
 	
 
-	
 	helper->posts = posts;
 	helper->post_count = count;
 	helper->res = malloc(sizeof(result));
@@ -227,7 +218,7 @@ args_t * heap_copy(args_t * from, user* new_user, post * new_post)
 }
 
 
-static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type)
+static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag)
 {
 	search_args_t * out = malloc(sizeof(search_args_t));
 	out->hi = hi;
@@ -235,6 +226,8 @@ static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void
 	out->arr = arr;
 	out->id = want;
 	out->arr_type = arr_type;
+	out->done_flag = done_flag;
+	out->result = result;
 	return out;
 }
 

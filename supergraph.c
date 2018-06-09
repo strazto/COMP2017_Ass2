@@ -1,6 +1,5 @@
-#include "supergraph.h"
 #include "mine.h"
-#include "log.h"
+
 query_helper* engine_setup(size_t n_processors) {
 	query_helper * out = (query_helper*) malloc(sizeof(query_helper)*n_processors);
 	out->n_threads = n_processors;
