@@ -3,7 +3,7 @@
 #include "supergraph.h"
 #include "test.h"
 #include "log.h"
-#include "DLL.h"
+#include "dll/DLL.h"
 #include <csv.h>
 #include <string.h>
 
