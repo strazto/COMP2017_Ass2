@@ -1,11 +1,9 @@
 #include "mine.h"
 
 query_helper* engine_setup(size_t n_processors) {
-	query_helper * out = (query_helper*) malloc(sizeof(query_helper)*n_processors);
+	query_helper * out = (query_helper*) malloc(sizeof(query_helper));
 	out->n_threads = n_processors;
 	out->threads = (pthread_t*) malloc(sizeof(pthread_t)*n_processors);
-	
-	//TODO: Add semaphores and mutexes at some stage
 	
 	return out;
 }

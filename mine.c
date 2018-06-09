@@ -1,6 +1,6 @@
 #include "mine.h"
 
-typedef struct search_args search_args_t;
+typedef struct search_args work_args_t;
 typedef enum array_type array_type_t;
 
 /**
@@ -11,30 +11,35 @@ typedef enum array_type array_type_t;
  * 		:: uint64_t * 
  * 
  */
-typedef void * (*worker_f)(void*);
+typedef void * (*worker_f)(void*, uint64_t, uint64_t, uint8_t*, uint64_t*);
+
 /////////////////////////////////////////////////////////////
 //				Static Functions (Private)
 /////////////////////////////////////////////////////////////
 
-/**
- * 
- * @param
- */
-static void* find_all_reposts_r(void* argsp);
 
-/*
-Copy by value to a new heap alloced struct
-*/
-static args_t * heap_copy(args_t * from, user* new_user, post * new_post);
-
-static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag);
+static work_args_t * init_work_args(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag);
 
 
 /**
  * 
  * @param search_args: Pointer to search_args_t structure, wrapping index range parameter
  */
-static void* find_idx(void* search_args);
+static void* work_on_segment(void* work_args);
+
+
+/**
+ * User/Post check: 
+ * Try to determine if the user at that position is the correct one, if so, broadvast that idx 
+ * 
+ * @param arr: 			the array,
+ * @param idx: 			the index to check
+ * @param want:			the value to find
+ * @param done_flag:	the flag indicating done-ness (for // threads to terminate on)
+ * @param result:		put the resulting index value here
+ */
+static void* post_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result);
+static void* user_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result);
 /////////////////////////////////////////////////////////////
 //				Helper data classes
 /////////////////////////////////////////////////////////////
@@ -51,7 +56,7 @@ enum array_type
  * thread searching
  * Note: There's no need to synchronise done_flag!
  */
-struct search_args
+struct work_args
 {
 	size_t hi;
 	size_t lo;
@@ -65,174 +70,50 @@ struct search_args
 
 
 
+
+
 /*
  * Find the location of an id from within an array
- * :: void* search_args :: 
+ * :: void* work_args :: 
  * Returns id
  */
-void* find_idx(void* search_args)
+static void* work_on_segment(void* work_args)
 {
-	search_args_t* args = (search_args_t*) search_args;
-	size_t i = 0;
-
-	LOG_I("Searching array @ %p for id %lu, from %lu to %lu - 1", args->arr, args->id, args->lo, args->hi);
-	
-	for (i = args->lo; i < args->hi && !(*args->done_flag); i++)
+	work_args_t * args = (work_args_t *) work_args;
+	uint64_t i = 0;
+	for (i = args->lo; i < args->high && !args->done_flag[0]; i++)
 	{
-		switch (args->arr_type)
-		{
-			case POST_ARR:
-				if (((post*)args->arr)[i].pst_id == args->id)
-				{
-					*args->result = i;
-					(*args->done_flag)++;
-				}
-			break;
-			case USER_ARR:
-				if (((user*)args->arr)[i].user_id == args->id)
-				{
-					*args->result = i;
-					(*args->done_flag)++;
-				}
-			break;
-			case INDX_ARR:
-				if (((int64_t*)args->arr)[i] == args->id)
-				{
-					*args->result = i;
-					(*args->done_flag)++;
-				}
-			break;
-		}
+		args->work(args->arr, i, args->id, args->done_flag, args->result);
 	}
-	
-	if 	(*args->done_flag) LOG_D("Found at %lu!", i);
-	else LOG_D("Not found%c", '!');
-	return args->result;
+	return (void*) args->result;
 }
 
 result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* helper) 
 {
-	args_t * args;
-	uint8_t * done_flag = calloc(1,sizeof(uint8_t));
-	uint64_t * index_res = calloc(1,sizeof(int64_t));
-	//Find the original post
-	search_args_t * idx = init_search(0, count, post_id, (void*)posts, POST_ARR, index_res, done_flag); 
-
-	int64_t post_idx = *(uint64_t*) find_idx((void*) idx);
-	LOG_D("Count var: %lu, highest searchable: %lu", count, idx->hi);
-	LOG_I("Finished searching for post with id of %lu, found at index %li", idx->id, post_idx);
-	free(idx);
+	//FInd the thing, and enqueue its babies
+	//Could try selectively recursing to some depth
 	
-
-	helper->posts = posts;
-	helper->post_count = count;
-	helper->res = malloc(sizeof(result));
-	helper->res->elements = calloc(count, sizeof(post*));
-	helper->res->n_elements = 0;
-	//Base case
-	if (post_idx < 0)
-	{
-		LOG_I("Nothing found, returning  %c", '!');
-		free(helper->res->elements);
-		helper->res->elements = NULL;
-		return helper->res;
-	}
+	//For now, 
 	
-
-	args = malloc(sizeof(args_t));
-	args->q_h = helper;
-	args->current_post = &(args->q_h->posts[post_idx]);
-	LOG_I("Beginning recursive search for resposts, starting from %lu", post_idx);
-	//Now begin the recursion
-	find_all_reposts_r((void*) args);
-	return helper->res;
+	//Find the index	
+	
+	//Queue its children
+	
+	//Pop its children
+	
+	//
 }
 
 
-/*
-Find all the reposts of a particular post,
-takes argument of args type
-*/
-void* find_all_reposts_r(void* argsp)
-{
-	args_t * args = (args_t*) argsp;
-	size_t i = 0;
-	
-	post * child = NULL;
-	
-	//Try to open a new thread to recurse, for each child, but if it doesn't work, dont worry
-	for (i = 0; i < args->current_post->n_reposted ; i++)
-	{
-		child = &args->q_h->posts[args->current_post->reposted_idxs[i]];
-		find_all_reposts_r(heap_copy(args, NULL, child));
-	}
-	//CRITICAL
-	//Add self to results
-	args->q_h->res->elements[args->q_h->res->n_elements++] = (void*) args->current_post;
-	//END CRITICAL
-	//free(unthreaded_children);
-	LOG_D("Freeing arguments pointer for id: %lu", args->current_post->pst_id);
-	free(argsp);
-	return NULL;
-}
 
 result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, query_helper* q_h)
 {
-	post * backwards = NULL;
-	post * current_post = NULL;
-	uint64_t i = 0;
-	uint64_t j = 0;
-	uint8_t * done_flag = calloc(1, sizeof(uint8_t));
-	uint64_t * idx_res = calloc(1, sizeof(uint64_t));
-
-	search_args_t * index_search = init_search(0, count, post_id, (void*)posts, POST_ARR, idx_res, done_flag);
-	uint64_t post_idx = (int64_t) find_idx((void*) index_search);
-	free(index_search);
-
-	q_h->res = calloc(1,sizeof(query_helper));
-	if ((int64_t) post_idx == -1) return q_h->res;
-
-	backwards = calloc(count,sizeof(post));
-
-	q_h->res->elements = malloc(sizeof(void**));
-	q_h->res->n_elements = 1;
-	for (i = 0; i < count; i++)
-	{
-		for (j = 0; j < posts[i].n_reposted; j++)
-		{
-			backwards[posts[i].reposted_idxs[j]].reposted_idxs = (uint64_t*) i;
-			backwards[posts[i].reposted_idxs[j]].n_reposted = 1;
-		}
-	}
-
-	current_post = &backwards[post_idx];
-
-	while (current_post->n_reposted)
-	{
-		post_idx = (uint64_t) current_post->reposted_idxs;
-		current_post = &backwards[post_idx];
-	}
-	free(backwards);
-	q_h->res->elements[0] = (void*) &posts[post_idx];
-
-	return q_h->res;
-}
-
-/*
-Copy by value to a new heap alloced struct
-*/
-args_t * heap_copy(args_t * from, user* new_user, post * new_post)
-{
-	args_t * out = malloc(sizeof(args_t));
-	out->q_type = from->q_type;
-	out->q_h = from->q_h;
-	out->current_post = new_post;
-	out->current_user = new_user;
-	return out;
+	//For me, you want to go through the array (May partition)
+	return NULL;
 }
 
 
-static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag)
+static search_args_t * init_work_args(uint64_t lo, uint64_t hi, uint64_t want, void * arr, array_type_t arr_type, uint64_t * result, uint8_t * done_flag)
 {
 	search_args_t * out = malloc(sizeof(search_args_t));
 	out->hi = hi;
@@ -246,3 +127,26 @@ static search_args_t * init_search(uint64_t lo, uint64_t hi, uint64_t want, void
 }
 
 
+static void* post_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result)
+{
+	post * posts = (post *) arr;
+	if (posts[idx].pst_id == want)
+	{
+		LOG_D("Found the desired id (%lu) @ %lu",want, idx);
+		result[0] = idx;
+		done_flag[0]++;
+	}
+	return (void*) result;
+}
+
+static void* post_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result)
+{
+	user * users = (user *) arr;
+	if (users[idx] == want)
+	{
+		LOG_D("Found the desired id (%lu) @ %lu",want, idx);
+		result[0] = idx;
+		done_flag[0]++;
+	}
+	return (void*) result;
+}
