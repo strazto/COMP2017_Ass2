@@ -1,6 +1,6 @@
 #include "mine.h"
 
-typedef struct search_args work_args_t;
+typedef struct work_args work_args_t;
 typedef enum array_type array_type_t;
 
 /**
@@ -25,7 +25,7 @@ static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64
  * 
  * @param search_args: Pointer to search_args_t structure, wrapping index range parameter
  */
-static void* work_on_segment(void* work_args);
+static void* work_on_segment(void* work_args_in);
 
 
 /**
@@ -65,8 +65,6 @@ struct work_args
 	uint8_t * done_flag;
 	uint64_t * result;
 	worker_f work;
-
-	//array_type_t arr_type;	
 };
 
 
@@ -78,11 +76,11 @@ struct work_args
  * :: void* work_args :: 
  * Returns id
  */
-static void* work_on_segment(void* work_args)
+static void* work_on_segment(void* work_args_in)
 {
-	work_args_t * args = (work_args_t *) work_args;
+	work_args_t * args = (work_args_t *) work_args_in;
 	uint64_t i = 0;
-	for (i = args->lo; i < args->high && !args->done_flag[0]; i++)
+	for (i = args->lo; i < args->hi && !args->done_flag[0]; i++)
 	{
 		args->work(args->arr, i, args->id, args->done_flag, args->result);
 		if (args->done_flag[0]) LOG_D("Work is done, @ %lu", i);
@@ -95,18 +93,20 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 	//FInd the thing, and enqueue its babies
 	//Could try selectively recursing to some depth
 	uint64_t i = 0;
+	uint64_t j = 0;
 	post * current = NULL;
 	uint64_t * idx_result = NULL;
 	uint8_t * done_flag = NULL;
 	work_args_t * wargs = NULL;
 	dll_t * q = NULL;
+	dll_t * out_buff = NULL;
 	result * out = NULL;
 	
 
-	out = calloc(sizeof(result));
+	out = calloc(1,sizeof(result));
 	//Find the index
-	idx_result = malloc(sizeof(uint64_t))
-	done_flag = calloc(sizeof(uint8_t));	
+	idx_result = malloc(sizeof(uint64_t));
+	done_flag = calloc(1,sizeof(uint8_t));	
 	wargs = init_work_args((void*)posts, 0, count, post_id, idx_result, done_flag);
 	//The current work is to check for an index!
 	wargs->work = post_check;
@@ -123,15 +123,38 @@ result* find_all_reposts_wrapper(post* posts, size_t count, uint64_t post_id, qu
 		wargs = NULL;
 		return out;
 	}
+		
 	
-	current = posts[*idx_result];
 	q = dll_init();
-	
+	out_buff = dll_init();
 	//Queue its children
-
+	dll_enqueue(q, idx_result);
 	//Pop its children
+	while (q->size)
+	{
+		i = *(uint64_t *) dll_pop(q);		
+		current = &posts[i];
+		dll_enqueue(out_buff, current);
+		for (j = 0; j < current->n_reposted; j++)
+		{
+			dll_enqueue(q, &current->reposted_idxs[j]);
+		}
+	}
 	
-	//
+	out->n_elements = out_buff->size;
+	out->elements = malloc(sizeof(void*)*out->n_elements);
+	LOG_D("Found %lu reposts!", out->n_elements);
+	for (i = 0; i < out->n_elements && out_buff->size; i++)
+	{
+		out->elements[i] = dll_pop(out_buff);
+	}
+	dll_destroy(q);
+	dll_destroy(out_buff);
+	free(idx_result);
+	free(done_flag);
+	free(wargs);
+
+	return out;
 }
 
 
@@ -143,9 +166,9 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 }
 
 
-static search_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t want, uint64_t * result, uint8_t * done_flag)
+static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t want, uint64_t * result, uint8_t * done_flag)
 {
-	search_args_t * out = malloc(sizeof(search_args_t));
+	work_args_t * out = malloc(sizeof(work_args_t));
 	out->hi = hi;
 	out->lo = lo;
 	out->arr = arr;
@@ -169,10 +192,10 @@ static void* post_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_f
 	return (void*) result;
 }
 
-static void* post_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result)
+static void* user_check(void* arr, uint64_t idx, uint64_t want, uint8_t * done_flag, uint64_t * result)
 {
 	user * users = (user *) arr;
-	if (users[idx] == want)
+	if (users[idx].user_id == want)
 	{
 		LOG_D("Found the desired id (%lu) @ %lu",want, idx);
 		result[0] = idx;
