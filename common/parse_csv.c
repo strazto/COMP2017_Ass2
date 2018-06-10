@@ -285,7 +285,7 @@ void data_field(uint64_t val, csv_env_t * env)
 				return;
 			}
 			p->users[i].following_idxs[env->uu_tracker[i]++] = data_idx;
-			enqueue(env->follower_queues[data_idx], (void*) i);
+			dll_enqueue(env->follower_queues[data_idx], (void*) i);
 			break;
 		case USER_POST:
 			if (env->up_tracker[i] >= p->users[i].n_posts)
@@ -350,7 +350,7 @@ void process_followers(user* users, dll_t ** qs, uint64_t count)
 		if (users[i].n_followers) users[i].follower_idxs = malloc(users[i].n_followers*sizeof(uint64_t));
 		for  (j = 0; qs[i]->size > 0 && j < users[i].n_followers; j++)
 		{
-			users[i].follower_idxs[j] = (uint64_t) pop(qs[i]);
+			users[i].follower_idxs[j] = (uint64_t) dll_pop(qs[i]);
 			LOG_I("u[%lu].followers[%lu] = %lu", i, j, users[i].follower_idxs[j]);
 		} 	
 	}
