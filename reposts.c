@@ -64,4 +64,6 @@ uint8_t find_all_reposts_manip_sequential(work_args_t * args, kin_t * elem)
 	args->found_flags[0] = 1;
 	args->done_flag[0] = 1;
 	LOG_D("Found elem @ %lu", args->found_idxs[0]);	
+
+	return 0;
 }

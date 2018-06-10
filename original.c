@@ -40,6 +40,7 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 
 	out->elements[0] = &posts[i];
 
+	destroy_work_args(args);
 	return out;
 }
 

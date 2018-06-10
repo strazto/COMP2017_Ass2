@@ -10,6 +10,7 @@
 	work_args_t * args = (work_args_t *) work_args_in;
 	uint64_t i = 0;
 	kin_t * elem = NULL;
+	LOG_D("Array address: %p", args->arr);
 	for (i = args->lo; i < args->hi && !args->done_flag[0]; i++)
 	{
 		//Get your element
@@ -90,7 +91,8 @@
 		elem = args->get_elem(args->arr, *index);
 		
 		args->manipulate_elem(args, elem);
-		LOG_V("Working on arr[%lu], n_out = %lu, n_in %lu", elem->idx, elem->n_out, elem->n_in);
+		LOG_V("Working on arr[%lu/%lu], n_out = %lu, n_in %lu",*index, elem->idx, elem->n_out, elem->n_in);
+		LOG_V("Doing in first %c", '!');
 		//For all of the degrees in:
 		for (i = 0; i < elem->n_in ; i++)
 		{
@@ -104,7 +106,7 @@
 			free(next_elem);
 			next_elem = NULL;
 		}
-		
+		LOG_V("Now doing out %c", '!');
 		for (i = 0; i < elem->n_out ; i++)
 		{
 			next_elem = args->get_elem(args->arr, elem->idxs_out[i]);
@@ -151,9 +153,11 @@ kin_t * post_getter(void* arr, uint64_t index)
 kin_t * user_getter(void* arr, uint64_t index)
 {
 	kin_t * out = calloc(1, sizeof(kin_t));
-	user * my_user = (user *) arr;
-
-	my_user = &my_user[index];
+	user * users = (user *) arr;
+	LOG_D("Getting user[%lu], from array %p",index, users);
+	
+	user * my_user = &users[index];
+	LOG_V("Address got: %p", my_user);
 	out->self = (void*) my_user;
 
 	out->id = my_user->user_id;
@@ -168,7 +172,12 @@ kin_t * user_getter(void* arr, uint64_t index)
 
 uint8_t generic_manip_adj(work_args_t * args, kin_t * elem)
 {
-	if (args->bfs_flags[elem->idx]) return 0;
+	if (args->bfs_flags[elem->idx])
+	{
+		LOG_V("Element[%lu] already flagged, don't queue", elem->idx);
+		return 0;	
+	} 
 	args->bfs_flags[elem->idx] = 1;
+	LOG_V("Element[%lu] un-flagged, so flag it!", elem->idx);
 	return 1;
 }

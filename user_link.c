@@ -16,7 +16,7 @@ result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, ui
 	result * out = calloc(1,sizeof(result));
 	args->get_elem = user_getter;
 	args->manipulate_elem = find_user_link_manip_sequential;
-	args->manipulate_adjacent = generic_manip_adj;
+	args->manipulate_adjacent = find_user_link_manip_adj;
 
 	work_on_segment(args);
 
@@ -87,7 +87,6 @@ uint8_t find_user_link_manip_adj(work_args_t * args, kin_t * elem)
 	if (elem->id == args->want[1])
 	{
 		args->done_flag[0] = 1;
-		return 0;
 	}
 	return generic_manip_adj(args, elem);
 }
