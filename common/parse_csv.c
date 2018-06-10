@@ -415,7 +415,9 @@ ex_props_t * read_example(char * example_dir)
 		fbuff = NULL;
 	}
 	out = env->properties;
+	LOG_D("FINISHED! %c", '!');
 	free(path);
+	LOG_D("STILL FINISHED! %c", '!');
 	destroy_environment(env);
 	return out;
 }
