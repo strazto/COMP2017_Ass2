@@ -14,7 +14,7 @@
 
 
 #ifndef TEST_FILE_DIR
-#define TEST_FILE_DIR ("PATH_EXAMPLE_1")
+#define TEST_FILE_DIR ("common/PATH_EXAMPLE_1")
 #endif
 
 #endif
