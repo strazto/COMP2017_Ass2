@@ -1,6 +1,26 @@
-common/test.c: In function ‘test_path_example_1_unidir_longer’:
-common/test.c:325:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
-  start_from = 7;
-  ^~~~~~~~~~
-  strxfrm
-common/test.c:325:2: note: each undeclared identifier is reported only once for each function it appears in
+common/parse_csv.c: In function ‘data_field’:
+common/parse_csv.c:288:4: warning: implicit declaration of function ‘enqueue’; did you mean ‘dll_enqueue’? [-Wimplicit-function-declaration]
+    enqueue(env->follower_queues[data_idx], (void*) i);
+    ^~~~~~~
+    dll_enqueue
+common/parse_csv.c: In function ‘process_followers’:
+common/parse_csv.c:353:43: warning: implicit declaration of function ‘pop’; did you mean ‘popen’? [-Wimplicit-function-declaration]
+    users[i].follower_idxs[j] = (uint64_t) pop(qs[i]);
+                                           ^~~
+                                           popen
+/tmp/ccwpxxJg.o: In function `init_from_header':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:46: undefined reference to `csv_parse'
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:47: undefined reference to `csv_fini'
+/tmp/ccwpxxJg.o: In function `read_matrix':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:73: undefined reference to `csv_parse'
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:74: undefined reference to `csv_fini'
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:75: undefined reference to `csv_free'
+/tmp/ccwpxxJg.o: In function `init_env':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:93: undefined reference to `csv_init'
+/tmp/ccwpxxJg.o: In function `data_field':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:288: undefined reference to `enqueue'
+/tmp/ccwpxxJg.o: In function `process_followers':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:353: undefined reference to `pop'
+/tmp/ccwpxxJg.o: In function `destroy_environment':
+/home/matthew/Documents/Ass2/src/common/parse_csv.c:426: undefined reference to `csv_free'
+collect2: error: ld returned 1 exit status
