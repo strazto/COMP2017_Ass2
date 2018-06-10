@@ -1,6 +1,6 @@
 #ifndef CONSTS_H
 #define CONSTS_H
-#include "common/supergraph.h"
+#include "supergraph.h"
 #include "common/log.h"
 #include "common/dll/DLL.h"
 
