@@ -15,6 +15,8 @@ typedef enum array_type array_type_t;
 typedef void * (*worker_f)(void*);
 typedef uint8_t (*comp_f)(void*, uint64_t,uint64_t);
 typedef void * (*done_evaluator_f)(void*);
+
+
 /////////////////////////////////////////////////////////////
 //				Static Functions (Private)
 /////////////////////////////////////////////////////////////
@@ -33,6 +35,8 @@ static void* BFS_work(void* args);
 static void * find_original_worker(void* worker_args);
 
 static void * find_reposts_worker(void* worker_args);
+
+static void * shortest_user_link_worker(void * worker_args);
 /**
  * User/Post check: 
  * Try to determine if the elem at that position is the correct one, if so, broadvast that idx 
@@ -42,6 +46,11 @@ static uint8_t post_comp(void* arr, uint64_t want, uint64_t idx);
 static uint8_t user_comp(void* arr, uint64_t want, uint64_t idx);
 
 static void * done_if_found_one(void* wargs);
+
+static void * shortest_user_link_A_done(void * worker_args);
+static void * shortest_user_link_B_done(void * worker_args);
+
+static void * shortest_user_link_done(work_args_t * args, uint64_t which_idx);
 /////////////////////////////////////////////////////////////
 //				Helper data classes
 /////////////////////////////////////////////////////////////
@@ -77,8 +86,10 @@ struct work_args
 	dll_t * out_buff;
 
 	uint64_t * parents;
+	uint64_t * parents_in;
 	uint8_t * bfs_flags;
 
+	worker_f post_bfs_work;
 	worker_f work;
 	comp_f comp;
 	done_evaluator_f check_done;
@@ -87,8 +98,12 @@ struct work_args
 struct next_of_kin
 {
 	void * self;
-	uint64_t n_children;
-	uint64_t * idxs;
+	uint64_t n_out;
+	uint64_t * idxs_out;
+	uint64_t n_in;
+	uint64_t * idxs_in;
+
+	uint64_t add_flag;
 };
 
 
@@ -174,8 +189,6 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 
 	work_args_t * wargs = init_work_args(posts, 0, count, want, 1);
 	wargs->result = out;
-	wargs->parents = malloc(sizeof(uint64_t)*count);
-	wargs->bfs_flags = calloc(count, sizeof(uint8_t));
 	wargs->work = find_original_worker;
 	wargs->comp = post_comp;
 	work_on_segment(wargs);
@@ -204,14 +217,17 @@ result * find_original_wrapper(post* posts, size_t count, uint64_t post_id, quer
 }
 result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, uint64_t userB, query_helper* helper)
 {
-	uint64_t want = malloc(sizeof(uint64_t)*2);
+	uint64_t * want = malloc(sizeof(uint64_t)*2);
 	want[0] = userA;
 	want[1] = userB;
-	wargs = init_work_args(users, 0, count, want, 2);
+	work_args_t * wargs = init_work_args(users, 0, count, want, 2);
 
 	result * out = calloc(1,sizeof(result));
 	wargs->result = out;
-	
+
+
+	wargs->comp = user_comp;
+
 }
 
 static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t * want, uint64_t n_want)
@@ -226,6 +242,11 @@ static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64
 	out->found_idxs = calloc(out->n_want, sizeof(uint64_t));
 	out->found_flags = calloc(out->n_want, sizeof(uint8_t));
 	out->done_flag = calloc(1,sizeof(uint8_t));
+
+	out->bfs_flags = calloc(hi -lo, sizeof(uint8_t));
+	out->parents_in = calloc(hi - lo, sizeof(uint64_t));
+	out->parents = calloc(hi - lo, sizeof(uint64_t));
+
 	return out;
 }
 
@@ -236,7 +257,8 @@ static void destroy_work_args(work_args_t * args)
 	if (args->done_flag) 	free(args->done_flag);
 	if (args->q)			dll_destroy(args->q);
 	if (args->out_buff)		dll_destroy(args->out_buff);
-	if (args->parents)	free(args->parents);
+	if (args->parents)		free(args->parents);
+	if (args->parents_in)	free(args->parents_in);
 	if (args->bfs_flags)	free(args->bfs_flags);
 	if (args->want)			free(args->want);
 
@@ -292,6 +314,7 @@ static void * BFS_work(void* worker_args)
 	dll_t * q = args->q;
 	dll_t * out_buff = args->out_buff;
 	uint64_t i = 0;
+	uint64_t current_parent = 0;
 	uint64_t * first_idx = malloc(sizeof(uint64_t));
 	*first_idx = args->idx;
 	//Queue its children
@@ -301,23 +324,34 @@ static void * BFS_work(void* worker_args)
 	while (q->size && !args->done_flag[0])
 	{
 		args->idx = *(uint64_t *) dll_pop(q);		
-		
+		current_parent = args->idx;
 		kin = args->work(worker_args);
-		dll_enqueue(out_buff, kin->self);
-		for (i = 0; i < kin->n_children; i++)
+		//Add it if the worker callback has set the flag to add it
+		if (kin->add_flag) dll_enqueue(out_buff, kin->self);
+		for (i = 0; i < kin->n_out && !args->bfs_flags[kin->idxs_out[i]]; i++)
 		{
-			dll_enqueue(q, &kin->idxs[i]);
-			args->idx = kin->idxs[i];
+			dll_enqueue(q, &kin->idxs_out[i]);
+			args->parents[kin->idxs_out[i]] = current_parent;
+			args->idx = kin->idxs_out[i];
+			id_check(args);
+		}
+		for (i = 0; i < kin->n_in && !args->bfs_flags[kin->idxs_in[i]]; i++)
+		{
+			dll_enqueue(q, &kin->idxs_in[i]);
+			args->parents_in[kin->idxs_in[i]] = current_parent;
+			args->idx = kin->idxs_in[i];
 			id_check(args);
 		}
 		if (kin) free(kin);
 		kin = NULL;
 		if (args->check_done) args->check_done(args);
 	}
-	
+	//Add a worker here for post-processing
+	if (args->post_bfs_work) args->post_bfs_work(args);
+
 	args->result->n_elements = out_buff->size;
 	args->result->elements = malloc(sizeof(void*)*args->result->n_elements);
-	LOG_D("Found %lu reposts!", args->result->n_elements);
+	LOG_D("Found %lu results!", args->result->n_elements);
 	for (i = 0; i < args->result->n_elements && out_buff->size; i++)
 	{
 		args->result->elements[i] = dll_pop(out_buff);
@@ -336,9 +370,10 @@ static void * find_reposts_worker(void* worker_args)
 
 	kin_t * out = calloc(1, sizeof(kin_t));
 	out->self = (void*) self;
-	out->n_children = self->n_reposted;
-	out->idxs = self->reposted_idxs;
-	LOG_V("Post %lu being added, with %lu children", args->idx, out->n_children);
+	out->n_out = self->n_reposted;
+	out->idxs_out = self->reposted_idxs;
+	out->add_flag = 1;
+	LOG_V("Post %lu being added, with %lu children", args->idx, out->n_out);
 	return (void*) out;
 }
 
@@ -368,4 +403,35 @@ static void * done_if_found_one(void* wargs)
 	return NULL;
 }
 
+static void * shortest_user_link_A_done(void * worker_args)
+{
+	return shortest_user_link_done(worker_args, 1);
+}
+static void * shortest_user_link_B_done(void * worker_args)
+{
+	return shortest_user_link_done(worker_args, 0);
+}
 
+static void * shortest_user_link_done(work_args_t * args, uint64_t wanted_to_idx)
+{
+	user * users = (user *) args->arr;
+	if (users[args->idx].user_id == args->want[wanted_to_idx]) args->done_flag[0] = 1;
+	return NULL;
+}
+
+static void * shortest_user_link_worker_out(void * worker_args)
+{
+	work_args_t * args = (work_args_t *) worker_args;
+	user * users = args->arr;
+	user * self  = &users[args->idx];
+	uint64_t i = 0;
+	kin_t * out = calloc(1, sizeof(kin_t));
+	out->self = (void*) self;
+	out->n_out = self->n_following;
+	out->idxs_out = self->following_idxs;
+	out->n_in = self->n_followers;
+	out->idxs_in = self->follower_idxs;
+
+	args->bfs_flags[args->idx] = 1;
+	return (void *) out;
+}
