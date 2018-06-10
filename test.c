@@ -345,7 +345,7 @@ static void test_path_example_1_unidir_options(void** state)
 {
 	ex_props_t * props = (ex_props_t *) *state;
 	user * users = props->users;
-	start_from = 8;
+	uint64_t start_from = 8;
 	
 	int i = 0;
 
