@@ -1,8 +1,8 @@
-==7180== Memcheck, a memory error detector
-==7180== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==7180== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==7180== Command: ./a.out
-==7180== 
+==10459== Memcheck, a memory error detector
+==10459== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==10459== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==10459== Command: ./a.out
+==10459== 
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
@@ -24,42 +24,86 @@ T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (2) at idx 2
-T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 2
-T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 2
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 2 being added, with 5 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 4 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 6 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 10 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 11 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 9 results!
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:      reposts.c|Ln: 66|Fn:find_all_reposts_manip_sequential|D|Found elem @ 2
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 2
+T:0|File:      reposts.c|Ln: 32|Fn:find_all_reposts_wrapper|I|value of args->idx = 2
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[2], n_out = 5, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 4
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[4], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 6
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[6], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 7
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 3, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 10
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[10], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 11
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[11], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 15
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[15], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 17
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[17], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 13
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[13], n_out = 0, n_in 0
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 9 vs actual 9
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 7
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (7) at idx 7
-T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 7
-T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 7
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 4 results!
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:      reposts.c|Ln: 66|Fn:find_all_reposts_manip_sequential|D|Found elem @ 7
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 7
+T:0|File:      reposts.c|Ln: 32|Fn:find_all_reposts_wrapper|I|value of args->idx = 7
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 7
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 3, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 15
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[15], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 17
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[17], n_out = 0, n_in 0
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 13
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[13], n_out = 0, n_in 0
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 4 vs actual 4
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (1) at idx 1
-T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 1
-T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 1
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 1 being added, with 0 children
-T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 1 results!
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:      reposts.c|Ln: 66|Fn:find_all_reposts_manip_sequential|D|Found elem @ 1
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 1
+T:0|File:      reposts.c|Ln: 32|Fn:find_all_reposts_wrapper|I|value of args->idx = 1
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:      reposts.c|Ln: 49|Fn:find_all_reposts_manip|V|Going to queue elem: 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[1], n_out = 0, n_in 0
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-T:0|File:         mine.c|Ln:154|Fn:find_all_reposts_wrapper|D|Never found original, cleaning up and LEAVING !
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 0
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
 T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
 [  PASSED  ] 4 test(s).
@@ -84,148 +128,508 @@ T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (2) at idx 2
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 2
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 4
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (4) at idx 4
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 4
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-T:0|File:         mine.c|Ln:199|Fn:find_original_wrapper|D|Didn't find id 18446744073709551516 anywhere! :(
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 0
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 13
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (13) at idx 13
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 13
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (1) at idx 1
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 5 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[9], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[10], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[11], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[12], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[13], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[14], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[15], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[16], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[17], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[18], with 0 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[19], with 0 children
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 1
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
 [  PASSED  ] 5 test(s).
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (1) at idx 2
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-==7180== Invalid read of size 8
-==7180==    at 0x10A157: shortest_user_link_worker (mine.c:451)
-==7180==    by 0x109B54: BFS_work (mine.c:349)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x5633170 is 32 bytes before a block of size 48 in arena "client"
-==7180== 
-==7180== Invalid read of size 8
-==7180==    at 0x10A167: shortest_user_link_worker (mine.c:452)
-==7180==    by 0x109B54: BFS_work (mine.c:349)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x5633168 is 24 bytes after a block of size 1,120 in arena "client"
-==7180== 
-==7180== Invalid read of size 8
-==7180==    at 0x10A177: shortest_user_link_worker (mine.c:453)
-==7180==    by 0x109B54: BFS_work (mine.c:349)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x5633160 is 16 bytes after a block of size 1,120 alloc'd
-==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==7180==    by 0x10C69E: header_field (parse_csv.c:175)
-==7180==    by 0x10C5EE: field_wrapper (parse_csv.c:156)
-==7180==    by 0x10C447: read_any (parse_csv.c:105)
-==7180==    by 0x4E3D47A: csv_parse (libcsv.c:388)
-==7180==    by 0x10C176: init_from_header (parse_csv.c:46)
-==7180==    by 0x10D277: read_example (parse_csv.c:399)
-==7180==    by 0x10B3BC: shortest_path_example_1 (test.c:296)
-==7180==    by 0x5046440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
-==7180==    by 0x5046569: cmocka_run_group_fixture (cmocka.c:2669)
-==7180==    by 0x5046A90: _cmocka_run_group_tests (cmocka.c:2818)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180== 
-==7180== Invalid read of size 8
-==7180==    at 0x10A187: shortest_user_link_worker (mine.c:454)
-==7180==    by 0x109B54: BFS_work (mine.c:349)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x5633158 is 8 bytes after a block of size 1,120 alloc'd
-==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==7180==    by 0x10C69E: header_field (parse_csv.c:175)
-==7180==    by 0x10C5EE: field_wrapper (parse_csv.c:156)
-==7180==    by 0x10C447: read_any (parse_csv.c:105)
-==7180==    by 0x4E3D47A: csv_parse (libcsv.c:388)
-==7180==    by 0x10C176: init_from_header (parse_csv.c:46)
-==7180==    by 0x10D277: read_example (parse_csv.c:399)
-==7180==    by 0x10B3BC: shortest_path_example_1 (test.c:296)
-==7180==    by 0x5046440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
-==7180==    by 0x5046569: cmocka_run_group_fixture (cmocka.c:2669)
-==7180==    by 0x5046A90: _cmocka_run_group_tests (cmocka.c:2818)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180== 
-==7180== Invalid write of size 1
-==7180==    at 0x10A1A6: shortest_user_link_worker (mine.c:456)
-==7180==    by 0x109B54: BFS_work (mine.c:349)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x563a4b4 is 0 bytes after a block of size 20 alloc'd
-==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==7180==    by 0x1096EB: init_work_args (mine.c:267)
-==7180==    by 0x1094B1: shortest_user_link_wrapper (mine.c:224)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180== 
-T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
-==7180== Invalid read of size 8
-==7180==    at 0x109C2C: BFS_work (mine.c:352)
-==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
-==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
-==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
-==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
-==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
-==7180==    by 0x10A7CA: main (test.c:65)
-==7180==  Address 0x4a0 is not stack'd, malloc'd or (recently) free'd
-==7180== 
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (14) at idx 7
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (0) at idx 8
-T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
-[  ERROR   ] --- Test failed with exception: Segmentation fault(11)
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 5 children
+T:0|File:    user_link.c|Ln: 68|Fn:find_user_link_manip_sequential|I|Found user B @ 0
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 18 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 3 children
+T:0|File:    user_link.c|Ln: 62|Fn:find_user_link_manip_sequential|I|Found user A @ 2
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 2
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[2], n_out = 3, n_in 1
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10976D: user_getter (mine.c:159)
+==10459==    by 0x109583: BFS_work (mine.c:110)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10977C: user_getter (mine.c:160)
+==10459==    by 0x109583: BFS_work (mine.c:110)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10978C: user_getter (mine.c:161)
+==10459==    by 0x109583: BFS_work (mine.c:110)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10979C: user_getter (mine.c:163)
+==10459==    by 0x109583: BFS_work (mine.c:110)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1097AC: user_getter (mine.c:164)
+==10459==    by 0x109583: BFS_work (mine.c:110)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1097E9: generic_manip_adj (mine.c:171)
+==10459==    by 0x10959F: BFS_work (mine.c:111)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10980A: generic_manip_adj (mine.c:172)
+==10459==    by 0x10959F: BFS_work (mine.c:111)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1095C3: BFS_work (mine.c:113)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[4], n_out = 18, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[5], n_out = 7, n_in 2
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10976D: user_getter (mine.c:159)
+==10459==    by 0x1094B6: BFS_work (mine.c:97)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10977C: user_getter (mine.c:160)
+==10459==    by 0x1094B6: BFS_work (mine.c:97)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10978C: user_getter (mine.c:161)
+==10459==    by 0x1094B6: BFS_work (mine.c:97)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10979C: user_getter (mine.c:163)
+==10459==    by 0x1094B6: BFS_work (mine.c:97)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1097AC: user_getter (mine.c:164)
+==10459==    by 0x1094B6: BFS_work (mine.c:97)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1097E9: generic_manip_adj (mine.c:171)
+==10459==    by 0x1094D2: BFS_work (mine.c:98)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10976D: user_getter (mine.c:159)
+==10459==    by 0x109400: BFS_work (mine.c:90)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10977C: user_getter (mine.c:160)
+==10459==    by 0x109400: BFS_work (mine.c:90)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10978C: user_getter (mine.c:161)
+==10459==    by 0x109400: BFS_work (mine.c:90)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10979C: user_getter (mine.c:163)
+==10459==    by 0x109400: BFS_work (mine.c:90)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1097AC: user_getter (mine.c:164)
+==10459==    by 0x109400: BFS_work (mine.c:90)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x529CC9B: _itoa_word (_itoa.c:179)
+==10459==    by 0x52A141F: vfprintf (vfprintf.c:1642)
+==10459==    by 0x52A27D5: buffered_vfprintf (vfprintf.c:2330)
+==10459==    by 0x529FAA5: vfprintf (vfprintf.c:1301)
+==10459==    by 0x52A8D63: fprintf (fprintf.c:32)
+==10459==    by 0x109474: BFS_work (mine.c:93)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459== 
+==10459== Conditional jump or move depends on uninitialised value(s)
+==10459==    at 0x529CCA5: _itoa_word (_itoa.c:179)
+==10459==    by 0x52A141F: vfprintf (vfprintf.c:1642)
+==10459==    by 0x52A27D5: buffered_vfprintf (vfprintf.c:2330)
+==10459==    by 0x529FAA5: vfprintf (vfprintf.c:1301)
+==10459==    by 0x52A8D63: fprintf (fprintf.c:32)
+==10459==    by 0x109474: BFS_work (mine.c:93)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459== 
+==10459== Conditional jump or move depends on uninitialised value(s)
+==10459==    at 0x52A1521: vfprintf (vfprintf.c:1642)
+==10459==    by 0x52A27D5: buffered_vfprintf (vfprintf.c:2330)
+==10459==    by 0x529FAA5: vfprintf (vfprintf.c:1301)
+==10459==    by 0x52A8D63: fprintf (fprintf.c:32)
+==10459==    by 0x109474: BFS_work (mine.c:93)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459== 
+==10459== Conditional jump or move depends on uninitialised value(s)
+==10459==    at 0x52A018F: vfprintf (vfprintf.c:1642)
+==10459==    by 0x52A27D5: buffered_vfprintf (vfprintf.c:2330)
+==10459==    by 0x529FAA5: vfprintf (vfprintf.c:1301)
+==10459==    by 0x52A8D63: fprintf (fprintf.c:32)
+==10459==    by 0x109474: BFS_work (mine.c:93)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459== 
+==10459== Conditional jump or move depends on uninitialised value(s)
+==10459==    at 0x52A0210: vfprintf (vfprintf.c:1642)
+==10459==    by 0x52A27D5: buffered_vfprintf (vfprintf.c:2330)
+==10459==    by 0x529FAA5: vfprintf (vfprintf.c:1301)
+==10459==    by 0x52A8D63: fprintf (fprintf.c:32)
+==10459==    by 0x109474: BFS_work (mine.c:93)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B343: test_path_example_1_unidir_triv (test.c:315)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459== 
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[0], n_out = 5, n_in 0
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 14, n_in 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[6], n_out = 16, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[1], n_out = 18, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[2], n_out = 3, n_in 1
+T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 2 vs actual 0
+[  ERROR   ] --- 0x2 != 0
+[   LINE   ] --- common/test.c:181: error: Failure!
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 5 children
+T:0|File:    user_link.c|Ln: 68|Fn:find_user_link_manip_sequential|I|Found user B @ 0
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 18 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 4 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 18 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 7 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 16 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 14 children
+T:0|File:    user_link.c|Ln: 62|Fn:find_user_link_manip_sequential|I|Found user A @ 7
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 7
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 14, n_in 2
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x10980A: generic_manip_adj (mine.c:172)
+==10459==    by 0x1094D2: BFS_work (mine.c:98)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B4C0: test_path_example_1_unidir_longer (test.c:338)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+==10459== Use of uninitialised value of size 8
+==10459==    at 0x1094F6: BFS_work (mine.c:100)
+==10459==    by 0x109FEF: shortest_user_link_wrapper (user_link.c:33)
+==10459==    by 0x1098DD: shortest_user_link (supergraph.c:26)
+==10459==    by 0x10B74B: shortest_user_link_test_helper (test.c:381)
+==10459==    by 0x10B4C0: test_path_example_1_unidir_longer (test.c:338)
+==10459==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==10459==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==10459==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==10459==    by 0x10A678: main (test.c:65)
+==10459== 
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[0], n_out = 5, n_in 0
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[1], n_out = 18, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[2], n_out = 3, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[4], n_out = 18, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[5], n_out = 7, n_in 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 14, n_in 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[6], n_out = 16, n_in 1
+T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 4 vs actual 0
+[  ERROR   ] --- 0x4 != 0
+[   LINE   ] --- common/test.c:181: error: Failure!
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[0], with 5 children
+T:0|File:    user_link.c|Ln: 68|Fn:find_user_link_manip_sequential|I|Found user B @ 0
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[1], with 18 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[2], with 3 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[3], with 4 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[4], with 18 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[5], with 7 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[6], with 16 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[7], with 14 children
+T:0|File:         mine.c|Ln: 17|Fn:     work_on_segment|V|Working on arr[8], with 1 children
+T:0|File:    user_link.c|Ln: 62|Fn:find_user_link_manip_sequential|I|Found user A @ 8
+T:0|File:         mine.c|Ln: 24|Fn:     work_on_segment|I|Leaving now, found_idxs[0] = 8
+T:0|File:         mine.c|Ln: 86|Fn:            BFS_work|D|Done flag: 0, q->size: 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[8], n_out = 1, n_in 0
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[5], n_out = 7, n_in 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[6], n_out = 16, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[0], n_out = 5, n_in 0
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[7], n_out = 14, n_in 2
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[1], n_out = 18, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[2], n_out = 3, n_in 1
+T:0|File:         mine.c|Ln: 93|Fn:            BFS_work|V|Working on arr[4], n_out = 18, n_in 1
+T:0|File:    user_link.c|Ln: 40|Fn:shortest_user_link_wrapper|I|Queueing 5
+T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 7 vs actual 1
+[  ERROR   ] --- 0x7 != 0x1
+[   LINE   ] --- common/test.c:181: error: Failure!
 [  PASSED  ] 0 test(s).
 [  FAILED  ] 3 test(s), listed below:
 [  FAILED  ] test_path_example_1_unidir_triv
@@ -233,18 +637,19 @@ T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in
 [  FAILED  ] test_path_example_1_unidir_options
 
  3 FAILED TEST(S)
-==7180== 
-==7180== HEAP SUMMARY:
-==7180==     in use at exit: 2,405 bytes in 60 blocks
-==7180==   total heap usage: 362 allocs, 302 frees, 39,497 bytes allocated
-==7180== 
-==7180== LEAK SUMMARY:
-==7180==    definitely lost: 696 bytes in 15 blocks
-==7180==    indirectly lost: 1,709 bytes in 45 blocks
-==7180==      possibly lost: 0 bytes in 0 blocks
-==7180==    still reachable: 0 bytes in 0 blocks
-==7180==         suppressed: 0 bytes in 0 blocks
-==7180== Rerun with --leak-check=full to see details of leaked memory
-==7180== 
-==7180== For counts of detected and suppressed errors, rerun with: -v
-==7180== ERROR SUMMARY: 18 errors from 6 contexts (suppressed: 0 from 0)
+==10459== 
+==10459== HEAP SUMMARY:
+==10459==     in use at exit: 2,208 bytes in 69 blocks
+==10459==   total heap usage: 891 allocs, 822 frees, 69,537 bytes allocated
+==10459== 
+==10459== LEAK SUMMARY:
+==10459==    definitely lost: 664 bytes in 13 blocks
+==10459==    indirectly lost: 1,544 bytes in 56 blocks
+==10459==      possibly lost: 0 bytes in 0 blocks
+==10459==    still reachable: 0 bytes in 0 blocks
+==10459==         suppressed: 0 bytes in 0 blocks
+==10459== Rerun with --leak-check=full to see details of leaked memory
+==10459== 
+==10459== For counts of detected and suppressed errors, rerun with: -v
+==10459== Use --track-origins=yes to see where uninitialised values come from
+==10459== ERROR SUMMARY: 1542 errors from 26 contexts (suppressed: 0 from 0)
