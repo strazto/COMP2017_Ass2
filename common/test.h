@@ -10,5 +10,6 @@
 #include "supergraph.h"
 #include "log.h"
 #include "properties.h"
+#include "parse_csv.h"
 
 #endif
