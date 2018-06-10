@@ -308,6 +308,7 @@ static void test_path_example_1_unidir_triv(void** state)
 	result * expect = calloc(1,sizeof(result));
 	expect->n_elements = 2;
 	expect->elements = malloc(sizeof(void*)*expect->n_elements);
+	void ** elements = expect->elements;
 	elements[0] = &users[2];
 	elements[1] = &users[1];
 	shortest_user_link_test_helper(users[2].user_ids, expect, state);
@@ -328,6 +329,7 @@ static void test_path_example_1_unidir_longer(void** state)
 	result * expect = calloc(1,sizeof(result));
 	expect->n_elements = 4;
 	expect->elements = malloc(sizeof(void*)*expect->n_elements);
+	void ** elements = expect->elements;
 	elements[i++] = &users[start_from];
 	elements[i++] = &users[4];
 	elements[i++] = &users[2];
@@ -350,6 +352,7 @@ static void test_path_example_1_unidir_options(void** state)
 	result * expect = calloc(1,sizeof(result));
 	expect->n_elements = 7;
 	expect->elements = malloc(sizeof(void*)*expect->n_elements);
+	void ** elements = expect->elements;
 	elements[i++] = &users[start_from];
 	elements[i++] = &users[5];
 	elements[i++] = &users[6];
