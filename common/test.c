@@ -296,6 +296,7 @@ static int shortest_path_example_1(void ** state)
 	ex_props_t * out = read_example(path);
 
 	*state = (void*) out;
+	return 0;
 }
 
 
