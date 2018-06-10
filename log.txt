@@ -1,9 +1,3 @@
-In file included from common/test.h:6:0,
-                 from common/test.c:1:
-common/test.c: In function ‘main’:
-common/test.c:63:2: error: expected ‘,’ or ‘;’ before ‘_cmocka_run_group_tests’
-  cmocka_run_group_tests_name("FIND_ALL_REPOSTS", find_reposts_tests, example_1_posts, teardown_example_properties);
-  ^
 common/test.c: In function ‘test_path_example_1_unidir_triv’:
 common/test.c:311:2: error: ‘elements’ undeclared (first use in this function)
   elements[0] = &users[2];
