@@ -1,8 +1,8 @@
-==6512== Memcheck, a memory error detector
-==6512== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==6512== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==6512== Command: ./a.out
-==6512== 
+==7180== Memcheck, a memory error detector
+==7180== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7180== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==7180== Command: ./a.out
+==7180== 
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
@@ -24,39 +24,39 @@ T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (2) at idx 2
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (2) at idx 2
 T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 2
 T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 2
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 2 being added, with 5 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 4 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 6 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 10 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 11 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:373|Fn:            BFS_work|D|Found 9 results!
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 2 being added, with 5 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 4 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 6 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 10 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 11 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
+T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 9 results!
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 9 vs actual 9
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 7
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (7) at idx 7
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (7) at idx 7
 T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 7
 T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 7
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:373|Fn:            BFS_work|D|Found 4 results!
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
+T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 4 results!
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 4 vs actual 4
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (1) at idx 1
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (1) at idx 1
 T:0|File:         mine.c|Ln:124|Fn:     work_on_segment|D|Work is done, @ 1
 T:0|File:         mine.c|Ln:159|Fn:find_all_reposts_wrapper|D|Discerned index: 1
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:395|Fn: find_reposts_worker|V|Post 1 being added, with 0 children
-T:0|File:         mine.c|Ln:373|Fn:            BFS_work|D|Found 1 results!
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:397|Fn: find_reposts_worker|V|Post 1 being added, with 0 children
+T:0|File:         mine.c|Ln:375|Fn:            BFS_work|D|Found 1 results!
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 18446744073709551516
 T:0|File:         mine.c|Ln:154|Fn:find_all_reposts_wrapper|D|Never found original, cleaning up and LEAVING !
@@ -84,839 +84,147 @@ T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:17 to po
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
 T:0|File:  common/test.c|Ln: 90|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (2) at idx 2
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (2) at idx 2
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 4
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (4) at idx 4
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (4) at idx 4
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 18446744073709551516
 T:0|File:         mine.c|Ln:199|Fn:find_original_wrapper|D|Didn't find id 18446744073709551516 anywhere! :(
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 13
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (13) at idx 13
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (13) at idx 13
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:  common/test.c|Ln:198|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:320|Fn:           post_comp|D|Found the desired ID (1) at idx 1
+T:0|File:         mine.c|Ln:322|Fn:           post_comp|D|Found the desired ID (1) at idx 1
 T:0|File:  common/test.c|Ln:180|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
 T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
 [  PASSED  ] 5 test(s).
-T:0|File:common/parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: common/PATH_EXAMPLE_1/HEADER.csv
-T:0|File:common/parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 31
-T:0|File:common/parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 31
-T:0|File:common/parse_csv.c|Ln:397|Fn:        read_example|I|Buffered in common/PATH_EXAMPLE_1/HEADER.csv of size 31
-T:0|File:common/parse_csv.c|Ln:182|Fn:        header_field|D|Allocating post arr length 5 @ 0x5632c10
-T:0|File:common/parse_csv.c|Ln:176|Fn:        header_field|D|Allocating users arr length 20 @ 0x5632cf0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 0 @0x56334a0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 1 @0x56335c0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 2 @0x56336e0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 3 @0x5633800
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 4 @0x5633920
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 5 @0x5633a40
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 6 @0x5633b60
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 7 @0x5633c80
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 8 @0x5633da0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 9 @0x5633ec0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 10 @0x5633fe0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 11 @0x5634100
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 12 @0x5634220
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 13 @0x5634340
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 14 @0x5634460
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 15 @0x5634580
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 16 @0x56346a0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 17 @0x56347c0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 18 @0x56348e0
-T:0|File:common/parse_csv.c|Ln: 58|Fn:    init_from_header|D|Initializing DLL for user: 19 @0x5634a00
-T:0|File:common/parse_csv.c|Ln:402|Fn:        read_example|I|In initialized header info, discerned 20 users, 5 posts
-T:0|File:common/parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: common/PATH_EXAMPLE_1/POSTS.csv
-T:0|File:common/parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 159
-T:0|File:common/parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 159
-T:0|File:common/parse_csv.c|Ln:412|Fn:        read_example|I|Buffered in common/PATH_EXAMPLE_1/POSTS.csv of size 159
-T:0|File:common/parse_csv.c|Ln:123|Fn:            meta_row|D|Found SUM column: 1
-T:0|File:common/parse_csv.c|Ln:128|Fn:            meta_row|D|Found ID column: 2
-T:0|File:common/parse_csv.c|Ln:133|Fn:            meta_row|D|Assigning data begin col: 3
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[0] = 2
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[0] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][0]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [0][1] = 1
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [0][2] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[1] = 4
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[1] = 3
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][2]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [1][3] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[2] = 4
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[2] = 4
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[3] = 2
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[3] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][3]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [3][4] = 1
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[4] = 2
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[4] = 2
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][4]
-T:0|File:common/parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: common/PATH_EXAMPLE_1/USERS.csv
-T:0|File:common/parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 1849
-T:0|File:common/parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 1849
-T:0|File:common/parse_csv.c|Ln:412|Fn:        read_example|I|Buffered in common/PATH_EXAMPLE_1/USERS.csv of size 1849
-T:0|File:common/parse_csv.c|Ln:123|Fn:            meta_row|D|Found SUM column: 1
-T:0|File:common/parse_csv.c|Ln:128|Fn:            meta_row|D|Found ID column: 2
-T:0|File:common/parse_csv.c|Ln:133|Fn:            meta_row|D|Assigning data begin col: 3
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[0] = 5
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[0] = 3
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][0]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [0][1] = 1
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [0][2] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[1] = 18
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[1] = 18
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[2] = 3
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[2] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][3]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [2][4] = 1
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [2][5] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[3] = 4
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[3] = 4
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[4] = 18
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[4] = 17
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][6]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [4][7] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[5] = 7
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[5] = 6
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][5]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [5][6] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[6] = 16
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[6] = 15
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][6]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [6][7] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[7] = 14
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[7] = 14
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[8] = 1
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[8] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][4]
-T:0|File:common/parse_csv.c|Ln:270|Fn:          data_field|V|	DATA_FIELD [8][5] = 1
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[9] = 10
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[9] = 10
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[10] = 11
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[10] = 11
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[11] = 16
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[11] = 16
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[12] = 2
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[12] = 2
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[13] = 12
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[13] = 12
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[14] = 8
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[14] = 8
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[15] = 13
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[15] = 13
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[16] = 9
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[16] = 9
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[17] = 5
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[17] = 5
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[18] = 7
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[18] = 7
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][19]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[19] = 19
-T:0|File:common/parse_csv.c|Ln:242|Fn:            id_field|I|ID_FIELD[19] = 19
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][4]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][5]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][6]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][7]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][8]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][9]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][10]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][11]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][12]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][13]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][14]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][15]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][16]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][17]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][18]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][19]
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[0]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[1]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 1
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[1].followers[0] = 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[2]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 1
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[2].followers[0] = 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[3]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[4]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 1
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[4].followers[0] = 2
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[5]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 2
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[5].followers[0] = 2
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[5].followers[1] = 8
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[6]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 1
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[6].followers[0] = 5
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[7]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 2
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[7].followers[0] = 4
-T:0|File:common/parse_csv.c|Ln:354|Fn:   process_followers|I|u[7].followers[1] = 6
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[8]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[9]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[10]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[11]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[12]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[13]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[14]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[15]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[16]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[17]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[18]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln:346|Fn:   process_followers|I|Processing u[19]
-T:0|File:common/parse_csv.c|Ln:349|Fn:   process_followers|I|Queue Size: 0
-T:0|File:common/parse_csv.c|Ln: 12|Fn:      buffer_in_file|I|Buffering in file: common/PATH_EXAMPLE_1/USER_POSTS.csv
-T:0|File:common/parse_csv.c|Ln: 25|Fn:      buffer_in_file|I|File size: 545
-T:0|File:common/parse_csv.c|Ln: 34|Fn:      buffer_in_file|I|Number of bytes read: 545
-T:0|File:common/parse_csv.c|Ln:412|Fn:        read_example|I|Buffered in common/PATH_EXAMPLE_1/USER_POSTS.csv of size 545
-T:0|File:common/parse_csv.c|Ln:123|Fn:            meta_row|D|Found SUM column: 1
-T:0|File:common/parse_csv.c|Ln:133|Fn:            meta_row|D|Assigning data begin col: 2
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[0] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [0][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[1] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [1][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[2] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [2][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[3] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [3][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[4] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [4][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[5] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [5][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[6] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [6][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[7] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [7][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[8] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [8][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[9] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [9][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[10] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [10][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[11] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [11][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[12] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [12][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[13] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [13][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[14] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [14][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[15] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [15][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[16] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [16][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[17] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [17][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[18] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [18][4]
-T:0|File:common/parse_csv.c|Ln:216|Fn:           sum_field|I|SUM_FIELD[19] = 0
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][0]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][1]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][2]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][3]
-T:0|File:common/parse_csv.c|Ln:267|Fn:          data_field|V|	0 @ [19][4]
-T:0|File:common/parse_csv.c|Ln:418|Fn:        read_example|D|FINISHED! !
-T:0|File:common/parse_csv.c|Ln:420|Fn:        read_example|D|STILL FINISHED! !
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (1) at idx 2
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-==6512== Invalid read of size 8
-==6512==    at 0x10A153: shortest_user_link_worker (mine.c:449)
-==6512==    by 0x109B50: BFS_work (mine.c:347)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x5633170 is 32 bytes before a block of size 48 in arena "client"
-==6512== 
-==6512== Invalid read of size 8
-==6512==    at 0x10A163: shortest_user_link_worker (mine.c:450)
-==6512==    by 0x109B50: BFS_work (mine.c:347)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x5633168 is 24 bytes after a block of size 1,120 in arena "client"
-==6512== 
-==6512== Invalid read of size 8
-==6512==    at 0x10A173: shortest_user_link_worker (mine.c:451)
-==6512==    by 0x109B50: BFS_work (mine.c:347)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x5633160 is 16 bytes after a block of size 1,120 alloc'd
-==6512==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==6512==    by 0x10C8EA: header_field (parse_csv.c:175)
-==6512==    by 0x10C834: field_wrapper (parse_csv.c:156)
-==6512==    by 0x10C5AD: read_any (parse_csv.c:105)
-==6512==    by 0x504947A: csv_parse (libcsv.c:388)
-==6512==    by 0x10C284: init_from_header (parse_csv.c:46)
-==6512==    by 0x10D94A: read_example (parse_csv.c:399)
-==6512==    by 0x10B3B8: shortest_path_example_1 (test.c:296)
-==6512==    by 0x4E42440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
-==6512==    by 0x4E42569: cmocka_run_group_fixture (cmocka.c:2669)
-==6512==    by 0x4E42A90: _cmocka_run_group_tests (cmocka.c:2818)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512== 
-==6512== Invalid read of size 8
-==6512==    at 0x10A183: shortest_user_link_worker (mine.c:452)
-==6512==    by 0x109B50: BFS_work (mine.c:347)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x5633158 is 8 bytes after a block of size 1,120 alloc'd
-==6512==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==6512==    by 0x10C8EA: header_field (parse_csv.c:175)
-==6512==    by 0x10C834: field_wrapper (parse_csv.c:156)
-==6512==    by 0x10C5AD: read_any (parse_csv.c:105)
-==6512==    by 0x504947A: csv_parse (libcsv.c:388)
-==6512==    by 0x10C284: init_from_header (parse_csv.c:46)
-==6512==    by 0x10D94A: read_example (parse_csv.c:399)
-==6512==    by 0x10B3B8: shortest_path_example_1 (test.c:296)
-==6512==    by 0x4E42440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
-==6512==    by 0x4E42569: cmocka_run_group_fixture (cmocka.c:2669)
-==6512==    by 0x4E42A90: _cmocka_run_group_tests (cmocka.c:2818)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512== 
-==6512== Invalid write of size 1
-==6512==    at 0x10A1A2: shortest_user_link_worker (mine.c:454)
-==6512==    by 0x109B50: BFS_work (mine.c:347)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x563a4b4 is 0 bytes after a block of size 20 alloc'd
-==6512==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==6512==    by 0x1096E7: init_work_args (mine.c:265)
-==6512==    by 0x1094B1: shortest_user_link_wrapper (mine.c:224)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512== 
-T:0|File:         mine.c|Ln:456|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
-==6512== Invalid read of size 8
-==6512==    at 0x109C28: BFS_work (mine.c:350)
-==6512==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
-==6512==    by 0x10A439: shortest_user_link (supergraph.c:26)
-==6512==    by 0x10B899: shortest_user_link_test_helper (test.c:381)
-==6512==    by 0x10B491: test_path_example_1_unidir_triv (test.c:315)
-==6512==    by 0x4E42401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
-==6512==    by 0x4E426AC: cmocka_run_one_tests (cmocka.c:2724)
-==6512==    by 0x4E42B71: _cmocka_run_group_tests (cmocka.c:2839)
-==6512==    by 0x10A7C6: main (test.c:65)
-==6512==  Address 0x4a0 is not stack'd, malloc'd or (recently) free'd
-==6512== 
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (1) at idx 2
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+==7180== Invalid read of size 8
+==7180==    at 0x10A157: shortest_user_link_worker (mine.c:451)
+==7180==    by 0x109B54: BFS_work (mine.c:349)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x5633170 is 32 bytes before a block of size 48 in arena "client"
+==7180== 
+==7180== Invalid read of size 8
+==7180==    at 0x10A167: shortest_user_link_worker (mine.c:452)
+==7180==    by 0x109B54: BFS_work (mine.c:349)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x5633168 is 24 bytes after a block of size 1,120 in arena "client"
+==7180== 
+==7180== Invalid read of size 8
+==7180==    at 0x10A177: shortest_user_link_worker (mine.c:453)
+==7180==    by 0x109B54: BFS_work (mine.c:349)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x5633160 is 16 bytes after a block of size 1,120 alloc'd
+==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7180==    by 0x10C69E: header_field (parse_csv.c:175)
+==7180==    by 0x10C5EE: field_wrapper (parse_csv.c:156)
+==7180==    by 0x10C447: read_any (parse_csv.c:105)
+==7180==    by 0x4E3D47A: csv_parse (libcsv.c:388)
+==7180==    by 0x10C176: init_from_header (parse_csv.c:46)
+==7180==    by 0x10D277: read_example (parse_csv.c:399)
+==7180==    by 0x10B3BC: shortest_path_example_1 (test.c:296)
+==7180==    by 0x5046440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
+==7180==    by 0x5046569: cmocka_run_group_fixture (cmocka.c:2669)
+==7180==    by 0x5046A90: _cmocka_run_group_tests (cmocka.c:2818)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180== 
+==7180== Invalid read of size 8
+==7180==    at 0x10A187: shortest_user_link_worker (mine.c:454)
+==7180==    by 0x109B54: BFS_work (mine.c:349)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x5633158 is 8 bytes after a block of size 1,120 alloc'd
+==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7180==    by 0x10C69E: header_field (parse_csv.c:175)
+==7180==    by 0x10C5EE: field_wrapper (parse_csv.c:156)
+==7180==    by 0x10C447: read_any (parse_csv.c:105)
+==7180==    by 0x4E3D47A: csv_parse (libcsv.c:388)
+==7180==    by 0x10C176: init_from_header (parse_csv.c:46)
+==7180==    by 0x10D277: read_example (parse_csv.c:399)
+==7180==    by 0x10B3BC: shortest_path_example_1 (test.c:296)
+==7180==    by 0x5046440: cmocka_run_one_test_or_fixture (cmocka.c:2621)
+==7180==    by 0x5046569: cmocka_run_group_fixture (cmocka.c:2669)
+==7180==    by 0x5046A90: _cmocka_run_group_tests (cmocka.c:2818)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180== 
+==7180== Invalid write of size 1
+==7180==    at 0x10A1A6: shortest_user_link_worker (mine.c:456)
+==7180==    by 0x109B54: BFS_work (mine.c:349)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x563a4b4 is 0 bytes after a block of size 20 alloc'd
+==7180==    at 0x4C31B25: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7180==    by 0x1096EB: init_work_args (mine.c:267)
+==7180==    by 0x1094B1: shortest_user_link_wrapper (mine.c:224)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180== 
+T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
+==7180== Invalid read of size 8
+==7180==    at 0x109C2C: BFS_work (mine.c:352)
+==7180==    by 0x109605: shortest_user_link_wrapper (mine.c:249)
+==7180==    by 0x10A43D: shortest_user_link (supergraph.c:26)
+==7180==    by 0x10B89D: shortest_user_link_test_helper (test.c:381)
+==7180==    by 0x10B495: test_path_example_1_unidir_triv (test.c:315)
+==7180==    by 0x5046401: cmocka_run_one_test_or_fixture (cmocka.c:2616)
+==7180==    by 0x50466AC: cmocka_run_one_tests (cmocka.c:2724)
+==7180==    by 0x5046B71: _cmocka_run_group_tests (cmocka.c:2839)
+==7180==    by 0x10A7CA: main (test.c:65)
+==7180==  Address 0x4a0 is not stack'd, malloc'd or (recently) free'd
+==7180== 
 [  ERROR   ] --- Test failed with exception: Segmentation fault(11)
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (14) at idx 7
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:456|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (14) at idx 7
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
 [  ERROR   ] --- Test failed with exception: Segmentation fault(11)
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (3) at idx 0
-T:0|File:         mine.c|Ln:309|Fn:           user_comp|D|Found the desired ID (0) at idx 8
-T:0|File:         mine.c|Ln:342|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:456|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (3) at idx 0
+T:0|File:         mine.c|Ln:311|Fn:           user_comp|D|Found the desired ID (0) at idx 8
+T:0|File:         mine.c|Ln:344|Fn:            BFS_work|D|Done flag: 0
+T:0|File:         mine.c|Ln:458|Fn:shortest_user_link_worker|V|User 20 with 0 in and 0 out
 [  ERROR   ] --- Test failed with exception: Segmentation fault(11)
 [  PASSED  ] 0 test(s).
 [  FAILED  ] 3 test(s), listed below:
@@ -925,18 +233,18 @@ T:0|File:         mine.c|Ln:456|Fn:shortest_user_link_worker|V|User 20 with 0 in
 [  FAILED  ] test_path_example_1_unidir_options
 
  3 FAILED TEST(S)
-==6512== 
-==6512== HEAP SUMMARY:
-==6512==     in use at exit: 2,405 bytes in 60 blocks
-==6512==   total heap usage: 362 allocs, 302 frees, 39,497 bytes allocated
-==6512== 
-==6512== LEAK SUMMARY:
-==6512==    definitely lost: 696 bytes in 15 blocks
-==6512==    indirectly lost: 1,709 bytes in 45 blocks
-==6512==      possibly lost: 0 bytes in 0 blocks
-==6512==    still reachable: 0 bytes in 0 blocks
-==6512==         suppressed: 0 bytes in 0 blocks
-==6512== Rerun with --leak-check=full to see details of leaked memory
-==6512== 
-==6512== For counts of detected and suppressed errors, rerun with: -v
-==6512== ERROR SUMMARY: 18 errors from 6 contexts (suppressed: 0 from 0)
+==7180== 
+==7180== HEAP SUMMARY:
+==7180==     in use at exit: 2,405 bytes in 60 blocks
+==7180==   total heap usage: 362 allocs, 302 frees, 39,497 bytes allocated
+==7180== 
+==7180== LEAK SUMMARY:
+==7180==    definitely lost: 696 bytes in 15 blocks
+==7180==    indirectly lost: 1,709 bytes in 45 blocks
+==7180==      possibly lost: 0 bytes in 0 blocks
+==7180==    still reachable: 0 bytes in 0 blocks
+==7180==         suppressed: 0 bytes in 0 blocks
+==7180== Rerun with --leak-check=full to see details of leaked memory
+==7180== 
+==7180== For counts of detected and suppressed errors, rerun with: -v
+==7180== ERROR SUMMARY: 18 errors from 6 contexts (suppressed: 0 from 0)

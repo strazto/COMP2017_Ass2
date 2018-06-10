@@ -247,6 +247,8 @@ result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, ui
 	wargs->post_bfs_work = short_u_link_post_bfs;
 
 	BFS_work(wargs);
+
+	return out;
 }
 
 static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t * want, uint64_t n_want)
@@ -443,7 +445,7 @@ static void * shortest_user_link_worker(void * worker_args)
 	work_args_t * args = (work_args_t *) worker_args;
 	user * users = args->arr;
 	user * self  = &users[args->idx];
-	uint64_t i = 0;
+	
 	kin_t * out = calloc(1, sizeof(kin_t));
 	out->self = (void*) self;
 	out->n_out = self->n_following;
