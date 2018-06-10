@@ -231,6 +231,9 @@ result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, ui
 	wargs->work = NULL;
 	wargs->check_done = NULL;
 
+	wargs->q = dll_init();
+	wargs->out_buff = dll_init();
+
 	work_on_segment(wargs);
 	if (!wargs->found_flags[0] || !wargs->found_flags[1])
 	{
