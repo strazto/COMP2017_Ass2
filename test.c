@@ -25,11 +25,17 @@ static void test_find_orig_2_for_child(void** state);
 static void test_find_orig_3_for_missing(void** state);
 static void test_find_orig_4_for_grandchild(void** state);
 static void test_find_orig_5_for_single(void** state);
+//Shortest path testing
+static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+static void test_path_example_1_unidir_triv(void** state);
+static void test_path_example_1_unidir_longer(void** state);
+static void test_path_example_1_unidir_options(void** state);
 
 //Private helpers
 static int example_1_posts(void ** state);
 static post * make_repost(post * posts, uint64_t total_posts, post * parent, uint64_t child_idx, uint64_t max_children);
 
+static int shortest_path_example_1(void ** state);
 
 int main (void)
 {
@@ -98,32 +104,7 @@ static int example_1_posts(void ** state)
 	make_repost(posts, n_posts, p, 17, max_children);
 	make_repost(posts, n_posts, p, 13, max_children);
 
-	//TO BE IMPLEMENTED: Shortest path tests
 
-	// out->n_users = 10;
-	// out->users = calloc(out->n_users,sizeof(user));
-	
-	// u = &out->users[0];
-	// u->n_following = 0;
-	// u->n_followers = 3;
-	// u->follower_idxs = {2, 3, 9};
-	
-	// u = &out->users[2];
-	// u->n_following = 1;
-	// u->n_followers = 1;
-	// u->following_idxs = {0};
-	// u->follower_idxs= {4};
-
-	// u = &out->users[3];
-	// u->n_followers = 1;
-	// u->n_following = 1;
-	// u->follower_idxs = {9};
-	
-	// u = &out->users[9];
-	// u->n_following = 2;
-	// u->n_followers = 0;
-	// u->following_ixs = {0, 3};
-	// out->users[4].following_idxs = {2};
 
 	*state = (void*) out;
 	return 0;
@@ -303,3 +284,48 @@ static post * make_repost(post * posts, uint64_t total_posts, post * parent,  ui
 
 
 
+static int shortest_path_example_1(void ** state)
+{
+	char path[] = "PATH_EXAMPLE_1";
+	ex_props_t * out = read_example(path);
+
+	*state = (void*) out;
+}
+
+
+static void test_path_example_1_unidir_triv(void** state)
+{
+	ex_props_t * props = (ex_props_t *) *state;
+	user * users = props->users;
+	//Starting from elem 2
+
+	result * expect= calloc(1,sizeof(result));
+	expect->n_elements = 2;
+	expect->elements = malloc(sizeof(void*));
+	elements[0] = &users[2];
+	elements[1] = &users[1];
+	shortest_user_link_test_helper(users[2].user_ids, expect, state);
+
+}
+static void test_path_example_1_unidir_longer(void** state)
+{
+
+}
+static void test_path_example_1_unidir_options(void** state)
+{
+
+}
+
+static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state)
+{
+	ex_props_t * props = (ex_props_t *) *state;
+	user * users = props->users;
+	size_t n_users = props->n_users;
+	result * actual = NULL;
+
+	query_helper * q_h = engine_setup(1);
+
+	actual = shortest_user_link(users, n_users, from, to, q_h);
+
+	engine_cleanup(q_h);
+}

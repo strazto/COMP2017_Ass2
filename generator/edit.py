@@ -18,6 +18,7 @@ def disp_bool_df(root, df, no_diag=1):
 	for r in df.index:
 	    tk.Label(root, text=str(df.index[r])).grid(row=r+1,column=0)  
 	    for c in range(len(df.columns)):
+	    	print (dtype(r) dtype(c) df.index[r] df.columns[c])
 	        if (df.index[r] != df.columns[c] or not no_diag):
 		        button = tk.Checkbutton(root, borderwidth=1, var=tk.IntVar(), command=partial(toggle_df,df,r,c))
 		        if (df.iloc[r,c]):
@@ -27,17 +28,17 @@ def disp_bool_df(root, df, no_diag=1):
 
 def display_ui(matrices):
 	root = tk.Tk(  )
-	posts_view = tk.LabelFrame(root, text="POSTS")
+	posts_view = tk.LabelFrame(root, text=IO.kw_posts)
 	posts_view.pack(fill="both", expand="yes")
-	disp_bool_df(posts_view, matrices['POSTS'])
+	disp_bool_df(posts_view, matrices[IO.kw_posts])
 
-	user_view = tk.LabelFrame(root,text="USERS")
+	user_view = tk.LabelFrame(root,text=IO.kw_user)
 	user_view.pack(fill="both", expand="yes")
-	disp_bool_df(user_view, matrices['USERS'])
+	disp_bool_df(user_view, matrices[IO.kw_user])
 
-	user_posts_view = tk.LabelFrame(root,text="USER_POSTS")
+	user_posts_view = tk.LabelFrame(root,text=IO.kw_uposts)
 	user_posts_view.pack(fill="both", expand="yes")
-	disp_bool_df(user_posts_view, matrices['USER_POSTS'], no_diag=0)
+	disp_bool_df(user_posts_view, matrices[IO.kw_uposts], no_diag=0)
 
 	root.mainloop(  )	
 
