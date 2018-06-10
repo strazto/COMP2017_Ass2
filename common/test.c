@@ -54,9 +54,15 @@ int main (void)
 		cmocka_unit_test(test_find_orig_4_for_grandchild),
 		cmocka_unit_test(test_find_orig_5_for_single)
 	};
+	const struct CMUnitTest shortest_user_link_tests[]=
+	{
+		cmocka_unit_test(test_path_example_1_unidir_triv),
+		cmocka_unit_test(test_path_example_1_unidir_longer),
+		cmocka_unit_test(test_path_example_1_unidir_options)
+	}
 	cmocka_run_group_tests_name("FIND_ALL_REPOSTS", find_reposts_tests, example_1_posts, teardown_example_properties);
 	cmocka_run_group_tests_name("FIND_ORIGINAL", find_original_tests, example_1_posts, teardown_example_properties);
-
+	cmocka_run_group_tests_name("SHORTEST_PATH", shortest_user_link_tests, shortest_path_example_1, teardown_example_properties);
 	return 0;
 }
 
@@ -299,21 +305,64 @@ static void test_path_example_1_unidir_triv(void** state)
 	user * users = props->users;
 	//Starting from elem 2
 
-	result * expect= calloc(1,sizeof(result));
+	result * expect = calloc(1,sizeof(result));
 	expect->n_elements = 2;
-	expect->elements = malloc(sizeof(void*));
+	expect->elements = malloc(sizeof(void*)*expect->n_elements);
 	elements[0] = &users[2];
 	elements[1] = &users[1];
 	shortest_user_link_test_helper(users[2].user_ids, expect, state);
 
+	free(expect);
+	free(expect->elements);
+	expect = NULL;
+
 }
 static void test_path_example_1_unidir_longer(void** state)
 {
+	ex_props_t * props = (ex_props_t *) *state;
+	user * users = props->users;
+	start_from = 7;
+	
+	int i = 0;
 
+	result * expect = calloc(1,sizeof(result));
+	expect->n_elements = 4;
+	expect->elements = malloc(sizeof(void*)*expect->n_elements);
+	elements[i++] = &users[start_from];
+	elements[i++] = &users[4];
+	elements[i++] = &users[2];
+	elements[i++] = &users[0];
+	shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+
+	free(expect->elements);
+	free(expect);
+
+	expect = NULL;
 }
 static void test_path_example_1_unidir_options(void** state)
 {
+	ex_props_t * props = (ex_props_t *) *state;
+	user * users = props->users;
+	start_from = 8;
+	
+	int i = 0;
 
+	result * expect = calloc(1,sizeof(result));
+	expect->n_elements = 7;
+	expect->elements = malloc(sizeof(void*)*expect->n_elements);
+	elements[i++] = &users[start_from];
+	elements[i++] = &users[5];
+	elements[i++] = &users[6];
+	elements[i++] = &users[7];
+	elements[i++] = &users[4];
+	elements[i++] = &users[2];
+	elements[i++] = &users[0];
+	shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+
+	free(expect->elements);
+	free(expect);
+
+	expect = NULL;
 }
 
 static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state)
@@ -326,6 +375,9 @@ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * 
 	query_helper * q_h = engine_setup(1);
 
 	actual = shortest_user_link(users, n_users, from, to, q_h);
+	compare_results_test_helper(expected, actual);
 
+	free(actual->elements);
+	free(actual);
 	engine_cleanup(q_h);
 }
