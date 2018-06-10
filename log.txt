@@ -4,8 +4,3 @@ common/test.c:325:2: error: ‘start_from’ undeclared (first use in this funct
   ^~~~~~~~~~
   strxfrm
 common/test.c:325:2: note: each undeclared identifier is reported only once for each function it appears in
-common/test.c: In function ‘test_path_example_1_unidir_options’:
-common/test.c:348:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
-  start_from = 8;
-  ^~~~~~~~~~
-  strxfrm
