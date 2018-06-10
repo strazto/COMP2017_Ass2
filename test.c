@@ -311,7 +311,7 @@ static void test_path_example_1_unidir_triv(void** state)
 	void ** elements = expect->elements;
 	elements[0] = &users[2];
 	elements[1] = &users[1];
-	shortest_user_link_test_helper(users[2].user_ids, expect, state);
+	shortest_user_link_test_helper(users[2].user_id, users[0].user_id, expect, state);
 
 	free(expect);
 	free(expect->elements);
@@ -334,7 +334,7 @@ static void test_path_example_1_unidir_longer(void** state)
 	elements[i++] = &users[4];
 	elements[i++] = &users[2];
 	elements[i++] = &users[0];
-	shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+	shortest_user_link_test_helper(users[start_from].user_id, users[0].user_id, expect, state);
 
 	free(expect->elements);
 	free(expect);
@@ -360,7 +360,7 @@ static void test_path_example_1_unidir_options(void** state)
 	elements[i++] = &users[4];
 	elements[i++] = &users[2];
 	elements[i++] = &users[0];
-	shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+	shortest_user_link_test_helper(users[start_from].user_id, users[0].user_id, expect, state);
 
 	free(expect->elements);
 	free(expect);
