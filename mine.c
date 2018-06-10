@@ -51,6 +51,7 @@ static void * shortest_user_link_A_done(void * worker_args);
 static void * shortest_user_link_B_done(void * worker_args);
 
 static void * shortest_user_link_done(work_args_t * args, uint64_t which_idx);
+static void * short_u_link_post_bfs(void * worker_args);
 /////////////////////////////////////////////////////////////
 //				Helper data classes
 /////////////////////////////////////////////////////////////
@@ -227,7 +228,22 @@ result* shortest_user_link_wrapper(user* users, size_t count, uint64_t userA, ui
 
 
 	wargs->comp = user_comp;
+	wargs->work = NULL;
+	wargs->check_done = NULL;
 
+	work_on_segment(wargs);
+	if (!wargs->found_flags[0] || !wargs->found_flags[1])
+	{
+		LOG_D("Couldn't find either id, %lu or %lu", wargs->want[0], wargs->want[1]);
+		destroy_work_args(wargs);
+		return out;
+	}
+
+	wargs->work = shortest_user_link_worker;
+	wargs->check_done = shortest_user_link_A_done;
+	wargs->post_bfs_work = short_u_link_post_bfs;
+
+	BFS_work(wargs);
 }
 
 static work_args_t * init_work_args(void * arr, uint64_t lo, uint64_t hi, uint64_t * want, uint64_t n_want)
@@ -419,7 +435,7 @@ static void * shortest_user_link_done(work_args_t * args, uint64_t wanted_to_idx
 	return NULL;
 }
 
-static void * shortest_user_link_worker_out(void * worker_args)
+static void * shortest_user_link_worker(void * worker_args)
 {
 	work_args_t * args = (work_args_t *) worker_args;
 	user * users = args->arr;
@@ -433,5 +449,26 @@ static void * shortest_user_link_worker_out(void * worker_args)
 	out->idxs_in = self->follower_idxs;
 
 	args->bfs_flags[args->idx] = 1;
+
+	LOG_V("User %lu with %lu in and %lu out", args->idx, out->n_in, out->n_in);
 	return (void *) out;
+}
+
+static void * short_u_link_post_bfs(void * worker_args)
+{
+	work_args_t * args = (work_args_t *) worker_args;
+	user * users = args->arr;
+
+	uint64_t i = args->idx;
+	dll_push(args->out_buff, &users[i]);
+
+	for (i = 	args->parents_in[i];
+				args->parents_in[i] != args->found_idxs[0] 
+		&& 		args->parents_in[i] != args->found_idxs[1];
+		i = args->parents_in[i])
+	{
+		dll_push(args->out_buff, &users[i]);
+		LOG_D("Adding user[%lu] to out_buff", i);
+	}
+	return NULL;
 }

@@ -1,111 +1,85 @@
-==3089== Memcheck, a memory error detector
-==3089== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==3089== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==3089== Command: ./a.out
-==3089== 
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:3 to post idx: 3
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:4 to post idx: 4
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:5 to post idx: 5
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:6 to post idx: 6
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:7 to post idx: 7
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:8 to post idx: 8
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:9 to post idx: 9
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:10 to post idx: 10
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:11 to post idx: 11
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:12 to post idx: 12
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:13 to post idx: 13
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:14 to post idx: 14
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:15 to post idx: 15
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:16 to post idx: 16
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:17 to post idx: 17
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (2) at idx 2
-T:0|File:         mine.c|Ln:123|Fn:     work_on_segment|D|Work is done, @ 2
-T:0|File:         mine.c|Ln:158|Fn:find_all_reposts_wrapper|D|Discerned index: 2
-T:0|File:         mine.c|Ln:323|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 2 being added, with 5 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 4 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 6 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 10 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 11 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:354|Fn:            BFS_work|D|Found 9 results!
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 9 vs actual 9
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 7
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (7) at idx 7
-T:0|File:         mine.c|Ln:123|Fn:     work_on_segment|D|Work is done, @ 7
-T:0|File:         mine.c|Ln:158|Fn:find_all_reposts_wrapper|D|Discerned index: 7
-T:0|File:         mine.c|Ln:323|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 7 being added, with 3 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 15 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 17 being added, with 0 children
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 13 being added, with 0 children
-T:0|File:         mine.c|Ln:354|Fn:            BFS_work|D|Found 4 results!
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 4 vs actual 4
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (1) at idx 1
-T:0|File:         mine.c|Ln:123|Fn:     work_on_segment|D|Work is done, @ 1
-T:0|File:         mine.c|Ln:158|Fn:find_all_reposts_wrapper|D|Discerned index: 1
-T:0|File:         mine.c|Ln:323|Fn:            BFS_work|D|Done flag: 0
-T:0|File:         mine.c|Ln:376|Fn: find_reposts_worker|V|Post 1 being added, with 0 children
-T:0|File:         mine.c|Ln:354|Fn:            BFS_work|D|Found 1 results!
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-T:0|File:         mine.c|Ln:153|Fn:find_all_reposts_wrapper|D|Never found original, cleaning up and LEAVING !
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
-T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
-[  PASSED  ] 4 test(s).
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:0 to post idx: 0
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:1 to post idx: 1
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:2 to post idx: 2
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:3 to post idx: 3
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:4 to post idx: 4
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:5 to post idx: 5
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:6 to post idx: 6
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:7 to post idx: 7
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:8 to post idx: 8
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:9 to post idx: 9
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:10 to post idx: 10
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:11 to post idx: 11
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:12 to post idx: 12
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:13 to post idx: 13
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:14 to post idx: 14
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:15 to post idx: 15
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:16 to post idx: 16
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:17 to post idx: 17
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:18 to post idx: 18
-T:0|File:  common/test.c|Ln: 78|Fn:     example_1_posts|V|Setting id of:19 to post idx: 19
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 2
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (2) at idx 2
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 4
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (4) at idx 4
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 18446744073709551516
-T:0|File:         mine.c|Ln:198|Fn:find_original_wrapper|D|Didn't find id 18446744073709551516 anywhere! :(
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 0 vs actual 0
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 13
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (13) at idx 13
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
-T:0|File:  common/test.c|Ln:211|Fn:post_query_test_helper|D|Testing with 1
-T:0|File:         mine.c|Ln:301|Fn:           post_comp|D|Found the desired ID (1) at idx 1
-T:0|File:  common/test.c|Ln:193|Fn:compare_results_test_helper|D|Check expected element size: 1 vs actual 1
-T:0|File:common/properties.c|Ln: 20|Fn:      teardown_users|E|Null pointer given !
-[  PASSED  ] 5 test(s).
-==3089== 
-==3089== HEAP SUMMARY:
-==3089==     in use at exit: 0 bytes in 0 blocks
-==3089==   total heap usage: 171 allocs, 171 frees, 9,678 bytes allocated
-==3089== 
-==3089== All heap blocks were freed -- no leaks are possible
-==3089== 
-==3089== For counts of detected and suppressed errors, rerun with: -v
-==3089== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+In file included from common/test.h:6:0,
+                 from common/test.c:1:
+common/test.c: In function ‘main’:
+common/test.c:63:2: error: expected ‘,’ or ‘;’ before ‘_cmocka_run_group_tests’
+  cmocka_run_group_tests_name("FIND_ALL_REPOSTS", find_reposts_tests, example_1_posts, teardown_example_properties);
+  ^
+common/test.c: In function ‘test_path_example_1_unidir_triv’:
+common/test.c:311:2: error: ‘elements’ undeclared (first use in this function)
+  elements[0] = &users[2];
+  ^~~~~~~~
+common/test.c:311:2: note: each undeclared identifier is reported only once for each function it appears in
+common/test.c:313:42: error: ‘user {aka struct user}’ has no member named ‘user_ids’; did you mean ‘user_id’?
+  shortest_user_link_test_helper(users[2].user_ids, expect, state);
+                                          ^~~~~~~~
+                                          user_id
+common/test.c:313:52: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
+  shortest_user_link_test_helper(users[2].user_ids, expect, state);
+                                                    ^~~~~~
+common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:313:60: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
+  shortest_user_link_test_helper(users[2].user_ids, expect, state);
+                                                            ^~~~~
+common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:313:2: error: too few arguments to function ‘shortest_user_link_test_helper’
+  shortest_user_link_test_helper(users[2].user_ids, expect, state);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:29:13: note: declared here
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c: In function ‘test_path_example_1_unidir_longer’:
+common/test.c:324:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
+  start_from = 7;
+  ^~~~~~~~~~
+  strxfrm
+common/test.c:331:2: error: ‘elements’ undeclared (first use in this function)
+  elements[i++] = &users[start_from];
+  ^~~~~~~~
+common/test.c:335:61: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+                                                             ^~~~~~
+common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:335:69: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+                                                                     ^~~~~
+common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:335:2: error: too few arguments to function ‘shortest_user_link_test_helper’
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:29:13: note: declared here
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c: In function ‘test_path_example_1_unidir_options’:
+common/test.c:346:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
+  start_from = 8;
+  ^~~~~~~~~~
+  strxfrm
+common/test.c:353:2: error: ‘elements’ undeclared (first use in this function)
+  elements[i++] = &users[start_from];
+  ^~~~~~~~
+common/test.c:360:61: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+                                                             ^~~~~~
+common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:360:69: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+                                                                     ^~~~~
+common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:360:2: error: too few arguments to function ‘shortest_user_link_test_helper’
+  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+common/test.c:29:13: note: declared here
+ static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
