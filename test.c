@@ -322,7 +322,7 @@ static void test_path_example_1_unidir_longer(void** state)
 {
 	ex_props_t * props = (ex_props_t *) *state;
 	user * users = props->users;
-	start_from = 7;
+	uint64_t start_from = 7;
 	
 	int i = 0;
 
