@@ -59,7 +59,7 @@ int main (void)
 		cmocka_unit_test(test_path_example_1_unidir_triv),
 		cmocka_unit_test(test_path_example_1_unidir_longer),
 		cmocka_unit_test(test_path_example_1_unidir_options)
-	}
+	};
 	cmocka_run_group_tests_name("FIND_ALL_REPOSTS", find_reposts_tests, example_1_posts, teardown_example_properties);
 	cmocka_run_group_tests_name("FIND_ORIGINAL", find_original_tests, example_1_posts, teardown_example_properties);
 	cmocka_run_group_tests_name("SHORTEST_PATH", shortest_user_link_tests, shortest_path_example_1, teardown_example_properties);
