@@ -1,70 +1,11 @@
-common/test.c: In function ‘test_path_example_1_unidir_triv’:
-common/test.c:314:42: error: ‘user {aka struct user}’ has no member named ‘user_ids’; did you mean ‘user_id’?
-  shortest_user_link_test_helper(users[2].user_ids, expect, state);
-                                          ^~~~~~~~
-                                          user_id
-common/test.c:314:52: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
-  shortest_user_link_test_helper(users[2].user_ids, expect, state);
-                                                    ^~~~~~
-common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:314:60: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
-  shortest_user_link_test_helper(users[2].user_ids, expect, state);
-                                                            ^~~~~
-common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:314:2: error: too few arguments to function ‘shortest_user_link_test_helper’
-  shortest_user_link_test_helper(users[2].user_ids, expect, state);
-  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:29:13: note: declared here
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 common/test.c: In function ‘test_path_example_1_unidir_longer’:
 common/test.c:325:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
   start_from = 7;
   ^~~~~~~~~~
   strxfrm
 common/test.c:325:2: note: each undeclared identifier is reported only once for each function it appears in
-common/test.c:337:61: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-                                                             ^~~~~~
-common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:337:69: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-                                                                     ^~~~~
-common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:337:2: error: too few arguments to function ‘shortest_user_link_test_helper’
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:29:13: note: declared here
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 common/test.c: In function ‘test_path_example_1_unidir_options’:
 common/test.c:348:2: error: ‘start_from’ undeclared (first use in this function); did you mean ‘strxfrm’?
   start_from = 8;
   ^~~~~~~~~~
   strxfrm
-common/test.c:363:61: warning: passing argument 2 of ‘shortest_user_link_test_helper’ makes integer from pointer without a cast [-Wint-conversion]
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-                                                             ^~~~~~
-common/test.c:29:13: note: expected ‘uint64_t {aka long unsigned int}’ but argument is of type ‘result * {aka struct result *}’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:363:69: warning: passing argument 3 of ‘shortest_user_link_test_helper’ from incompatible pointer type [-Wincompatible-pointer-types]
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-                                                                     ^~~~~
-common/test.c:29:13: note: expected ‘result * {aka struct result *}’ but argument is of type ‘void **’
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:363:2: error: too few arguments to function ‘shortest_user_link_test_helper’
-  shortest_user_link_test_helper(users[start_from].user_ids, expect, state);
-  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-common/test.c:29:13: note: declared here
- static void shortest_user_link_test_helper(uint64_t from, uint64_t to, result * expected, void ** state);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
