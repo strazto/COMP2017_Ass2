@@ -1,4 +1,7 @@
 common/test.c: In function ‘shortest_path_example_1’:
-common/test.c:295:30: error: expected ‘,’ or ‘;’ before string constant
-  char path[] = TEST_FILE_DIR "PATH_EXAMPLE_1";
-                              ^~~~~~~~~~~~~~~~
+common/test.c:295:30: error: stray ‘##’ in program
+  char path[] = TEST_FILE_DIR ## "PATH_EXAMPLE_1";
+                              ^~
+common/test.c:295:33: error: expected ‘,’ or ‘;’ before string constant
+  char path[] = TEST_FILE_DIR ## "PATH_EXAMPLE_1";
+                                 ^~~~~~~~~~~~~~~~
