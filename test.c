@@ -292,7 +292,7 @@ static post * make_repost(post * posts, uint64_t total_posts, post * parent,  ui
 
 static int shortest_path_example_1(void ** state)
 {
-	char path[] = "PATH_EXAMPLE_1";
+	char path[] = TEST_FILE_DIR "PATH_EXAMPLE_1";
 	ex_props_t * out = read_example(path);
 
 	*state = (void*) out;

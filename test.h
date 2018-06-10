@@ -12,4 +12,9 @@
 #include "properties.h"
 #include "parse_csv.h"
 
+
+#ifndef TEST_FILE_DIR
+#define TEST_FILE_DIR ("./")
+#endif
+
 #endif
